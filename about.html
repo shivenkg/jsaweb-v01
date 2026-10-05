@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About JS AlphaSoft — Our Story, Values &amp; Team</title>
+  <meta name="description"
+    content="Learn about JS AlphaSoft — our mission, values, timeline and the senior engineering team behind the work.">
+  <script>(function () { try { var t = localStorage.getItem('jsalpha-theme'); document.documentElement.setAttribute('data-theme', t || 'dark'); } catch (e) { } })();</script>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header id="siteHeader">
+    <div class="wrap">
+      <nav>
+        <a href="index.html" class="brand">
+          <span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span>
+          <span>JS AlphaSoft</span>
+        </a>
+        <div class="navlinks">
+          <a href="index.html">Home</a>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-dropdown-trigger active">
+              <span>About</span>
+              <svg class="nav-dropdown-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+            </a>
+            <div class="nav-dropdown-menu">
+              <a href="about.html" class="nav-dropdown-item active">
+                <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+                <span class="ndi-text">
+                  <span class="ndi-title">About Us</span>
+                  <span class="ndi-desc">Our story, leadership &amp; vision</span>
+                </span>
+              </a>
+              <a href="contact.html" class="nav-dropdown-item">
+                <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <span class="ndi-text">
+                  <span class="ndi-title">Contact Us</span>
+                  <span class="ndi-desc">Offices, support &amp; inquiries</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <a href="product.html">Product</a>
+          <a href="services.html">Services</a>
+          <a href="process.html">Process</a>
+          <a href="industries.html">Industries</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <a href="contact.html" class="navcta">Start a Project</a>
+          <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false"
+            aria-label="Switch to ivory white theme">
+            <span class="tt-track"></span>
+            <span class="tt-knob">
+              <svg class="tt-moon" viewBox="0 0 24 24">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" />
+              </svg>
+              <svg class="tt-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4.2" />
+                <path
+                  d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+              </svg>
+            </span>
+          </button>
+          <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="grid-overlay"></div>
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">Home</a> / <span>About</span></div>
+      <h1>Software people who wanted <span class="gtext">fewer layers</span> between engineers and outcomes.</h1>
+      <p class="lead">JS AlphaSoft was founded on a simple complaint: too much software work gets lost between the
+        client and the person actually writing the code. We built a company to close that gap.</p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="av-bg">
+            <div class="grid-lines"></div>
+            <div class="av-blob av-blob-1"></div>
+            <div class="av-blob av-blob-2"></div>
+          </div>
+          <div class="av-card">
+            <div class="av-editor-head"><span></span><span></span><span></span><span
+                class="av-editor-title">company.ts</span></div>
+            <div class="av-editor-body"><span class="tok-kw">const</span> <span class="tok-cls">JSAlphaSoft</span> <span
+                class="tok-punc">=</span> <span class="tok-punc">{</span>
+              <span class="tok-prop">founded</span><span class="tok-punc">:</span> <span
+                class="tok-num">2026</span><span class="tok-punc">,</span>
+              <span class="tok-prop">team</span><span class="tok-punc">:</span> <span
+                class="tok-str">"senior-only"</span><span class="tok-punc">,</span>
+              <span class="tok-prop">disciplines</span><span class="tok-punc">:</span> <span
+                class="tok-num">12</span><span class="tok-punc">,</span>
+              <span class="tok-prop">support</span><span class="tok-punc">:</span> <span class="tok-str">"24/7"</span>
+              <span class="tok-punc">}</span><span class="tok-punc">;</span>
+            </div>
+          </div>
+          <div class="av-chip av-chip-1">
+            <div class="av-chip-ic"><svg viewBox="0 0 24 24">
+                <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+              </svg></div>
+            <div><strong>120+</strong><span>Projects shipped</span></div>
+          </div>
+          <div class="av-chip av-chip-2">
+            <div class="av-chip-ic"><svg viewBox="0 0 24 24">
+                <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
+              </svg></div>
+            <div><strong>ISO</strong><span>Aligned security</span></div>
+          </div>
+          <div class="av-chip av-chip-3">
+            <div class="av-chip-ic"><svg viewBox="0 0 24 24">
+                <path d="M16 11a4 4 0 1 0-4-4" />
+                <path d="M3 21v-1a6 6 0 0 1 6-6h1a6 6 0 0 1 6 6v1" />
+                <circle cx="9" cy="7" r="4" />
+              </svg></div>
+            <div><strong>40+</strong><span>Enterprise clients</span></div>
+          </div>
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">Our mission</div>
+          <h2 style="color:var(--heading);font-size:clamp(26px,3.4vw,38px);margin-bottom:20px;">Build the systems that
+            let ambitious teams move at the speed they think at.</h2>
+          <p>We started JS AlphaSoft to work the way the best engineering teams already do internally &mdash; small,
+            senior, and directly accountable &mdash; and offer that as a service to companies who don't want to build a
+            40-person department to get it.</p>
+          <p>Today we work with founders shipping their first product and IT leaders modernising systems that have run
+            for a decade. The brief changes; the way we work doesn't.</p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <div class="num mono">01</div>
+              <h4>Product mindset</h4>
+              <p>We ship for outcomes, not tickets &mdash; every sprint tied to a business number.</p>
+            </div>
+            <div class="pillar">
+              <div class="num mono">02</div>
+              <h4>Senior-only teams</h4>
+              <p>No junior hand-offs. The engineer who designs it is the one who builds it.</p>
+            </div>
+            <div class="pillar">
+              <div class="num mono">03</div>
+              <h4>Security by default</h4>
+              <p>Threat modelling and hardening built into the pipeline, not bolted on after.</p>
+            </div>
+            <div class="pillar">
+              <div class="num mono">04</div>
+              <h4>Built to hand over</h4>
+              <p>Documented, owned, and yours &mdash; we build systems you can run without us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">What we value</div>
+        <h2>Six things we won't compromise on.</h2>
+      </div>
+      <div class="value-grid reveal">
+        <div class="value-card">
+          <div class="vc-mark">01</div>
+          <h4>Direct communication</h4>
+          <p>You get a straight technical answer, even when it isn't the one you were hoping for.</p>
+        </div>
+        <div class="value-card">
+          <div class="vc-mark">02</div>
+          <h4>Ownership</h4>
+          <p>Every engineer treats the client's system like it's the one running their own business.</p>
+        </div>
+        <div class="value-card">
+          <div class="vc-mark">03</div>
+          <h4>Craft over speed</h4>
+          <p>We'd rather ship a week later and not revisit the same bug three times.</p>
+        </div>
+        <div class="value-card">
+          <div class="vc-mark">04</div>
+          <h4>Security first</h4>
+          <p>Every build starts with a threat model, not an afterthought before launch.</p>
+        </div>
+        <div class="value-card">
+          <div class="vc-mark">05</div>
+          <h4>Transparent pricing</h4>
+          <p>Fixed-scope or time-and-materials, quoted plainly, with no surprise line items.</p>
+        </div>
+        <div class="value-card">
+          <div class="vc-mark">06</div>
+          <h4>Long-term thinking</h4>
+          <p>We design for the version of your product that exists two years from now.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Our journey</div>
+        <h2>From a two-person team to a full-stack partner.</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-row">
+          <div class="tl-year mono">2026</div>
+          <div>
+            <h4>Founded</h4>
+            <p>JS AlphaSoft opens as a two-person web development studio, building sites and small internal tools for
+              local businesses.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year mono">2026</div>
+          <div>
+            <h4>First enterprise client</h4>
+            <p>We take on our first mid-size enterprise engagement, building a custom inventory and order-management
+              system.</p>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-year mono">2026</div>
+          <div>
+            <h4>Cloud &amp; DevOps practice</h4>
+            <p>Cloud infrastructure and DevOps becomes a dedicated practice as clients move core systems onto AWS and
+              Azure.</p>
+          </div>
+        </div>
+        <!--div class="tl-row"><div class="tl-year mono">2023</div><div><h4>AI &amp; data engineering</h4><p>We stand up a dedicated AI/ML and data engineering team as demand for applied AI work accelerates.</p></div></div>
+      <div class="tl-row"><div class="tl-year mono">2026</div><div><h4>Full-stack technology partner</h4><p>Software, cloud and IT infrastructure under one roof &mdash; serving clients across finance, healthcare, retail and government.</p></div></div-->
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Leadership</div>
+        <h2>The people setting the technical direction.</h2>
+      </div>
+      <div class="leader-grid reveal" align="center">
+        <div class="leader-card">
+          <div class="leader-photo" style="overflow:hidden;background:none;">
+            <img src="assets/1_1783359927631.jpeg" alt="Mrs. Shweta Bharti"
+              style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+          </div>
+          <h4>Mrs. Shweta Bharti</h4>
+          <div class="role">Founder &amp; MD</div>
+          <div class="leader-bio-wrap">
+            <p class="leader-bio" id="bio-sb">As MD &amp; Founder of JS AlphaSoft, she is passionate about helping
+              businesses grow through technology while building lasting relationships with clients, partners, and
+              employees. She believes that great results come from putting people first, fostering innovation, and
+              creating solutions that make a real difference. Her vision is to build an organisation that delivers
+              sustainable value — not just for clients, but for the communities it serves.</p>
+            <button class="bio-toggle" onclick="toggleBio('bio-sb',this)" aria-expanded="false">Read more</button>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo" style="overflow:hidden;background:none;">
+            <img src="assets/2_1783359927632.jpeg" alt="Mr. Jeetendra Kumar"
+              style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+          </div>
+          <h4>Mr. Jeetendra Kumar</h4>
+          <div class="role">Founder &amp; CEO</div>
+          <div class="leader-bio-wrap">
+            <p class="leader-bio" id="bio-jk">As CEO of JS AlphaSoft, he is focused on shaping the company's growth
+              while building trusted relationships with clients and partners around the world. He is passionate about
+              helping organisations embrace ERP, cloud, and digital transformation solutions that deliver real business
+              value. His vision is to expand JS AlphaSoft's global presence through innovation, customer success, and
+              long-term partnerships.</p>
+            <button class="bio-toggle" onclick="toggleBio('bio-jk',this)" aria-expanded="false">Read more</button>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo" style="overflow:hidden;background:none;">
+            <img src="assets/3_1783359927632.webp" alt="Mr. Shivender K. Gautam"
+              style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
+          </div>
+          <h4>Mr. Shivender K. Gautam</h4>
+          <div class="role">Co-Founder &amp; CTO</div>
+          <div class="leader-bio-wrap">
+            <p class="leader-bio" id="bio-cto">As CTO of JS AlphaSoft, he is committed to driving innovation that
+              empowers businesses to stay ahead in a rapidly evolving digital world. By combining expertise in ERP, AI,
+              cloud technologies, and enterprise solutions, he leads the development of secure, scalable, and
+              customer-focused platforms that help organisations transform with confidence.</p>
+            <button class="bio-toggle" onclick="toggleBio('bio-cto',this)" aria-expanded="false">Read more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="next-page-strip">
+    <div class="wrap">
+      <a href="index.html" class="next-link">
+        <span class="arrow">&larr;</span>
+        <span class="nl-txt" style="text-align:left;"><small>Back to</small><strong>Home</strong></span>
+      </a>
+      <a href="services.html" class="next-link align-right">
+        <span class="arrow">&rarr;</span>
+        <span class="nl-txt"><small>Next</small><strong>Explore our services</strong></span>
+      </a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-icon.png"
+                alt="JS AlphaSoft mark"></span><span>JS AlphaSoft</span></a>
+          <p>A full-stack software engineering partner — web, mobile, cloud, AI and the infrastructure underneath all of
+            it.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Services</h5>
+          <a href="services.html#web-application-development">Web &amp; Mobile Apps</a>
+          <a href="services.html#cloud-devops-engineering">Cloud &amp; DevOps</a>
+          <a href="services.html#ai-machine-learning">AI &amp; Automation</a>
+          <a href="services.html#cybersecurity-vapt">Cybersecurity &amp; VAPT</a>
+          <a href="services.html#data-centre-setup">IT Infrastructure</a>
+        </div>
+        <div class="foot-col">
+          <h5>Company</h5>
+          <a href="about.html">About us</a>
+          <a href="process.html">Our process</a>
+          <a href="industries.html">Industries</a>
+          <a href="contact.html">Careers</a>
+        </div>
+        <div class="foot-col">
+          <h5>Resources</h5>
+          <a href="#">Case studies</a>
+          <a href="#">Blog</a>
+          <a href="#">Documentation</a>
+          <a href="#">Support portal</a>
+        </div>
+        <div class="foot-col">
+          <h5>Legal</h5>
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms of service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; <span id="yr"></span> JSAlphaSoft Private Limited. All rights reserved.</span>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/jsalphasoft/people/?viewAsMember=true" aria-label="LinkedIn"><svg
+              viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A6 6 0 0 1 16 8z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg></a>
+          <a href="#" aria-label="Meta"><svg viewBox="0 0 24 24">
+              <path
+                d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.6s.9-.3 2.9 1a10 10 0 0 1 5.2 0c2-1.3 2.9-1 2.9-1a3.6 3.6 0 0 1 .1 2.6 4 4 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+  <style>
+    /* Leadership cards — equal-size photos + collapsible bio */
+    .leader-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .leader-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .leader-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: none;
+      flex-shrink: 0;
+      margin-bottom: 18px;
+    }
+
+    .leader-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .leader-bio-wrap {
+      max-width: 280px;
+      margin-top: 10px;
+    }
+
+    .leader-bio {
+      font-size: 14px;
+      line-height: 1.65;
+      opacity: 0.78;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: none;
+    }
+
+    .leader-bio.expanded {
+      display: block;
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+      overflow: visible;
+    }
+
+    .bio-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 6px;
+      padding: 2px 0;
+      color: var(--accent, #6c8ef5);
+      letter-spacing: 0.02em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      opacity: 0.9;
+    }
+
+    .bio-toggle:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .leader-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .leader-bio-wrap {
+        max-width: 360px;
+      }
+    }
+  </style>
+  <script>
+    function toggleBio(id, btn) {
+      var p = document.getElementById(id);
+      var expanded = p.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Read less' : 'Read more';
+      btn.setAttribute('aria-expanded', expanded);
+    }
+  </script>
+</body>
+
+</html>

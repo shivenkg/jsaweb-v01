@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS AlphaSoft — Engineering the Alpha Layer of Digital Business</title>
+<meta name="description" content="JS AlphaSoft — software engineering, cloud, AI and digital transformation partner. We build the systems that give businesses their edge.">
+<script>(function(){try{var t=localStorage.getItem('jsalpha-theme');document.documentElement.setAttribute('data-theme',t||'dark');}catch(e){}})();</script>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="brand">
+        <span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span>
+        <span>JS AlphaSoft</span>
+      </a>
+      <div class="navlinks">
+        <a href="index.html" class="active">Home</a>
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-dropdown-trigger">
+            <span>About</span>
+            <svg class="nav-dropdown-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="about.html" class="nav-dropdown-item">
+              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+              <span class="ndi-text">
+                <span class="ndi-title">About Us</span>
+                <span class="ndi-desc">Our story, leadership &amp; vision</span>
+              </span>
+            </a>
+            <a href="contact.html" class="nav-dropdown-item">
+              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <span class="ndi-text">
+                <span class="ndi-title">Contact Us</span>
+                <span class="ndi-desc">Offices, support &amp; inquiries</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <a href="product.html">Product</a>
+        <a href="services.html">Services</a>
+        <a href="process.html">Process</a>
+        <a href="industries.html">Industries</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="contact.html" class="navcta">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to ivory white theme">
+            <span class="tt-track"></span>
+            <span class="tt-knob">
+              <svg class="tt-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+              <svg class="tt-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+            </span>
+          </button>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-inner">
+    <!--div class="eyebrow mono">JS AlphaSoft</div-->
+    <h1><span>Engineering the</span><span class="gtext">Alpha Layer</span><span>of your business.</span></h1>
+    <p class="lead">We design, build and run the software, cloud and AI systems that let ambitious companies move faster than their market.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-primary">Start a project &rarr;</a>
+      <a href="services.html" class="btn-ghost">Explore services</a>
+    </div>
+  </div>
+  
+  <div class="hero-visual reveal" id="heroVisual">
+    <div class="hv-bg"><div class="grid-lines"></div><div class="hv-blob hv-blob-1"></div><div class="hv-blob hv-blob-2"></div></div>
+   <h2 class="hero-bg-text">Trusted Minds Transforming Technology</h2></div>
+  <div class="hero-stats reveal" id="statsRow">
+    <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Projects shipped</div></div>
+    <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Enterprise clients</div></div>
+    <div class="stat"><div class="num" data-count="1">0</div><div class="lbl">Years building</div></div>
+    <div class="stat"><div class="num" data-count="98" data-suffix="%">0</div><div class="lbl">Client retention</div></div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>
+      <b>Trusted</b> &middot; <b>Minds </b> &middot; <b>Transforming </b> &middot; <b>Technology</b> &middot; <b>Trusted</b> &middot; <b>Minds </b> &middot; <b>Transforming </b> &middot; <b>Technology</b> &middot;
+    </span>
+    <span>
+      <b>Trusted</b> &middot; <b>Minds </b> &middot; <b>Transforming </b> &middot; <b>Technology</b> &middot; <b>Trusted</b> &middot; <b>Minds </b> &middot; <b>Transforming </b> &middot; <b>Technology</b> &middot;
+    </span>
+  </div>
+</div>
+
+<section class="section-pad" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="av-bg"><div class="grid-lines"></div><div class="av-blob av-blob-1"></div><div class="av-blob av-blob-2"></div></div>
+        <div class="av-card">
+          <div class="av-editor-head"><span></span><span></span><span></span><span class="av-editor-title">company.ts</span></div>
+          <div class="av-editor-body"><span class="tok-kw">const</span> <span class="tok-cls">JSAlphaSoft</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span>
+  <span class="tok-prop">founded</span><span class="tok-punc">:</span> <span class="tok-num">2026</span><span class="tok-punc">,</span>
+  <span class="tok-prop">team</span><span class="tok-punc">:</span> <span class="tok-str">"senior-only"</span><span class="tok-punc">,</span>
+  <span class="tok-prop">disciplines</span><span class="tok-punc">:</span> <span class="tok-num">12</span><span class="tok-punc">,</span>
+  <span class="tok-prop">support</span><span class="tok-punc">:</span> <span class="tok-str">"24/7"</span>
+<span class="tok-punc">}</span><span class="tok-punc">;</span></div>
+        </div>
+        <div class="av-chip av-chip-1">
+          <div class="av-chip-ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+          <div><strong>3</strong><span>Projects shipped</span></div>
+        </div>
+        <div class="av-chip av-chip-2">
+          <div class="av-chip-ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+          <div><strong>ISO</strong><span>Aligned security</span></div>
+        </div>
+        <div class="av-chip av-chip-3">
+          <div class="av-chip-ic"><svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-4-4"/><path d="M3 21v-1a6 6 0 0 1 6-6h1a6 6 0 0 1 6 6v1"/><circle cx="9" cy="7" r="4"/></svg></div>
+          <div><strong>40+</strong><span>Enterprise clients</span></div>
+        </div>
+      </div>
+      <div class="about-copy reveal">
+        <div class="eyebrow">Who we are</div>
+        <h2 style="color:var(--heading);font-size:clamp(26px,3.4vw,38px);margin-bottom:20px;">A software engineering partner built for companies that refuse to move slowly.</h2>
+        <p>JS AlphaSoft is a full-stack technology company. We embed with founders, product teams and IT leaders to design, engineer and operate the software that powers day-to-day business.</p>
+        <p>We work in small, senior pods &mdash; not account layers &mdash; so decisions get made in the same room the code gets written.</p>
+        <a href="about.html" class="btn-ghost" style="display:inline-flex;margin-top:8px;">More about us &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad services-band" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we do</div>
+      <h2>Software, cloud &amp; IT infrastructure. <br>One accountable team.</h2>
+      <p>From a single product build to the network and data centre it runs on &mdash; engaged individually or as a fully managed technology partner.</p>
+    </div>
+    
+    <!-- GROUP 1: SOFTWARE & DIGITAL ENGINEERING -->
+    <div class="svc-accordion-group" data-svc-group="software">
+      <div class="svc-group-head" tabindex="0" role="button" aria-expanded="false">
+        <h3>Software &amp; Digital Engineering</h3>
+        <span class="svc-group-line"></span>
+        <span class="svc-toggle-hint mono">Hover to explore</span>
+        <span class="svc-group-count mono">3 services</span>
+        <span class="svc-toggle-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="svc-accordion-body">
+        <div class="svc-accordion-inner">
+          <div class="svc-grid">
+            <a href="services.html#web-application-development" class="svc-card" data-tilt>
+              <span class="svc-tag mono">01</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3M9 9h6v6H9z"/><rect x="14" y="12" width="6" height="9" rx="1"/></svg></div>
+              <div><h3>Web &amp; Mobile App Development</h3><p>Native iOS/Android, Flutter, Next.js web applications, SaaS platforms and enterprise tools built for speed and scale.</p></div>
+            </a>
+
+            <a href="services.html#cloud-and-devops-engineering" class="svc-card" data-tilt>
+              <span class="svc-tag mono">02</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+              <div><h3>Cloud &amp; DevOps Engineering</h3><p>AWS, Azure and GCP multi-cloud infrastructure, CI/CD automation, IaC and cost-optimised architecture.</p></div>
+            </a>
+
+            <a href="services.html#ai-and-machine-learning" class="svc-card" data-tilt>
+              <span class="svc-tag mono">03</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.9 2.9M16.9 16.9l2.9 2.9M1 12h4M19 12h4M4.2 19.8l2.9-2.9M16.9 7.1l2.9-2.9"/></svg></div>
+              <div><h3>AI &amp; Intelligent Automation</h3><p>LLM integrations, custom AI agents, predictive ML models and computer vision pipelines built for production.</p></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP 2: IT INFRASTRUCTURE & NETWORKING -->
+    <div class="svc-accordion-group" data-svc-group="infra">
+      <div class="svc-group-head" tabindex="0" role="button" aria-expanded="false">
+        <h3>IT Infrastructure &amp; Networking</h3>
+        <span class="svc-group-line"></span>
+        <span class="svc-toggle-hint mono">Hover to explore</span>
+        <span class="svc-group-count mono">6 services</span>
+        <span class="svc-toggle-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="svc-accordion-body">
+        <div class="svc-accordion-inner">
+          <div class="svc-grid">
+            <a href="services.html#wired-and-wireless-networks" class="svc-card" data-tilt>
+              <span class="svc-tag mono">04</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+              <div><h3>Enterprise Networking &amp; Wireless</h3><p>LAN, WAN, SD-WAN, high-density Wi-Fi 6/7, and vendor-neutral network architecture built for resilience and zero downtime.</p></div>
+            </a>
+
+            <a href="services.html#data-centre-setup" class="svc-card" data-tilt>
+              <span class="svc-tag mono">05</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+              <div><h3>Data Centre Build &amp; Structured Cabling</h3><p>Server room engineering, rack containment, certified Cat6A/fiber cabling, and uninterrupted UPS power backup systems.</p></div>
+            </a>
+
+            <a href="services.html#it-audit-cyber-security-vapt" class="svc-card" data-tilt>
+              <span class="svc-tag mono">06</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+              <div><h3>Cybersecurity, Network Defense &amp; VAPT</h3><p>Next-Gen firewalls, Zero-Trust access, vulnerability assessments, penetration testing and proactive threat monitoring.</p></div>
+            </a>
+
+            <a href="services.html#security-surveillance-cctv" class="svc-card" data-tilt>
+              <span class="svc-tag mono">07</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+              <div><h3>Smart Surveillance &amp; Workplace AV</h3><p>AI-enabled IP CCTV networks, centralized NVR storage, access control, and intuitive boardroom conference room AV integrations.</p></div>
+            </a>
+
+            <a href="services.html#facility-management-services" class="svc-card" data-tilt>
+              <span class="svc-tag mono">08</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="8" y1="6" x2="8" y2="6.01"/><line x1="12" y1="6" x2="12" y2="6.01"/><line x1="16" y1="6" x2="16" y2="6.01"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><path d="M9 22v-4h6v4"/></svg></div>
+              <div><h3>Managed IT, AMC &amp; Facility Operations</h3><p>On-site IT engineering staffing, 24/7 proactive infrastructure health monitoring, and SLA-backed Annual Maintenance Contracts.</p></div>
+            </a>
+
+            <a href="services.html#unified-network-monitoring" class="svc-card" data-tilt>
+              <span class="svc-tag mono">09</span>
+              <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><path d="M22 17h-4l-2.5 4.5L12 13l-2.5 4.5H2"/><circle cx="6" cy="6" r="1"/><circle cx="10" cy="6" r="1"/></svg></div>
+              <div><h3>Unified Network &amp; Data Center Monitoring (DCIM)</h3><p>Full-stack observability across network fabrics, SD-WAN, server rack thermal sensors, smart PDUs, UPS power, and real-time DCIM telemetry.</p></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:44px;">
+      <a href="services.html" class="btn-ghost">View full service details &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How we work</div>
+      <h2>A five-stage build, in the order it actually happens.</h2>
+      <p>The same sequence for a two-week MVP or an eighteen-month platform rebuild &mdash; only the depth changes.</p>
+    </div>
+    <div class="process-flow reveal">
+      <div class="pf-node">
+        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-disc-home-flow-1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#6B2FD6"/></linearGradient></defs>
+      <rect x="12" y="18" width="56" height="40" rx="5" fill="url(#g-disc-home-flow-1)" opacity="0.92"/>
+      <rect x="19" y="27" width="9" height="22" rx="1.5" fill="#ffffff" opacity="0.28"/>
+      <rect x="33" y="35" width="9" height="14" rx="1.5" fill="#ffffff" opacity="0.4"/>
+      <rect x="47" y="31" width="9" height="18" rx="1.5" fill="#ffffff" opacity="0.32"/>
+      <circle cx="73" cy="64" r="15" fill="none" stroke="#FF8A2E" stroke-width="4.5"/>
+      <line x1="83" y1="74" x2="93" y2="84" stroke="#FF8A2E" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="73" cy="64" r="15" fill="#0C1740" opacity="0.15"/>
+    </svg></div>
+        <div class="pf-num mono">Stage 01</div>
+        <div class="pf-label">Discover</div>
+      </div>
+      <div class="pf-node">
+        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-des-home-flow-2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B2FD6"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+      <rect x="12" y="12" width="58" height="64" rx="7" fill="url(#g-des-home-flow-2)" opacity="0.9"/>
+      <rect x="20" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+      <rect x="43" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+      <rect x="20" y="43" width="42" height="11" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.6"/>
+      <circle cx="27" cy="66" r="4.5" fill="#2E9BFF"/>
+      <circle cx="41" cy="66" r="4.5" fill="#B23368"/>
+      <circle cx="55" cy="66" r="4.5" fill="#FF8A2E"/>
+      <path d="M62 6 L90 34 L76 48 L48 20 Z" fill="#FF8A2E"/>
+      <rect x="83" y="4" width="9" height="16" rx="2" fill="#FFD9A8" transform="rotate(45 87.5 12)"/>
+    </svg></div>
+        <div class="pf-num mono">Stage 02</div>
+        <div class="pf-label">Design</div>
+      </div>
+      <div class="pf-node">
+        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dev-home-flow-3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1D8C"/><stop offset="1" stop-color="#FF4B00"/></linearGradient></defs>
+      <rect x="8" y="18" width="80" height="56" rx="7" fill="#0C1740" stroke="url(#g-dev-home-flow-3)" stroke-width="2.2"/>
+      <circle cx="19" cy="28" r="2.2" fill="#FF5F57"/><circle cx="27" cy="28" r="2.2" fill="#FEBC2E"/><circle cx="35" cy="28" r="2.2" fill="#28C840"/>
+      <text x="48" y="58" font-family="'JetBrains Mono',monospace" font-size="28" text-anchor="middle" fill="url(#g-dev-home-flow-3)" font-weight="700">&lt;/&gt;</text>
+      <circle cx="78" cy="68" r="10" fill="none" stroke="#FF8A2E" stroke-width="3.2"/>
+      <circle cx="78" cy="68" r="2.6" fill="#FF8A2E"/>
+    </svg></div>
+        <div class="pf-num mono">Stage 03</div>
+        <div class="pf-label">Develop</div>
+      </div>
+      <div class="pf-node">
+        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dep-home-flow-4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF4B00"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+      <ellipse cx="50" cy="82" rx="32" ry="8" fill="#0C1740"/>
+      <path d="M50 10 C61 23 63 41 58 56 L42 56 C37 41 39 23 50 10 Z" fill="url(#g-dep-home-flow-4)"/>
+      <circle cx="50" cy="33" r="5.5" fill="#0C1740"/>
+      <path d="M42 52 L30 66 L42 61 Z" fill="#6B2FD6"/>
+      <path d="M58 52 L70 66 L58 61 Z" fill="#6B2FD6"/>
+      <path d="M44 58 L50 78 L56 58 Z" fill="#FFB454"/>
+      <circle cx="20" cy="30" r="1.8" fill="#fff" opacity="0.6"/>
+      <circle cx="80" cy="22" r="1.8" fill="#fff" opacity="0.6"/>
+      <circle cx="74" cy="48" r="1.8" fill="#fff" opacity="0.6"/>
+    </svg></div>
+        <div class="pf-num mono">Stage 04</div>
+        <div class="pf-label">Deploy</div>
+      </div>
+      <div class="pf-node">
+        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-sup-home-flow-5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#FF8A2E"/></linearGradient></defs>
+      <path d="M50 8 L84 21 V46 C84 67 69 82 50 92 C31 82 16 67 16 46 V21 Z" fill="url(#g-sup-home-flow-5)" opacity="0.92"/>
+      <path d="M37 50 a13 13 0 0 1 26 0" fill="none" stroke="#fff" stroke-width="3.4" opacity="0.9"/>
+      <rect x="33" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+      <rect x="59" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+      <circle cx="50" cy="30" r="15" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.35"/>
+      <circle cx="50" cy="30" r="21" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.18"/>
+    </svg></div>
+        <div class="pf-num mono">Stage 05</div>
+        <div class="pf-label">Support</div>
+      </div>
+    </div>
+    <div class="process-list reveal">
+
+      <div class="p-step-mini">
+        <div class="p-illus"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-disc-home-mini-1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#6B2FD6"/></linearGradient></defs>
+      <rect x="12" y="18" width="56" height="40" rx="5" fill="url(#g-disc-home-mini-1)" opacity="0.92"/>
+      <rect x="19" y="27" width="9" height="22" rx="1.5" fill="#ffffff" opacity="0.28"/>
+      <rect x="33" y="35" width="9" height="14" rx="1.5" fill="#ffffff" opacity="0.4"/>
+      <rect x="47" y="31" width="9" height="18" rx="1.5" fill="#ffffff" opacity="0.32"/>
+      <circle cx="73" cy="64" r="15" fill="none" stroke="#FF8A2E" stroke-width="4.5"/>
+      <line x1="83" y1="74" x2="93" y2="84" stroke="#FF8A2E" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="73" cy="64" r="15" fill="#0C1740" opacity="0.15"/>
+    </svg></div>
+        <div>
+          <div class="idx mono"><b>Stage 01</b></div>
+          <h3>Discover</h3>
+          <p>We map the business problem, the users and the constraints before touching a design tool — a two-week sprint that ends with a shared spec, not a slide deck.</p>
+        </div>
+      </div>
+
+      <div class="p-step-mini">
+        <div class="p-illus"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-des-home-mini-2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B2FD6"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+      <rect x="12" y="12" width="58" height="64" rx="7" fill="url(#g-des-home-mini-2)" opacity="0.9"/>
+      <rect x="20" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+      <rect x="43" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+      <rect x="20" y="43" width="42" height="11" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.6"/>
+      <circle cx="27" cy="66" r="4.5" fill="#2E9BFF"/>
+      <circle cx="41" cy="66" r="4.5" fill="#B23368"/>
+      <circle cx="55" cy="66" r="4.5" fill="#FF8A2E"/>
+      <path d="M62 6 L90 34 L76 48 L48 20 Z" fill="#FF8A2E"/>
+      <rect x="83" y="4" width="9" height="16" rx="2" fill="#FFD9A8" transform="rotate(45 87.5 12)"/>
+    </svg></div>
+        <div>
+          <div class="idx mono"><b>Stage 02</b></div>
+          <h3>Design</h3>
+          <p>Architecture and interface design run in parallel, reviewed against real usage scenarios, not assumptions.</p>
+        </div>
+      </div>
+
+      <div class="p-step-mini">
+        <div class="p-illus"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dev-home-mini-3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1D8C"/><stop offset="1" stop-color="#FF4B00"/></linearGradient></defs>
+      <rect x="8" y="18" width="80" height="56" rx="7" fill="#0C1740" stroke="url(#g-dev-home-mini-3)" stroke-width="2.2"/>
+      <circle cx="19" cy="28" r="2.2" fill="#FF5F57"/><circle cx="27" cy="28" r="2.2" fill="#FEBC2E"/><circle cx="35" cy="28" r="2.2" fill="#28C840"/>
+      <text x="48" y="58" font-family="'JetBrains Mono',monospace" font-size="28" text-anchor="middle" fill="url(#g-dev-home-mini-3)" font-weight="700">&lt;/&gt;</text>
+      <circle cx="78" cy="68" r="10" fill="none" stroke="#FF8A2E" stroke-width="3.2"/>
+      <circle cx="78" cy="68" r="2.6" fill="#FF8A2E"/>
+    </svg></div>
+        <div>
+          <div class="idx mono"><b>Stage 03</b></div>
+          <h3>Develop</h3>
+          <p>Two-week iterations, working software from sprint one, and a staging environment you can access from day one.</p>
+        </div>
+      </div>
+
+      <div class="p-step-mini">
+        <div class="p-illus"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dep-home-mini-4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF4B00"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+      <ellipse cx="50" cy="82" rx="32" ry="8" fill="#0C1740"/>
+      <path d="M50 10 C61 23 63 41 58 56 L42 56 C37 41 39 23 50 10 Z" fill="url(#g-dep-home-mini-4)"/>
+      <circle cx="50" cy="33" r="5.5" fill="#0C1740"/>
+      <path d="M42 52 L30 66 L42 61 Z" fill="#6B2FD6"/>
+      <path d="M58 52 L70 66 L58 61 Z" fill="#6B2FD6"/>
+      <path d="M44 58 L50 78 L56 58 Z" fill="#FFB454"/>
+      <circle cx="20" cy="30" r="1.8" fill="#fff" opacity="0.6"/>
+      <circle cx="80" cy="22" r="1.8" fill="#fff" opacity="0.6"/>
+      <circle cx="74" cy="48" r="1.8" fill="#fff" opacity="0.6"/>
+    </svg></div>
+        <div>
+          <div class="idx mono"><b>Stage 04</b></div>
+          <h3>Deploy</h3>
+          <p>Automated, zero-downtime releases with rollback built in — launch day is a non-event, on purpose.</p>
+        </div>
+      </div>
+
+      <div class="p-step-mini">
+        <div class="p-illus"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-sup-home-mini-5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#FF8A2E"/></linearGradient></defs>
+      <path d="M50 8 L84 21 V46 C84 67 69 82 50 92 C31 82 16 67 16 46 V21 Z" fill="url(#g-sup-home-mini-5)" opacity="0.92"/>
+      <path d="M37 50 a13 13 0 0 1 26 0" fill="none" stroke="#fff" stroke-width="3.4" opacity="0.9"/>
+      <rect x="33" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+      <rect x="59" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+      <circle cx="50" cy="30" r="15" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.35"/>
+      <circle cx="50" cy="30" r="21" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.18"/>
+    </svg></div>
+        <div>
+          <div class="idx mono"><b>Stage 05</b></div>
+          <h3>Support</h3>
+          <p>Monitoring, on-call response and a maintenance cadence that catches problems before your users do.</p>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:12px;">
+      <a href="process.html" class="btn-ghost">See our full process &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why teams choose us</div>
+      <h2>What you actually get, working with us.</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card"><div class="n mono">SLA</div><h4>24/7 monitored uptime</h4><p>Production systems watched around the clock, with defined response-time guarantees.</p></div>
+      <div class="why-card"><div class="n mono">ISO</div><h4>Certified processes</h4><p>ISO-aligned delivery and security practices audited on a recurring basis.</p></div>
+      <div class="why-card"><div class="n mono">NDA</div><h4>IP stays yours</h4><p>Every engagement starts under NDA &mdash; code, data and designs are yours, fully.</p></div>
+      <div class="why-card"><div class="n mono">1:1</div><h4>Direct engineer access</h4><p>You talk to the person building it &mdash; no account-manager relay.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="industries" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Industries we serve</div>
+      <h2>Domain depth, not just delivery capacity.</h2>
+    </div>
+    <div class="chip-grid reveal">
+      <a href="industries.html#banking-fintech" class="chip"><span class="dot"></span>Banking &amp; FinTech</a>
+      <a href="industries.html#healthcare-life-sciences" class="chip"><span class="dot"></span>Healthcare &amp; Life Sciences</a>
+      <a href="industries.html#manufacturing" class="chip"><span class="dot"></span>Manufacturing</a>
+      <a href="industries.html#retail-e-commerce" class="chip"><span class="dot"></span>Retail &amp; E-commerce</a>
+      <a href="industries.html#logistics-supply-chain" class="chip"><span class="dot"></span>Logistics &amp; Supply Chain</a>
+      <a href="industries.html#education-edtech" class="chip"><span class="dot"></span>Education &amp; EdTech</a>
+      <a href="industries.html#real-estate-proptech" class="chip"><span class="dot"></span>Real Estate &amp; PropTech</a>
+      <a href="industries.html#government-public-sector" class="chip"><span class="dot"></span>Government &amp; Public Sector</a>
+      <a href="industries.html#media-entertainment" class="chip"><span class="dot"></span>Media &amp; Entertainment</a>
+      <a href="industries.html#telecom" class="chip"><span class="dot"></span>Telecom</a>
+    </div>
+    <div style="margin-top:36px;">
+      <a href="industries.html" class="btn-ghost">See how we work by industry &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <h2>Have a system that needs building &mdash; or fixing?</h2>
+  <p>Tell us where it hurts. We'll reply with a straight answer, not a sales script.</p>
+  <a href="contact.html" class="btn-ghost">Book a discovery call</a>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span><span>JS AlphaSoft</span></a>
+        <p>A full-stack IT Solutions Architect underneath all of it.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="services.html#web-application-development">Web &amp; Mobile Apps</a>
+        <a href="services.html#cloud-devops-engineering">Cloud &amp; DevOps</a>
+        <a href="services.html#ai-machine-learning">AI &amp; Automation</a>
+        <a href="services.html#cybersecurity-vapt">Cybersecurity &amp; VAPT</a>
+        <a href="services.html#data-centre-setup">IT Infrastructure</a>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <a href="product.html">AlphaCore ERP</a>
+        <a href="product.html">AlphaVMS Suite</a>
+        <a href="product.html">AlphaAgent AI</a>
+        <a href="product.html">AlphaVault DMS</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact us</a>
+        <a href="process.html">Our process</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Careers</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="#">Case studies</a>
+        <a href="#">Blog</a>
+        <a href="#">Documentation</a>
+        <a href="#">Support portal</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> JSAlphaSoft Private Limited. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/company/jsalphasoft/people/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="Meta"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.6s.9-.3 2.9 1a10 10 0 0 1 5.2 0c2-1.3 2.9-1 2.9-1a3.6 3.6 0 0 1 .1 2.6 4 4 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/hero3d.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

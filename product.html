@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — JS AlphaSoft</title>
+<meta name="description" content="Explore JS AlphaSoft's suite of enterprise products — AlphaCore ERP, AlphaVMS, AlphaAgent AI Suite, AlphaVault DMS, and AlphaCloud Engine.">
+<script>(function(){try{var t=localStorage.getItem('jsalpha-theme');document.documentElement.setAttribute('data-theme',t||'dark');}catch(e){}})();</script>
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.product-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+.product-card {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-full);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.product-card:hover::before {
+  opacity: 1;
+}
+.product-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: rgba(46,155,255,0.1);
+  color: var(--electric-blue);
+  border: 1px solid rgba(46,155,255,0.25);
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+.product-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-card p {
+  color: var(--slate);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--slate);
+}
+.product-features li svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--coral);
+  margin-top: 2px;
+}
+.product-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--slate-dim);
+}
+.product-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--heading);
+  text-decoration: none;
+  transition: color .2s, gap .2s;
+}
+.product-cta:hover {
+  color: var(--coral);
+  gap: 10px;
+}
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.arch-card {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+}
+.arch-card .arch-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--electric-blue);
+  margin-bottom: 16px;
+}
+.arch-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+.arch-card p {
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.55;
+}
+@media (max-width: 980px) {
+  .product-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="brand">
+        <span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span>
+        <span>JS AlphaSoft</span>
+      </a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="about.html" class="nav-dropdown-trigger">
+            <span>About</span>
+            <svg class="nav-dropdown-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="about.html" class="nav-dropdown-item">
+              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+              <span class="ndi-text">
+                <span class="ndi-title">About Us</span>
+                <span class="ndi-desc">Our story, leadership &amp; vision</span>
+              </span>
+            </a>
+            <a href="contact.html" class="nav-dropdown-item">
+              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <span class="ndi-text">
+                <span class="ndi-title">Contact Us</span>
+                <span class="ndi-desc">Offices, support &amp; inquiries</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <a href="product.html" class="active">Product</a>
+        <a href="services.html">Services</a>
+        <a href="process.html">Process</a>
+        <a href="industries.html">Industries</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="contact.html" class="navcta">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to ivory white theme">
+          <span class="tt-track"></span>
+          <span class="tt-knob">
+            <svg class="tt-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+            <svg class="tt-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          </span>
+        </button>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="grid-overlay"></div>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / <span>Product</span></div>
+    <h1>Proprietary software platforms. <span class="gtext">Engineered for immediate scale.</span></h1>
+    <p class="lead">Beyond bespoke custom engineering, JS AlphaSoft delivers battle-tested, modular enterprise platforms — from intelligent ERP and facility management to autonomous AI agents and cloud orchestration.</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head text-center">
+      <div class="eyebrow mono">ENTERPRISE PLATFORMS</div>
+      <h2>Engineered to deploy in days, not months.</h2>
+      <p class="sublead">Each product is modular, multi-tenant capable, and designed to plug effortlessly into your existing IT ecosystem with zero vendor lock-in.</p>
+    </div>
+
+    <div class="product-card-grid">
+      <!-- Product 1: AlphaCore ERP -->
+      <div class="product-card reveal">
+        <span class="product-badge">ENTERPRISE PLATFORM</span>
+        <h3>AlphaCore ERP <span class="mono" style="font-size:14px;color:var(--coral);">v3.4</span></h3>
+        <p>A high-performance modular ERP architecture covering inventory tracking, multi-entity accounting, procurement workflows, and automated GST/tax compliance.</p>
+        <ul class="product-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Real-time multi-warehouse inventory &amp; automated supply reordering</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Multi-currency general ledger with bank reconciliation &amp; audit logging</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Configurable role-based approval matrices &amp; mobile dashboards</span>
+          </li>
+        </ul>
+        <div class="product-footer">
+          <span class="product-meta">On-Prem / Private Cloud</span>
+          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Product 2: AlphaVMS -->
+      <div class="product-card reveal">
+        <span class="product-badge">FACILITY &amp; OPERATIONS</span>
+        <h3>AlphaVMS <span class="mono" style="font-size:14px;color:var(--coral);">Suite</span></h3>
+        <p>Comprehensive Vendor &amp; Visitor Management System integrating automated pass generation, ANPR vehicle tracking, safety briefings, and compliance approvals.</p>
+        <ul class="product-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Self-service digital kiosk &amp; WhatsApp/SMS visitor pass issuance</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>ANPR barrier integration for seamless automated vehicle check-in</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Vendor SLA tracking, contractor badge control &amp; blacklisting checks</span>
+          </li>
+        </ul>
+        <div class="product-footer">
+          <span class="product-meta">IoT &amp; Hardware Integrated</span>
+          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Product 3: AlphaAgent AI Suite -->
+      <div class="product-card reveal">
+        <span class="product-badge">AUTONOMOUS AI</span>
+        <h3>AlphaAgent AI <span class="mono" style="font-size:14px;color:var(--coral);">Engine</span></h3>
+        <p>Enterprise autonomous AI agent platform featuring secure Retrieval-Augmented Generation (RAG), private model inference, and cross-application task automation.</p>
+        <ul class="product-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Connects directly to your SQL, ERP, Google Workspace, and CRM</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Air-gapped deployment option with 100% data sovereignty &amp; no leaks</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Custom LLM tool calling, multi-step workflows &amp; human-in-the-loop</span>
+          </li>
+        </ul>
+        <div class="product-footer">
+          <span class="product-meta">Private LLM / Multi-Cloud</span>
+          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Product 4: AlphaVault DMS -->
+      <div class="product-card reveal">
+        <span class="product-badge">GOVERNANCE &amp; SECURITY</span>
+        <h3>AlphaVault DMS <span class="mono" style="font-size:14px;color:var(--coral);">Security</span></h3>
+        <p>Encrypted document management &amp; legal contract repository engineered with cryptographic version verification, granular RBAC, and automated PII redaction.</p>
+        <ul class="product-features">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Full-text OCR indexing across PDFs, scanned receipts &amp; contracts</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Immutable audit trail tracking every document view, share, and export</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Built-in e-signature workflows and legal retention policies</span>
+          </li>
+        </ul>
+        <div class="product-footer">
+          <span class="product-meta">AES-256 / SOC2 Compliant</span>
+          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architectural Pillars -->
+<section class="section-pad" style="background: var(--surface-1); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head text-center">
+      <div class="eyebrow mono">ENTERPRISE FOUNDATION</div>
+      <h2>Built to enterprise standards from line zero.</h2>
+      <p class="sublead">Why top organizations deploy JS AlphaSoft product accelerators over monolithic legacy suites.</p>
+    </div>
+
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>100% Data Sovereignty</h4>
+        <p>Deploy on your own AWS/Azure/GCP VPC or private on-premise data center. Your sensitive business records never leave your control.</p>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4>Developer-Friendly APIs</h4>
+        <p>Comprehensive OpenAPI and GraphQL schemas allow your existing engineering teams to extend, automate, and webhook into any workflow.</p>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>24/7 SLA &amp; Support</h4>
+        <p>Guaranteed response times, proactive performance telemetry, and dedicated senior software engineers on-call round the clock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-inner">
+        <h2>Want a customized sandbox or live demo?</h2>
+        <p class="sublead">Speak directly with our solutions architects to evaluate our product suite against your infrastructure requirements.</p>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn-primary">Schedule Product Demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="siteFooter">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span>
+          <span>JS AlphaSoft</span>
+        </a>
+        <p>A full-stack IT Solutions Architect underneath all of it.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="services.html#web-application-development">Web &amp; Mobile Apps</a>
+        <a href="services.html#cloud-devops-engineering">Cloud &amp; DevOps</a>
+        <a href="services.html#ai-machine-learning">AI &amp; Automation</a>
+        <a href="services.html#cybersecurity-vapt">Cybersecurity &amp; VAPT</a>
+        <a href="services.html#data-centre-setup">IT Infrastructure</a>
+      </div>
+      <div class="foot-col">
+        <h5>Products</h5>
+        <a href="product.html">AlphaCore ERP</a>
+        <a href="product.html">AlphaVMS Suite</a>
+        <a href="product.html">AlphaAgent AI</a>
+        <a href="product.html">AlphaVault DMS</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact us</a>
+        <a href="process.html">Our process</a>
+        <a href="industries.html">Industries</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> JSAlphaSoft Private Limited. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/company/jsalphasoft/people/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="Meta"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.6s.9-.3 2.9 1a10 10 0 0 1 5.2 0c2-1.3 2.9-1 2.9-1a3.6 3.6 0 0 1 .1 2.6 4 4 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

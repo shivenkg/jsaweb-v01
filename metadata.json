@@ -1,0 +1,6 @@
+{
+  "name": "JS AlphaSoft",
+  "description": "JS AlphaSoft — software engineering, cloud, AI and digital transformation partner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

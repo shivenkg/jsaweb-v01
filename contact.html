@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — JS AlphaSoft</title>
+<meta name="description" content="Get in touch with JS AlphaSoft to scope your next software, cloud or AI project.">
+<script>(function(){try{var t=localStorage.getItem('jsalpha-theme');document.documentElement.setAttribute('data-theme',t||'dark');}catch(e){}})();</script>
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="brand">
+        <span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span>
+        <span>JS AlphaSoft</span>
+      </a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="process.html">Process</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html" class="active">Contact</a>
+        
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="contact.html" class="navcta">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to ivory white theme">
+            <span class="tt-track"></span>
+            <span class="tt-knob">
+              <svg class="tt-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+              <svg class="tt-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+            </span>
+          </button>
+        <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="grid-overlay"></div>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> / <span>Contact</span></div>
+    <h1>Let's scope your <span class="gtext">project.</span></h1>
+    <p class="lead">Share a few details and an engineer &mdash; not a salesperson &mdash; will get back to you within one business day.</p>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:80px;">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.4 2.7z"/></svg></div>
+          <div><h4>Call us</h4><p>+91 95820.18242 / +91 88000.28867</p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><h4>Email us</h4><p>info@jsalphasoft.com</p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Head office</h4><p>Greater Noida West, Uttar Pradesh, India</p></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><h4>Business hours</h4><p>Mon &ndash; Sat, 9:30 AM &ndash; 7:30 PM IST</p></div>
+        </div>
+      </div>
+      <form class="reveal" id="contactForm">
+        <div class="form-grid">
+          <div class="field"><label>Full name *</label><input type="text" name="name" required placeholder="Full Name"></div>
+          <div class="field">
+            <label>Work email *</label>
+            <input type="email" name="email" id="formEmail" required placeholder="name@company.com" pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address with '@' (e.g. name@company.com)">
+          </div>
+          <div class="field">
+            <label>Contact no. <small style="font-size:11px;color:var(--slate-dim);">(+country code &amp; 10 digits)</small></label>
+            <input type="tel" name="phone" id="formPhone" placeholder="+91 98765 43210" pattern="^\+[0-9]{1,4}[-\s]?[0-9]{10}$" title="Format: +&lt;country code&gt; &lt;10-digit number&gt; (e.g. +91 9876543210)">
+          </div>
+          <div class="field"><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
+          <div class="field full">
+            <label>Service needed</label>
+            <select name="service">
+              <option value="">— Select a service —</option>
+              <optgroup label="Software &amp; Digital Engineering">
+                <option value="Web &amp; Mobile App Development">Web &amp; Mobile App Development</option>
+                <option value="Cloud &amp; DevOps Engineering">Cloud &amp; DevOps Engineering</option>
+                <option value="AI &amp; Intelligent Automation">AI &amp; Intelligent Automation</option>
+              </optgroup>
+              <optgroup label="IT Infrastructure &amp; Networking">
+                <option value="Enterprise Networking &amp; Wireless">Enterprise Networking &amp; Wireless Infrastructure</option>
+                <option value="Data Centre Build &amp; Structured Cabling">Data Centre Build &amp; Structured Cabling</option>
+                <option value="Cybersecurity, Network Defense &amp; VAPT">Cybersecurity, Network Defense &amp; VAPT</option>
+                <option value="Smart Surveillance &amp; Workplace AV">Smart Surveillance (CCTV) &amp; Workplace AV</option>
+                <option value="Managed IT, AMC &amp; Facility Operations">Managed IT, AMC &amp; Facility Operations</option>
+                <option value="Unified Network &amp; DCIM Monitoring">Unified Network &amp; Data Center Monitoring (DCIM)</option>
+              </optgroup>
+              <option value="Something else">Something else / General Consultation</option>
+            </select>
+          </div>
+          <div class="field full"><label>Your requirement *</label><textarea name="message" required placeholder="What are you trying to build or fix?"></textarea></div>
+        </div>
+        <!-- Web3Forms configuration (no backend required — delivers straight to your inbox) -->
+        <input type="hidden" name="access_key" value="99ad4431-f9db-4492-aa28-8a629a9ff7bc">
+        <input type="hidden" name="subject" value="New enquiry — JS AlphaSoft website">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="submit-btn" type="submit" id="submitBtn">Send message &rarr;</button>
+        <p class="form-note" id="formMsg">We reply within one business day. No spam, no auto-dialled sales calls.</p>
+      </form>
+      <script>
+      (function(){
+        var form = document.getElementById('contactForm');
+        var btn  = document.getElementById('submitBtn');
+        var msg  = document.getElementById('formMsg');
+        var phoneInput = document.getElementById('formPhone');
+        var emailInput = document.getElementById('formEmail');
+        var ENDPOINT = 'https://api.web3forms.com/submit';
+        var DEFAULT_MSG = 'We reply within one business day. No spam, no auto-dialled sales calls.';
+        var MAILTO_FALLBACK = '<a href="mailto:info@jsalphasoft.com" style="color:#FF4B00;text-decoration:underline;">email us directly at info@jsalphasoft.com</a>';
+
+        // Auto-format phone input with leading '+'
+        if(phoneInput){
+          phoneInput.addEventListener('input', function(e){
+            var val = phoneInput.value.trim();
+            if(val && !val.startsWith('+')){
+              phoneInput.value = '+' + val.replace(/[^\d\s-]/g, '');
+            } else {
+              phoneInput.value = val.replace(/[^\d+\s-]/g, '');
+            }
+          });
+        }
+
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+
+          // Validate email contains @ and domain
+          if(emailInput && (!emailInput.value.includes('@') || !emailInput.checkValidity())){
+            emailInput.focus();
+            msg.textContent = 'Please enter a valid work email with "@" (e.g. name@company.com)';
+            msg.style.color = '#FF4B00';
+            return;
+          }
+
+          // Validate phone number format if provided
+          if(phoneInput && phoneInput.value.trim() !== ''){
+            var cleanedPhone = phoneInput.value.replace(/[\s-]/g, '');
+            var phoneRegex = /^\+[0-9]{1,4}[0-9]{10}$/;
+            if(!phoneRegex.test(cleanedPhone)){
+              phoneInput.focus();
+              msg.textContent = 'Please enter contact number with +country code and 10 digits (e.g. +91 9876543210)';
+              msg.style.color = '#FF4B00';
+              return;
+            }
+          }
+
+          if(form.querySelector('[name=botcheck]').checked){ return; } // honeypot caught a bot
+          btn.disabled = true;
+          btn.textContent = 'Sending\u2026';
+          msg.style.color = '';
+
+          var payload = Object.fromEntries(new FormData(form));
+
+          fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(function(r){ return r.json().then(function(json){ return {status:r.status, ok:r.ok, json:json}; }); })
+          .then(function(res){
+            console.log('[contact form] Web3Forms response:', res.status, res.json);
+
+            if(res.ok && res.json && res.json.success){
+              btn.textContent = 'Sent \u2014 thank you \u2713';
+              msg.textContent = 'We\u2019ll get back to you within one business day.';
+              msg.style.color = '#2E9BFF';
+              form.reset();
+            } else {
+              throw new Error((res.json && res.json.message) || 'send failed');
+            }
+          })
+          .catch(function(err){
+            console.error('[contact form] submit failed:', err);
+            btn.textContent = 'Send message \u2192';
+            btn.disabled = false;
+            msg.innerHTML = 'Could not send \u2014 ' + MAILTO_FALLBACK;
+            msg.style.color = '#FF4B00';
+            return;
+          })
+          .then(function(){
+            setTimeout(function(){
+              if(btn.disabled) return; // a fresh submit is already in flight
+              btn.textContent = 'Send message \u2192';
+              btn.disabled = false;
+              msg.innerHTML = DEFAULT_MSG;
+              msg.style.color = '';
+            }, 6000);
+          });
+        });
+      })();
+      </script>
+    </div>
+  </div>
+</section>
+
+<div class="next-page-strip">
+  <div class="wrap">
+    <a href="industries.html" class="next-link">
+      <span class="arrow">&larr;</span>
+      <span class="nl-txt" style="text-align:left;"><small>Back to</small><strong>Industries</strong></span>
+    </a>
+    <a href="index.html" class="next-link align-right">
+      <span class="arrow">&rarr;</span>
+      <span class="nl-txt"><small>Back to</small><strong>Home</strong></span>
+    </a>
+  </div>
+</div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand"><span class="mark"><img src="assets/logo-icon.png" alt="JS AlphaSoft mark"></span><span>JS AlphaSoft</span></a>
+        <p>A full-stack software engineering partner — web, mobile, cloud, AI and the infrastructure underneath all of it.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="services.html#web-application-development">Web &amp; Mobile Apps</a>
+        <a href="services.html#cloud-devops-engineering">Cloud &amp; DevOps</a>
+        <a href="services.html#ai-machine-learning">AI &amp; Automation</a>
+        <a href="services.html#cybersecurity-vapt">Cybersecurity &amp; VAPT</a>
+        <a href="services.html#data-centre-setup">IT Infrastructure</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="about.html">About us</a>
+        <a href="process.html">Our process</a>
+        <a href="industries.html">Industries</a>
+        <a href="contact.html">Careers</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="#">Case studies</a>
+        <a href="#">Blog</a>
+        <a href="#">Documentation</a>
+        <a href="#">Support portal</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> JSAlphaSoft Private Limited. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/company/jsalphasoft/people/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="Meta"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.6s.9-.3 2.9 1a10 10 0 0 1 5.2 0c2-1.3 2.9-1 2.9-1a3.6 3.6 0 0 1 .1 2.6 4 4 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
