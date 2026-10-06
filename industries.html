@@ -21,13 +21,314 @@
         <span>JS AlphaSoft</span>
       </a>
       <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="process.html">Process</a>
-        <a href="industries.html" class="active">Industries</a>
-        <a href="contact.html">Contact</a>
-        
+        <!-- 1. HOME with About and Contact Us -->
+        <div class="nav-item dropdown dropdown-align-left">
+          <a href="index.html" class="nav-link">
+            <span>Home</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="about.html" class="nav-dropdown-item">
+              <span class="ndi-icon coral">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+              </span>
+              <span class="ndi-text">
+                <span class="ndi-title-row"><span class="ndi-title">About</span><span class="ndi-badge">Story</span></span>
+                <span class="ndi-desc">Leadership, timeline &amp; engineering culture</span>
+              </span>
+            </a>
+            <a href="contact.html" class="nav-dropdown-item">
+              <span class="ndi-icon emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span class="ndi-text">
+                <span class="ndi-title-row"><span class="ndi-title">Contact Us</span></span>
+                <span class="ndi-desc">Locations, client inquiries &amp; support</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. PRODUCT (Mega Menu) -->
+        <div class="nav-item dropdown">
+          <a href="product.html" class="nav-link">
+            <span>Product</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu mega-menu-product">
+            <div class="mega-split">
+              <div class="mega-products-list">
+                <div class="mega-col-header">
+                  <span>PROPRIETARY SAAS SUITES</span>
+                  <span class="tag">Alpha Platforms</span>
+                </div>
+                <a href="product.html#alphaxenia" class="nav-dropdown-item">
+                  <span class="ndi-icon coral">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaXenia</span><span class="ndi-badge">VMS</span></span>
+                    <span class="ndi-desc">Visitor, contractor &amp; vehicle management</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">Touchless QR</span>
+                      <span class="mega-tag-pill">Badge Print</span>
+                      <span class="mega-tag-pill">Security Kiosk</span>
+                    </span>
+                  </span>
+                </a>
+                <a href="product.html#alphadocq" class="nav-dropdown-item">
+                  <span class="ndi-icon emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaDocq</span><span class="ndi-badge">DMS</span></span>
+                    <span class="ndi-desc">Document workflows, OCR &amp; compliance</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">AI OCR</span>
+                      <span class="mega-tag-pill">Audit Trail</span>
+                      <span class="mega-tag-pill">256-bit AES</span>
+                    </span>
+                  </span>
+                </a>
+                <a href="product.html#alphaerp" class="nav-dropdown-item">
+                  <span class="ndi-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaERP</span><span class="ndi-badge">SME ERP</span></span>
+                    <span class="ndi-desc">Inventory, finance &amp; supply chain ERP</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">GST Billing</span>
+                      <span class="mega-tag-pill">Multi-currency</span>
+                      <span class="mega-tag-pill">Real-time Stock</span>
+                    </span>
+                  </span>
+                </a>
+              </div>
+              <div class="mega-feature-card">
+                <div>
+                  <span class="mega-feature-badge">ENTERPRISE SANDBOX</span>
+                  <div class="mega-feature-title">Test-Drive Alpha Suites</div>
+                  <p class="mega-feature-desc">Spin up an isolated cloud instance of AlphaXenia, AlphaDocq, or AlphaERP seeded with your industry workflow.</p>
+                  <ul class="mega-feature-list">
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Zero-setup isolated tenant</span>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Pre-built enterprise integrations</span>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Cloud, hybrid or on-premise</span>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="mega-feature-btn">Request Sandbox Access &rarr;</a>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="product.html">Explore all enterprise platforms &rarr;</a>
+              <a href="contact.html">Schedule an architecture walkthrough &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SERVICES (Mega Menu) -->
+        <div class="nav-item dropdown">
+          <a href="services.html" class="nav-link">
+            <span>Services</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu mega-menu-services">
+            <div class="mega-services-grid">
+              <!-- Pillar 01: Software & Cloud -->
+              <div class="mega-services-col">
+                <div class="mega-col-header">
+                  <span>SOFTWARE &amp; CLOUD ENGINEERING</span>
+                  <span class="tag">Pillar 01</span>
+                </div>
+                <a href="services.html#web-application-development" class="nav-dropdown-item">
+                  <span class="ndi-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Web &amp; Mobile Apps</span><span class="ndi-badge">Fullstack</span></span>
+                    <span class="ndi-desc">iOS, Android, React Native &amp; modern web</span>
+                  </span>
+                </a>
+                <a href="services.html#cloud-and-devops-engineering" class="nav-dropdown-item">
+                  <span class="ndi-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Cloud &amp; DevOps</span><span class="ndi-badge">Infra</span></span>
+                    <span class="ndi-desc">AWS, Azure, GCP &amp; CI/CD pipelines</span>
+                  </span>
+                </a>
+                <a href="services.html#ai-and-machine-learning" class="nav-dropdown-item">
+                  <span class="ndi-icon coral">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.9 2.9M16.9 16.9l2.9 2.9M1 12h4M19 12h4M4.2 19.8l2.9-2.9M16.9 7.1l2.9-2.9"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AI &amp; Automation</span><span class="ndi-badge">GenAI</span></span>
+                    <span class="ndi-desc">LLMs, autonomous agents &amp; RAG systems</span>
+                  </span>
+                </a>
+              </div>
+
+              <!-- Pillar 02: Infrastructure & Security -->
+              <div class="mega-services-col">
+                <div class="mega-col-header">
+                  <span>INFRASTRUCTURE &amp; CYBERSECURITY</span>
+                  <span class="tag">Pillar 02</span>
+                </div>
+                <a href="services.html#wired-and-wireless-networks" class="nav-dropdown-item">
+                  <span class="ndi-icon amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Enterprise Networking</span><span class="ndi-badge">Wi-Fi 6E</span></span>
+                    <span class="ndi-desc">SD-WAN, LAN &amp; high-density Wi-Fi</span>
+                  </span>
+                </a>
+                <a href="services.html#data-centre-setup" class="nav-dropdown-item">
+                  <span class="ndi-icon cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Data Centre &amp; Cabling</span><span class="ndi-badge">Tier-3</span></span>
+                    <span class="ndi-desc">Server rooms, fiber racks &amp; power UPS</span>
+                  </span>
+                </a>
+                <a href="services.html#cctv-and-surveillance" class="nav-dropdown-item">
+                  <span class="ndi-icon emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Cybersecurity &amp; VAPT</span><span class="ndi-badge">Zero-Trust</span></span>
+                    <span class="ndi-desc">VAPT audits, zero-trust &amp; CCTV</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="services.html">View full 6-pillar service catalogue &rarr;</a>
+              <a href="contact.html">Request complimentary infrastructure audit &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. PROCESS -->
+        <div class="nav-item">
+          <a href="process.html" class="nav-link">Process</a>
+        </div>
+
+        <!-- 5. INDUSTRIES (Active) -->
+        <div class="nav-item dropdown dropdown-align-right">
+          <a href="industries.html" class="nav-link active">
+            <span>Industries</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-grid">
+              <a href="industries.html#banking-and-fintech" class="nav-dropdown-item">
+                <span class="ndi-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Banking &amp; FinTech</span></span>
+                  <span class="ndi-desc">Core banking &amp; payment systems</span>
+                </span>
+              </a>
+              <a href="industries.html#healthcare-and-life-sciences" class="nav-dropdown-item">
+                <span class="ndi-icon emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Healthcare &amp; Life Sciences</span></span>
+                  <span class="ndi-desc">HIPAA portals &amp; EHR integrations</span>
+                </span>
+              </a>
+              <a href="industries.html#manufacturing" class="nav-dropdown-item">
+                <span class="ndi-icon amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Manufacturing</span></span>
+                  <span class="ndi-desc">Shop-floor IoT &amp; ERP integrations</span>
+                </span>
+              </a>
+              <a href="industries.html#retail-and-e-commerce" class="nav-dropdown-item">
+                <span class="ndi-icon coral">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Retail &amp; E-commerce</span></span>
+                  <span class="ndi-desc">Headless storefronts &amp; omnichannel</span>
+                </span>
+              </a>
+              <a href="industries.html#logistics-and-supply-chain" class="nav-dropdown-item">
+                <span class="ndi-icon cyan">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Logistics &amp; Supply Chain</span></span>
+                  <span class="ndi-desc">Fleet telematics, route &amp; WMS</span>
+                </span>
+              </a>
+              <a href="industries.html#education-and-edtech" class="nav-dropdown-item">
+                <span class="ndi-icon purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Education &amp; EdTech</span></span>
+                  <span class="ndi-desc">LMS, SIS &amp; assessment engines</span>
+                </span>
+              </a>
+              <a href="industries.html#real-estate-and-proptech" class="nav-dropdown-item">
+                <span class="ndi-icon indigo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Real Estate &amp; PropTech</span></span>
+                  <span class="ndi-desc">Listings, CRM &amp; virtual tours</span>
+                </span>
+              </a>
+              <a href="industries.html#government-and-public-sector" class="nav-dropdown-item">
+                <span class="ndi-icon pink">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 22 7 12 2"/><rect x="4" y="10" width="16" height="11"/><line x1="9" y1="14" x2="9" y2="17"/><line x1="15" y1="14" x2="15" y2="17"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Government &amp; Public Sector</span></span>
+                  <span class="ndi-desc">Citizen services &amp; case management</span>
+                </span>
+              </a>
+              <a href="industries.html#media-and-entertainment" class="nav-dropdown-item">
+                <span class="ndi-icon amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Media &amp; Entertainment</span></span>
+                  <span class="ndi-desc">Streaming CMS &amp; rights tooling</span>
+                </span>
+              </a>
+              <a href="industries.html#telecom" class="nav-dropdown-item">
+                <span class="ndi-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V4"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Telecom</span></span>
+                  <span class="ndi-desc">OSS/BSS &amp; network observability</span>
+                </span>
+              </a>
+            </div>
+            <div class="dropdown-footer">
+              <a href="industries.html">Explore all 10 domain sectors &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
       <div style="display:flex;align-items:center;gap:14px;">
         <a href="contact.html" class="navcta">Start a Project</a>
@@ -195,8 +496,15 @@
         <a href="services.html#data-centre-setup">IT Infrastructure</a>
       </div>
       <div class="foot-col">
+        <h5>Products</h5>
+        <a href="product.html#alphaxenia">AlphaXenia (VMS)</a>
+        <a href="product.html#alphadocq">AlphaDocq (DMS)</a>
+        <a href="product.html#alphaerp">AlphaERP (SME ERP)</a>
+      </div>
+      <div class="foot-col">
         <h5>Company</h5>
         <a href="about.html">About us</a>
+        <a href="contact.html">Contact us</a>
         <a href="process.html">Our process</a>
         <a href="industries.html">Industries</a>
         <a href="contact.html">Careers</a>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products — JS AlphaSoft</title>
-<meta name="description" content="Explore JS AlphaSoft's suite of enterprise products — AlphaCore ERP, AlphaVMS, AlphaAgent AI Suite, AlphaVault DMS, and AlphaCloud Engine.">
+<meta name="description" content="JS AlphaSoft enterprise products — AlphaXenia (Visitor Management), AlphaDocq (Document Management), and AlphaERP (SME ERP).">
 <script>(function(){try{var t=localStorage.getItem('jsalpha-theme');document.documentElement.setAttribute('data-theme',t||'dark');}catch(e){}})();</script>
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,123 +12,159 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-.product-card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-top: 40px;
-}
-.product-card {
-  background: var(--surface-1);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 36px;
+.products-featured {
   display: flex;
   flex-direction: column;
+  gap: 48px;
+  margin-top: 50px;
+}
+.product-hero-card {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
   position: relative;
   overflow: hidden;
-  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  transition: border-color .3s, transform .3s;
 }
-.product-card:hover {
-  transform: translateY(-4px);
+.product-hero-card:hover {
   border-color: var(--line-strong);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  transform: translateY(-3px);
 }
-.product-card::before {
+.product-hero-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+  top: 0; left: 0; right: 0; height: 3px;
   background: var(--gradient-full);
-  opacity: 0;
-  transition: opacity .3s;
 }
-.product-card:hover::before {
-  opacity: 1;
+.product-hero-card.reverse {
+  direction: rtl;
 }
-.product-badge {
+.product-hero-card.reverse > * {
+  direction: ltr;
+}
+.phc-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 100px;
+  gap: 8px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: .08em;
-  background: rgba(46,155,255,0.1);
-  color: var(--electric-blue);
-  border: 1px solid rgba(46,155,255,0.25);
-  align-self: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
-.product-card h3 {
+.phc-tag.coral { background: rgba(255,90,0,0.12); color: var(--coral); border: 1px solid rgba(255,90,0,0.25); }
+.phc-tag.emerald { background: rgba(16,185,129,0.12); color: #10b981; border: 1px solid rgba(16,185,129,0.25); }
+.phc-tag.purple { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.25); }
+
+.phc-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--heading);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
-.product-card p {
-  color: var(--slate);
+.phc-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--electric-blue);
+  margin-bottom: 16px;
+}
+.phc-desc {
   font-size: 15px;
-  line-height: 1.6;
+  color: var(--slate);
+  line-height: 1.65;
   margin-bottom: 24px;
 }
-.product-features {
+.phc-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0 0 32px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
-.product-features li {
+.phc-features li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 14px;
-  color: var(--slate);
+  font-size: 14.5px;
+  color: var(--heading);
 }
-.product-features li svg {
-  width: 16px;
-  height: 16px;
+.phc-features li svg {
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
-  color: var(--coral);
   margin-top: 2px;
+  color: var(--coral);
 }
-.product-footer {
-  margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
+.phc-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.phc-preview {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+}
+.preview-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
 }
-.product-meta {
+.preview-dots {
+  display: flex;
+  gap: 6px;
+}
+.preview-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.preview-title {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   color: var(--slate-dim);
 }
-.product-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--heading);
-  text-decoration: none;
-  transition: color .2s, gap .2s;
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
-.product-cta:hover {
-  color: var(--coral);
-  gap: 10px;
+.metric-box {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+.metric-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--heading);
+}
+.metric-lbl {
+  font-size: 12px;
+  color: var(--slate-dim);
+  margin-top: 4px;
 }
 .arch-grid {
   display: grid;
@@ -166,8 +202,12 @@
   line-height: 1.55;
 }
 @media (max-width: 980px) {
-  .product-card-grid {
+  .product-hero-card {
     grid-template-columns: 1fr;
+    padding: 28px;
+  }
+  .product-hero-card.reverse {
+    direction: ltr;
   }
   .arch-grid {
     grid-template-columns: 1fr;
@@ -184,34 +224,317 @@
         <span>JS AlphaSoft</span>
       </a>
       <div class="navlinks">
-        <a href="index.html">Home</a>
-        <div class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-trigger">
-            <span>About</span>
-            <svg class="nav-dropdown-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor"><path d="M1 1l4 4 4-4"/></svg>
+        <!-- 1. HOME with About and Contact Us -->
+        <div class="nav-item dropdown dropdown-align-left">
+          <a href="index.html" class="nav-link">
+            <span>Home</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
           </a>
           <div class="nav-dropdown-menu">
             <a href="about.html" class="nav-dropdown-item">
-              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span>
+              <span class="ndi-icon coral">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+              </span>
               <span class="ndi-text">
-                <span class="ndi-title">About Us</span>
-                <span class="ndi-desc">Our story, leadership &amp; vision</span>
+                <span class="ndi-title-row"><span class="ndi-title">About</span><span class="ndi-badge">Story</span></span>
+                <span class="ndi-desc">Leadership, timeline &amp; engineering culture</span>
               </span>
             </a>
             <a href="contact.html" class="nav-dropdown-item">
-              <span class="ndi-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <span class="ndi-icon emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
               <span class="ndi-text">
-                <span class="ndi-title">Contact Us</span>
-                <span class="ndi-desc">Offices, support &amp; inquiries</span>
+                <span class="ndi-title-row"><span class="ndi-title">Contact Us</span></span>
+                <span class="ndi-desc">Locations, client inquiries &amp; support</span>
               </span>
             </a>
           </div>
         </div>
-        <a href="product.html" class="active">Product</a>
-        <a href="services.html">Services</a>
-        <a href="process.html">Process</a>
-        <a href="industries.html">Industries</a>
+
+        <!-- 2. PRODUCT (Active Mega Menu) -->
+        <div class="nav-item dropdown">
+          <a href="product.html" class="nav-link active">
+            <span>Product</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu mega-menu-product">
+            <div class="mega-split">
+              <div class="mega-products-list">
+                <div class="mega-col-header">
+                  <span>PROPRIETARY SAAS SUITES</span>
+                  <span class="tag">Alpha Platforms</span>
+                </div>
+                <a href="product.html#alphaxenia" class="nav-dropdown-item">
+                  <span class="ndi-icon coral">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaXenia</span><span class="ndi-badge">VMS</span></span>
+                    <span class="ndi-desc">Visitor, contractor &amp; vehicle management</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">Touchless QR</span>
+                      <span class="mega-tag-pill">Badge Print</span>
+                      <span class="mega-tag-pill">Security Kiosk</span>
+                    </span>
+                  </span>
+                </a>
+                <a href="product.html#alphadocq" class="nav-dropdown-item">
+                  <span class="ndi-icon emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaDocq</span><span class="ndi-badge">DMS</span></span>
+                    <span class="ndi-desc">Document workflows, OCR &amp; compliance</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">AI OCR</span>
+                      <span class="mega-tag-pill">Audit Trail</span>
+                      <span class="mega-tag-pill">256-bit AES</span>
+                    </span>
+                  </span>
+                </a>
+                <a href="product.html#alphaerp" class="nav-dropdown-item">
+                  <span class="ndi-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AlphaERP</span><span class="ndi-badge">SME ERP</span></span>
+                    <span class="ndi-desc">Inventory, finance &amp; supply chain ERP</span>
+                    <span class="mega-tags">
+                      <span class="mega-tag-pill">GST Billing</span>
+                      <span class="mega-tag-pill">Multi-currency</span>
+                      <span class="mega-tag-pill">Real-time Stock</span>
+                    </span>
+                  </span>
+                </a>
+              </div>
+              <div class="mega-feature-card">
+                <div>
+                  <span class="mega-feature-badge">ENTERPRISE SANDBOX</span>
+                  <div class="mega-feature-title">Test-Drive Alpha Suites</div>
+                  <p class="mega-feature-desc">Spin up an isolated cloud instance of AlphaXenia, AlphaDocq, or AlphaERP seeded with your industry workflow.</p>
+                  <ul class="mega-feature-list">
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Zero-setup isolated tenant</span>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Pre-built enterprise integrations</span>
+                    </li>
+                    <li>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>Cloud, hybrid or on-premise</span>
+                    </li>
+                  </ul>
+                </div>
+                <a href="contact.html" class="mega-feature-btn">Request Sandbox Access &rarr;</a>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="product.html">Explore all enterprise platforms &rarr;</a>
+              <a href="contact.html">Schedule an architecture walkthrough &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SERVICES (Mega Menu) -->
+        <div class="nav-item dropdown">
+          <a href="services.html" class="nav-link">
+            <span>Services</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu mega-menu-services">
+            <div class="mega-services-grid">
+              <!-- Pillar 01: Software & Cloud -->
+              <div class="mega-services-col">
+                <div class="mega-col-header">
+                  <span>SOFTWARE &amp; CLOUD ENGINEERING</span>
+                  <span class="tag">Pillar 01</span>
+                </div>
+                <a href="services.html#web-application-development" class="nav-dropdown-item">
+                  <span class="ndi-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Web &amp; Mobile Apps</span><span class="ndi-badge">Fullstack</span></span>
+                    <span class="ndi-desc">iOS, Android, React Native &amp; modern web</span>
+                  </span>
+                </a>
+                <a href="services.html#cloud-and-devops-engineering" class="nav-dropdown-item">
+                  <span class="ndi-icon purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Cloud &amp; DevOps</span><span class="ndi-badge">Infra</span></span>
+                    <span class="ndi-desc">AWS, Azure, GCP &amp; CI/CD pipelines</span>
+                  </span>
+                </a>
+                <a href="services.html#ai-and-machine-learning" class="nav-dropdown-item">
+                  <span class="ndi-icon coral">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.2 4.2l2.9 2.9M16.9 16.9l2.9 2.9M1 12h4M19 12h4M4.2 19.8l2.9-2.9M16.9 7.1l2.9-2.9"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">AI &amp; Automation</span><span class="ndi-badge">GenAI</span></span>
+                    <span class="ndi-desc">LLMs, autonomous agents &amp; RAG systems</span>
+                  </span>
+                </a>
+              </div>
+
+              <!-- Pillar 02: Infrastructure & Security -->
+              <div class="mega-services-col">
+                <div class="mega-col-header">
+                  <span>INFRASTRUCTURE &amp; CYBERSECURITY</span>
+                  <span class="tag">Pillar 02</span>
+                </div>
+                <a href="services.html#wired-and-wireless-networks" class="nav-dropdown-item">
+                  <span class="ndi-icon amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Enterprise Networking</span><span class="ndi-badge">Wi-Fi 6E</span></span>
+                    <span class="ndi-desc">SD-WAN, LAN &amp; high-density Wi-Fi</span>
+                  </span>
+                </a>
+                <a href="services.html#data-centre-setup" class="nav-dropdown-item">
+                  <span class="ndi-icon cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Data Centre &amp; Cabling</span><span class="ndi-badge">Tier-3</span></span>
+                    <span class="ndi-desc">Server rooms, fiber racks &amp; power UPS</span>
+                  </span>
+                </a>
+                <a href="services.html#cctv-and-surveillance" class="nav-dropdown-item">
+                  <span class="ndi-icon emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span>
+                  <span class="ndi-text">
+                    <span class="ndi-title-row"><span class="ndi-title">Cybersecurity &amp; VAPT</span><span class="ndi-badge">Zero-Trust</span></span>
+                    <span class="ndi-desc">VAPT audits, zero-trust &amp; CCTV</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="services.html">View full 6-pillar service catalogue &rarr;</a>
+              <a href="contact.html">Request complimentary infrastructure audit &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. PROCESS -->
+        <div class="nav-item">
+          <a href="process.html" class="nav-link">Process</a>
+        </div>
+
+        <!-- 5. INDUSTRIES -->
+        <div class="nav-item dropdown dropdown-align-right">
+          <a href="industries.html" class="nav-link">
+            <span>Industries</span>
+            <svg class="nav-caret" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-grid">
+              <a href="industries.html#banking-and-fintech" class="nav-dropdown-item">
+                <span class="ndi-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Banking &amp; FinTech</span></span>
+                  <span class="ndi-desc">Core banking &amp; payment systems</span>
+                </span>
+              </a>
+              <a href="industries.html#healthcare-and-life-sciences" class="nav-dropdown-item">
+                <span class="ndi-icon emerald">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Healthcare &amp; Life Sciences</span></span>
+                  <span class="ndi-desc">HIPAA portals &amp; EHR integrations</span>
+                </span>
+              </a>
+              <a href="industries.html#manufacturing" class="nav-dropdown-item">
+                <span class="ndi-icon amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Manufacturing</span></span>
+                  <span class="ndi-desc">Shop-floor IoT &amp; ERP integrations</span>
+                </span>
+              </a>
+              <a href="industries.html#retail-and-e-commerce" class="nav-dropdown-item">
+                <span class="ndi-icon coral">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Retail &amp; E-commerce</span></span>
+                  <span class="ndi-desc">Headless storefronts &amp; omnichannel</span>
+                </span>
+              </a>
+              <a href="industries.html#logistics-and-supply-chain" class="nav-dropdown-item">
+                <span class="ndi-icon cyan">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Logistics &amp; Supply Chain</span></span>
+                  <span class="ndi-desc">Fleet telematics, route &amp; WMS</span>
+                </span>
+              </a>
+              <a href="industries.html#education-and-edtech" class="nav-dropdown-item">
+                <span class="ndi-icon purple">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Education &amp; EdTech</span></span>
+                  <span class="ndi-desc">LMS, SIS &amp; assessment engines</span>
+                </span>
+              </a>
+              <a href="industries.html#real-estate-and-proptech" class="nav-dropdown-item">
+                <span class="ndi-icon indigo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Real Estate &amp; PropTech</span></span>
+                  <span class="ndi-desc">Listings, CRM &amp; virtual tours</span>
+                </span>
+              </a>
+              <a href="industries.html#government-and-public-sector" class="nav-dropdown-item">
+                <span class="ndi-icon pink">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 22 7 12 2"/><rect x="4" y="10" width="16" height="11"/><line x1="9" y1="14" x2="9" y2="17"/><line x1="15" y1="14" x2="15" y2="17"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Government &amp; Public Sector</span></span>
+                  <span class="ndi-desc">Citizen services &amp; case management</span>
+                </span>
+              </a>
+              <a href="industries.html#media-and-entertainment" class="nav-dropdown-item">
+                <span class="ndi-icon amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Media &amp; Entertainment</span></span>
+                  <span class="ndi-desc">Streaming CMS &amp; rights tooling</span>
+                </span>
+              </a>
+              <a href="industries.html#telecom" class="nav-dropdown-item">
+                <span class="ndi-icon blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V4"/></svg>
+                </span>
+                <span class="ndi-text">
+                  <span class="ndi-title-row"><span class="ndi-title">Telecom</span></span>
+                  <span class="ndi-desc">OSS/BSS &amp; network observability</span>
+                </span>
+              </a>
+            </div>
+            <div class="dropdown-footer">
+              <a href="industries.html">Explore all 10 domain sectors &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Right Nav Action CTAs -->
       <div style="display:flex;align-items:center;gap:14px;">
         <a href="contact.html" class="navcta">Start a Project</a>
         <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to ivory white theme">
@@ -230,118 +553,162 @@
 <section class="page-hero">
   <div class="grid-overlay"></div>
   <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a> / <span>Product</span></div>
-    <h1>Proprietary software platforms. <span class="gtext">Engineered for immediate scale.</span></h1>
-    <p class="lead">Beyond bespoke custom engineering, JS AlphaSoft delivers battle-tested, modular enterprise platforms — from intelligent ERP and facility management to autonomous AI agents and cloud orchestration.</p>
+    <div class="crumb"><a href="index.html">Home</a> / <span>Products</span></div>
+    <h1>Proprietary software suites. <span class="gtext">Engineered for immediate scale.</span></h1>
+    <p class="lead">Accelerate operations with JS AlphaSoft's production-ready software platforms: AlphaXenia for smart visitor &amp; facility logistics, AlphaDocq for cryptographic document management, and AlphaERP for agile SME resource planning.</p>
   </div>
 </section>
 
 <section class="section-pad">
   <div class="wrap">
     <div class="section-head text-center">
-      <div class="eyebrow mono">ENTERPRISE PLATFORMS</div>
+      <div class="eyebrow mono">ENTERPRISE SOFTWARE SUITES</div>
       <h2>Engineered to deploy in days, not months.</h2>
-      <p class="sublead">Each product is modular, multi-tenant capable, and designed to plug effortlessly into your existing IT ecosystem with zero vendor lock-in.</p>
+      <p class="sublead">Pre-built, customizable platforms with enterprise APIs, bank-grade encryption, and on-premises or private cloud deployment options.</p>
     </div>
 
-    <div class="product-card-grid">
-      <!-- Product 1: AlphaCore ERP -->
-      <div class="product-card reveal">
-        <span class="product-badge">ENTERPRISE PLATFORM</span>
-        <h3>AlphaCore ERP <span class="mono" style="font-size:14px;color:var(--coral);">v3.4</span></h3>
-        <p>A high-performance modular ERP architecture covering inventory tracking, multi-entity accounting, procurement workflows, and automated GST/tax compliance.</p>
-        <ul class="product-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Real-time multi-warehouse inventory &amp; automated supply reordering</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Multi-currency general ledger with bank reconciliation &amp; audit logging</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Configurable role-based approval matrices &amp; mobile dashboards</span>
-          </li>
-        </ul>
-        <div class="product-footer">
-          <span class="product-meta">On-Prem / Private Cloud</span>
-          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+    <div class="products-featured">
+      <!-- 1. AlphaXenia (Visitor Management) -->
+      <div class="product-hero-card reveal" id="alphaxenia">
+        <div class="phc-content">
+          <span class="phc-tag coral">VISITOR &amp; FACILITY MANAGEMENT</span>
+          <h2 class="phc-title">AlphaXenia</h2>
+          <div class="phc-subtitle">Smart Facility, Contractor &amp; Vehicle Access Intelligence</div>
+          <p class="phc-desc">AlphaXenia modernizes entrance security and compliance for commercial towers, production plants, and multi-tenant campuses. Automate visitor badges, contractor work-permits, and vehicle gate barriers.</p>
+          <ul class="phc-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Instant QR &amp; WhatsApp visitor passes with host approval notifications</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>ANPR camera integration for automatic vehicle gate opening and barrier logs</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Contractor safety briefing checklists, NDA e-sign &amp; blacklist alerts</span>
+            </li>
+          </ul>
+          <div class="phc-actions">
+            <a href="contact.html" class="btn-primary">Request AlphaXenia Demo &rarr;</a>
+            <a href="services.html#cctv-and-surveillance" class="btn-ghost">Hardware Integration</a>
+          </div>
+        </div>
+        <div class="phc-preview">
+          <div class="preview-header">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <span class="preview-title">AlphaXenia Console v2.8</span>
+          </div>
+          <div class="metric-row">
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:var(--coral);">&lt; 15s</div>
+              <div class="metric-lbl">Avg. Check-in Time</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:var(--electric-blue);">100%</div>
+              <div class="metric-lbl">Audit Compliance</div>
+            </div>
+          </div>
+          <div class="metric-box">
+            <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:var(--heading);">Active Facility Integrations</div>
+            <div style="font-size:12px;color:var(--slate-dim);line-height:1.5;">Biometric Turnstiles, ANPR Boom Barriers, Hikvision &amp; Dahua IP Cameras, WhatsApp API Gateway</div>
+          </div>
         </div>
       </div>
 
-      <!-- Product 2: AlphaVMS -->
-      <div class="product-card reveal">
-        <span class="product-badge">FACILITY &amp; OPERATIONS</span>
-        <h3>AlphaVMS <span class="mono" style="font-size:14px;color:var(--coral);">Suite</span></h3>
-        <p>Comprehensive Vendor &amp; Visitor Management System integrating automated pass generation, ANPR vehicle tracking, safety briefings, and compliance approvals.</p>
-        <ul class="product-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Self-service digital kiosk &amp; WhatsApp/SMS visitor pass issuance</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>ANPR barrier integration for seamless automated vehicle check-in</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Vendor SLA tracking, contractor badge control &amp; blacklisting checks</span>
-          </li>
-        </ul>
-        <div class="product-footer">
-          <span class="product-meta">IoT &amp; Hardware Integrated</span>
-          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+      <!-- 2. AlphaDocq (Document Management) -->
+      <div class="product-hero-card reverse reveal" id="alphadocq">
+        <div class="phc-content">
+          <span class="phc-tag emerald">ENTERPRISE DOCUMENT MANAGEMENT</span>
+          <h2 class="phc-title">AlphaDocq</h2>
+          <div class="phc-subtitle">Cryptographic DMS, Automated OCR &amp; Compliance Workflows</div>
+          <p class="phc-desc">AlphaDocq eliminates paper friction and data leakage across legal, finance, and HR departments. Centralize confidential files with automated full-text OCR, tamper-evident cryptographic versioning, and strict RBAC controls.</p>
+          <ul class="phc-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>AI-powered OCR indexing supporting scanned invoices, contracts &amp; deeds</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Multi-tier approval workflows with legally valid digital signatures</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Granular permission control, automatic PII redaction &amp; immutable logs</span>
+            </li>
+          </ul>
+          <div class="phc-actions">
+            <a href="contact.html" class="btn-primary">Request AlphaDocq Demo &rarr;</a>
+            <a href="services.html#ai-and-machine-learning" class="btn-ghost">AI Document Pipeline</a>
+          </div>
+        </div>
+        <div class="phc-preview">
+          <div class="preview-header">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <span class="preview-title">AlphaDocq Secure Vault</span>
+          </div>
+          <div class="metric-row">
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:#10b981;">AES-256</div>
+              <div class="metric-lbl">At-Rest &amp; In-Transit</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:var(--electric-blue);">0.3s</div>
+              <div class="metric-lbl">Full-text Search Speed</div>
+            </div>
+          </div>
+          <div class="metric-box">
+            <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:var(--heading);">Regulatory Standards Met</div>
+            <div style="font-size:12px;color:var(--slate-dim);line-height:1.5;">ISO 27001, SOC 2 Type II, HIPAA, GDPR Data Sovereignty, and RBI Data Localization Guidelines</div>
+          </div>
         </div>
       </div>
 
-      <!-- Product 3: AlphaAgent AI Suite -->
-      <div class="product-card reveal">
-        <span class="product-badge">AUTONOMOUS AI</span>
-        <h3>AlphaAgent AI <span class="mono" style="font-size:14px;color:var(--coral);">Engine</span></h3>
-        <p>Enterprise autonomous AI agent platform featuring secure Retrieval-Augmented Generation (RAG), private model inference, and cross-application task automation.</p>
-        <ul class="product-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Connects directly to your SQL, ERP, Google Workspace, and CRM</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Air-gapped deployment option with 100% data sovereignty &amp; no leaks</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Custom LLM tool calling, multi-step workflows &amp; human-in-the-loop</span>
-          </li>
-        </ul>
-        <div class="product-footer">
-          <span class="product-meta">Private LLM / Multi-Cloud</span>
-          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+      <!-- 3. AlphaERP (SME ERP) -->
+      <div class="product-hero-card reveal" id="alphaerp">
+        <div class="phc-content">
+          <span class="phc-tag purple">MODULAR SME RESOURCE PLANNING</span>
+          <h2 class="phc-title">AlphaERP</h2>
+          <div class="phc-subtitle">Agile Enterprise ERP for Growing Manufacturers &amp; Traders</div>
+          <p class="phc-desc">AlphaERP is engineered specifically for fast-growing businesses that have outgrown spreadsheets but need to avoid the multi-year implementations of legacy monoliths. Real-time control of inventory, accounting, sales, and supply chain.</p>
+          <ul class="phc-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Unified multi-warehouse stock management with automated purchase orders</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>GST-ready invoicing, e-Way bills, automated P&amp;L and balance sheet generation</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Mobile-responsive executive dashboards with real-time gross margin insights</span>
+            </li>
+          </ul>
+          <div class="phc-actions">
+            <a href="contact.html" class="btn-primary">Request AlphaERP Demo &rarr;</a>
+            <a href="services.html#web-application-development" class="btn-ghost">Custom Modules</a>
+          </div>
         </div>
-      </div>
-
-      <!-- Product 4: AlphaVault DMS -->
-      <div class="product-card reveal">
-        <span class="product-badge">GOVERNANCE &amp; SECURITY</span>
-        <h3>AlphaVault DMS <span class="mono" style="font-size:14px;color:var(--coral);">Security</span></h3>
-        <p>Encrypted document management &amp; legal contract repository engineered with cryptographic version verification, granular RBAC, and automated PII redaction.</p>
-        <ul class="product-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Full-text OCR indexing across PDFs, scanned receipts &amp; contracts</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Immutable audit trail tracking every document view, share, and export</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Built-in e-signature workflows and legal retention policies</span>
-          </li>
-        </ul>
-        <div class="product-footer">
-          <span class="product-meta">AES-256 / SOC2 Compliant</span>
-          <a href="contact.html" class="product-cta">Request Demo &rarr;</a>
+        <div class="phc-preview">
+          <div class="preview-header">
+            <div class="preview-dots"><span></span><span></span><span></span></div>
+            <span class="preview-title">AlphaERP Financial Hub</span>
+          </div>
+          <div class="metric-row">
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:#a855f7;">14 Days</div>
+              <div class="metric-lbl">Typical Go-Live</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val mono" style="color:var(--electric-blue);">Zero</div>
+              <div class="metric-lbl">Vendor Lock-In</div>
+            </div>
+          </div>
+          <div class="metric-box">
+            <div style="font-weight:600;font-size:13px;margin-bottom:6px;color:var(--heading);">Core Engine Modules</div>
+            <div style="font-size:12px;color:var(--slate-dim);line-height:1.5;">Procurement, Multi-Location Inventory, Sales CRM, Production Bill of Materials (BOM), General Ledger</div>
+          </div>
         </div>
       </div>
     </div>
@@ -354,7 +721,7 @@
     <div class="section-head text-center">
       <div class="eyebrow mono">ENTERPRISE FOUNDATION</div>
       <h2>Built to enterprise standards from line zero.</h2>
-      <p class="sublead">Why top organizations deploy JS AlphaSoft product accelerators over monolithic legacy suites.</p>
+      <p class="sublead">Why organizations choose JS AlphaSoft products over monolithic legacy suites.</p>
     </div>
 
     <div class="arch-grid">
@@ -363,15 +730,15 @@
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h4>100% Data Sovereignty</h4>
-        <p>Deploy on your own AWS/Azure/GCP VPC or private on-premise data center. Your sensitive business records never leave your control.</p>
+        <p>Deploy in your own AWS/Azure/GCP VPC or private on-premise server room. Your business data never leaves your infrastructure.</p>
       </div>
 
       <div class="arch-card">
         <div class="arch-icon">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h4>Developer-Friendly APIs</h4>
-        <p>Comprehensive OpenAPI and GraphQL schemas allow your existing engineering teams to extend, automate, and webhook into any workflow.</p>
+        <h4>Modern GraphQL &amp; REST APIs</h4>
+        <p>Connect any third-party CRM, BI tool, payment gateway, or ERP with our standardized, documented OpenAPI endpoints.</p>
       </div>
 
       <div class="arch-card">
@@ -379,7 +746,7 @@
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h4>24/7 SLA &amp; Support</h4>
-        <p>Guaranteed response times, proactive performance telemetry, and dedicated senior software engineers on-call round the clock.</p>
+        <p>Direct engineering escalation channels, proactive health telemetry, and guaranteed response times for mission-critical operations.</p>
       </div>
     </div>
   </div>
@@ -391,9 +758,9 @@
     <div class="cta-band">
       <div class="cta-inner">
         <h2>Want a customized sandbox or live demo?</h2>
-        <p class="sublead">Speak directly with our solutions architects to evaluate our product suite against your infrastructure requirements.</p>
+        <p class="sublead">Speak directly with our senior software architects to evaluate AlphaXenia, AlphaDocq, or AlphaERP against your business workflows.</p>
         <div style="margin-top:28px;">
-          <a href="contact.html" class="btn-primary">Schedule Product Demo &rarr;</a>
+          <a href="contact.html" class="btn-primary">Schedule Product Walkthrough &rarr;</a>
         </div>
       </div>
     </div>
@@ -421,10 +788,9 @@
       </div>
       <div class="foot-col">
         <h5>Products</h5>
-        <a href="product.html">AlphaCore ERP</a>
-        <a href="product.html">AlphaVMS Suite</a>
-        <a href="product.html">AlphaAgent AI</a>
-        <a href="product.html">AlphaVault DMS</a>
+        <a href="product.html#alphaxenia">AlphaXenia (VMS)</a>
+        <a href="product.html#alphadocq">AlphaDocq (DMS)</a>
+        <a href="product.html#alphaerp">AlphaERP (SME ERP)</a>
       </div>
       <div class="foot-col">
         <h5>Company</h5>
