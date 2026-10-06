@@ -64,14 +64,36 @@ if(yr) yr.textContent = new Date().getFullYear();
 })();
 
 /* ===================== REVEAL ON SCROLL ===================== */
-/* threshold near 0 means "as soon as any part enters view" — this matters for
-   tall elements (long lists), where a percentage-based threshold may never be
-   satisfiable within the viewport. No negative rootMargin, so elements at the
-   very bottom of the page still trigger once they're on screen. */
+/* threshold near 0 means "as soon as any part enters view".
+   Also observes all .section-pad elements so sections smoothly fade in
+   and rise into view as the user scrolls down the page. */
 const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-},{threshold:0.01});
-document.querySelectorAll('.reveal, .fly-in').forEach(el=>io.observe(el));
+  entries.forEach(e=>{ 
+    if(e.isIntersecting){ 
+      e.target.classList.add('in'); 
+      io.unobserve(e.target); 
+    } 
+  });
+},{threshold:0.04, rootMargin:'0px 0px -25px 0px'});
+
+function observeRevealElements(){
+  const allElements = document.querySelectorAll('.reveal, .fly-in, .section-pad');
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  allElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < vh * 0.95 && rect.bottom > 0){
+      el.classList.add('in');
+    } else {
+      io.observe(el);
+    }
+  });
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', observeRevealElements);
+} else {
+  observeRevealElements();
+}
 
 /* ===================== HERO STATS SCROLL-TRIGGERED COUNTER ===================== */
 (function(){
@@ -283,7 +305,7 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
         <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.122 1.532 5.857L.057 23.428a.5.5 0 0 0 .515.572l5.701-1.494A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.373l-.36-.213-3.724.976.997-3.634-.234-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
         Chat on WhatsApp
       </a>
-      <a class="fcb-pill cb" href="${CALL_NUMBER}">
+      <a class="fcb-pill cb" href="contact.html#callback">
         <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.4 2.7z"/></svg>
         Request a Callback
       </a>
@@ -311,54 +333,97 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
 })();
 
 /* ===================== MOBILE & DROPDOWN NAVIGATION ===================== */
-const burgerBtn = document.getElementById('burgerBtn');
-if (burgerBtn) {
-  burgerBtn.addEventListener('click', () => {
-    const nav = document.querySelector('.navlinks');
-    if (!nav) return;
-    const open = nav.classList.toggle('mobile-open');
-    if (open) {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const bg = isLight ? '#ffffff' : '#080E28';
-      const border = isLight ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.15)';
-      nav.style.cssText = `display:flex;flex-direction:column;position:fixed;top:70px;right:16px;left:16px;max-height:85vh;overflow-y:auto;background:${bg};border:1px solid ${border};border-radius:20px;padding:20px;gap:14px;z-index:99;box-shadow:0 24px 60px rgba(0,0,0,0.7);`;
-    } else {
-      nav.style.cssText = '';
-    }
-  });
-}
-
-// Close mobile menu on navigation click
-document.addEventListener('click', (e) => {
-  const nav = document.querySelector('.navlinks');
-  if (!nav || !nav.classList.contains('mobile-open')) return;
-  if (e.target.closest('.nav-dropdown-item') || (e.target.closest('.nav-link') && !e.target.closest('.nav-item.dropdown'))) {
-    nav.classList.remove('mobile-open');
-    nav.style.cssText = '';
-  }
-});
-
-// Dropdown click/touch toggle support
-document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    // On small screens or when clicked, toggle open state
-    if (window.innerWidth <= 980) {
-      e.preventDefault();
-      const parent = btn.closest('.nav-item');
-      parent.classList.toggle('open');
-    }
-  });
-});
-
-/* ===================== "START A PROJECT" ONCLICK NAVIGATION ===================== */
 (function(){
-  function scrollToContactForm(){
+  const burgerBtn = document.getElementById('burgerBtn');
+  const nav = document.querySelector('.navlinks');
+  if (!burgerBtn || !nav) return;
+
+  // Create subtle blurred backdrop overlay for mobile nav
+  let backdrop = document.querySelector('.nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  function setMobileMenu(open){
+    burgerBtn.classList.toggle('open', open);
+    burgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burgerBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nav.classList.toggle('mobile-open', open);
+    backdrop.classList.toggle('active', open);
+    document.body.classList.toggle('nav-locked', open);
+  }
+
+  // Toggle mobile navigation on burger button click
+  burgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.contains('mobile-open');
+    setMobileMenu(!isOpen);
+  });
+
+  // Close when tapping backdrop
+  backdrop.addEventListener('click', () => {
+    setMobileMenu(false);
+  });
+
+  // Close mobile menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('mobile-open')) {
+      setMobileMenu(false);
+    }
+  });
+
+  // Close mobile menu on navigation item click
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('mobile-open')) return;
+    if (e.target.closest('.nav-dropdown-item') || (e.target.closest('.nav-link') && !e.target.closest('.nav-item.dropdown'))) {
+      setMobileMenu(false);
+    }
+  });
+
+  // Dropdown click/touch accordion toggle support for mobile
+  document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if (window.innerWidth <= 980) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parent = btn.closest('.nav-item');
+        const isOpen = parent.classList.contains('open');
+
+        // Accordion: close other open dropdowns for a clean view
+        document.querySelectorAll('.nav-item.dropdown').forEach((item) => {
+          if (item !== parent) item.classList.remove('open');
+        });
+
+        parent.classList.toggle('open', !isOpen);
+      }
+    });
+  });
+
+  // Close mobile drawer when resizing back to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 980 && nav.classList.contains('mobile-open')) {
+      setMobileMenu(false);
+    }
+  }, { passive: true });
+
+  // Expose helper to close mobile menu from other handlers
+  window.__closeMobileMenu = () => setMobileMenu(false);
+})();
+
+/* ===================== "START A PROJECT" & "REQUEST A CALLBACK" ONCLICK NAVIGATION ===================== */
+(function(){
+  function scrollToContactForm(focusField){
     const formEl = document.getElementById('contactForm') || document.getElementById('contact');
     if(formEl){
       formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      const firstInput = document.getElementById('fieldName') || formEl.querySelector('input:not([type="hidden"]), textarea');
-      if(firstInput){
-        setTimeout(() => firstInput.focus(), 350);
+      const targetInput = (focusField === 'phone' ? document.getElementById('formPhone') : null)
+        || document.getElementById('formName')
+        || document.getElementById('fieldName')
+        || formEl.querySelector('input:not([type="hidden"]), textarea');
+      if(targetInput){
+        setTimeout(() => targetInput.focus(), 350);
       }
     }
   }
@@ -368,13 +433,24 @@ document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
     if(!el) return;
     const text = (el.textContent || '').trim().toLowerCase();
     const isStartProject = text.includes('start a project') || el.classList.contains('navcta');
-    if(!isStartProject) return;
+    const isRequestCallback = text.includes('request a callback') || el.classList.contains('cb');
+
+    if(!isStartProject && !isRequestCallback) return;
 
     // Close mobile nav if open
-    const nav = document.querySelector('.navlinks');
-    if(nav && nav.classList.contains('mobile-open')){
-      nav.classList.remove('mobile-open');
-      nav.style.cssText = '';
+    if (typeof window.__closeMobileMenu === 'function') {
+      window.__closeMobileMenu();
+    } else {
+      const nav = document.querySelector('.navlinks');
+      if(nav && nav.classList.contains('mobile-open')){
+        nav.classList.remove('mobile-open');
+      }
+    }
+
+    // Close floating contact menu if open
+    const fcb = document.querySelector('.fcb');
+    if(fcb && fcb.classList.contains('open')){
+      fcb.classList.remove('open');
     }
 
     const currentPath = window.location.pathname;
@@ -382,24 +458,25 @@ document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
 
     if(isContactPage){
       e.preventDefault();
-      scrollToContactForm();
+      scrollToContactForm(isRequestCallback ? 'phone' : 'name');
     } else {
-      // If href is missing, #, or invalid, ensure explicit landing on contact.html
+      // Ensure explicit landing on contact us page
       const href = el.getAttribute('href');
-      if(!href || href === '#' || href === 'javascript:void(0)'){
+      if(!href || href === '#' || href === 'javascript:void(0)' || href.startsWith('tel:')){
         e.preventDefault();
-        window.location.href = 'contact.html#contact';
+        window.location.href = isRequestCallback ? 'contact.html#callback' : 'contact.html#contact';
       }
     }
   });
 
   // If landing on contact page with hash
-  if(window.location.hash === '#contact' || window.location.hash === '#contactForm'){
+  if(window.location.hash === '#contact' || window.location.hash === '#contactForm' || window.location.hash === '#callback'){
+    const focusTarget = window.location.hash === '#callback' ? 'phone' : 'name';
     window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(scrollToContactForm, 250);
+      setTimeout(() => scrollToContactForm(focusTarget), 250);
     });
     if(document.readyState === 'complete' || document.readyState === 'interactive'){
-      setTimeout(scrollToContactForm, 250);
+      setTimeout(() => scrollToContactForm(focusTarget), 250);
     }
   }
 })();
@@ -460,4 +537,181 @@ document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
   hero.addEventListener('mousemove', onMouseMove, {passive: true});
   hero.addEventListener('mouseleave', onMouseLeave);
   rafId = requestAnimationFrame(updateParallax);
+})();
+
+/* ===================== ORANGE MOUSE TRACKING POINT & TRAIL EFFECT ===================== */
+(function(){
+  // Only activate on pointer-capable devices (not on pure touch mobile screens)
+  if(window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+
+  function initMouseTrail(){
+    const canvas = document.createElement('canvas');
+    canvas.id = 'mouseTrailCanvas';
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resizeCanvas(){
+      canvas.width = Math.round(window.innerWidth * dpr);
+      canvas.height = Math.round(window.innerHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, {passive: true});
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let targetX = -100;
+    let targetY = -100;
+    let isVisible = false;
+    let isHovered = false;
+
+    // Trail nodes history
+    const trail = [];
+    const MAX_TRAIL_LENGTH = 32;
+
+    window.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      isVisible = true;
+
+      const target = e.target;
+      isHovered = !!(target && target.closest('a, button, input, textarea, select, label, .fcb-trigger, .theme-toggle, .burger, [role="button"], .nav-dropdown-item'));
+    }, {passive: true});
+
+    window.addEventListener('mouseleave', () => {
+      isVisible = false;
+    });
+
+    window.addEventListener('mouseenter', () => {
+      isVisible = true;
+    });
+
+    let currentRadius = 5;
+
+    function renderTrail(){
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      if(!isVisible && trail.length === 0){
+        requestAnimationFrame(renderTrail);
+        return;
+      }
+
+      // Smooth lag interpolation towards cursor
+      mouseX += (targetX - mouseX) * 0.48;
+      mouseY += (targetY - mouseY) * 0.48;
+
+      if(isVisible){
+        trail.push({ x: mouseX, y: mouseY });
+      }
+
+      // Maintain max trail history
+      while(trail.length > MAX_TRAIL_LENGTH){
+        trail.shift();
+      }
+
+      // When cursor stops, decay trail from tail
+      if(!isVisible || (Math.abs(targetX - mouseX) < 0.2 && Math.abs(targetY - mouseY) < 0.2)){
+        if(trail.length > 0) trail.shift();
+      }
+
+      // Draw the fluid glowing orange trail
+      if(trail.length > 2){
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        // 1. Diffuse soft orange outer glow
+        for(let i = 1; i < trail.length; i++){
+          const p1 = trail[i - 1];
+          const p2 = trail[i];
+          const progress = i / trail.length; // 0 (tail) -> 1 (head)
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.lineWidth = Math.max(1, 15 * progress);
+          ctx.strokeStyle = `rgba(255, 90, 0, ${(0.22 * progress).toFixed(3)})`;
+          ctx.stroke();
+        }
+
+        // 2. High-intensity neon orange core ribbon
+        for(let i = 1; i < trail.length; i++){
+          const p1 = trail[i - 1];
+          const p2 = trail[i];
+          const progress = i / trail.length;
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.lineWidth = Math.max(0.8, 5.5 * progress);
+          ctx.strokeStyle = `rgba(255, 138, 46, ${(0.85 * progress).toFixed(3)})`;
+          ctx.stroke();
+        }
+
+        // 3. Ultra-bright luminous amber/white inner fiber
+        for(let i = 1; i < trail.length; i++){
+          const p1 = trail[i - 1];
+          const p2 = trail[i];
+          const progress = i / trail.length;
+
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.lineWidth = Math.max(0.4, 2 * progress);
+          ctx.strokeStyle = `rgba(255, 235, 210, ${(0.75 * progress).toFixed(3)})`;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+
+      // Draw the lead mouse tracking point
+      if(isVisible && mouseX > -50 && mouseY > -50){
+        const targetRadius = isHovered ? 8 : 4.5;
+        currentRadius += (targetRadius - currentRadius) * 0.22;
+
+        ctx.save();
+
+        // Outer orange aura bloom
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, currentRadius * 2.6, 0, Math.PI * 2);
+        ctx.fillStyle = isHovered ? 'rgba(255, 110, 20, 0.35)' : 'rgba(255, 90, 0, 0.22)';
+        ctx.fill();
+
+        // Dynamic interactive hover ring
+        if(isHovered){
+          ctx.beginPath();
+          ctx.arc(mouseX, mouseY, currentRadius * 3.2, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255, 138, 46, 0.7)';
+          ctx.lineWidth = 1.3;
+          ctx.stroke();
+        }
+
+        // Core orange glowing point
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, currentRadius, 0, Math.PI * 2);
+        const radGrad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, currentRadius);
+        radGrad.addColorStop(0, '#FFFFFF');
+        radGrad.addColorStop(0.3, '#FFA64D');
+        radGrad.addColorStop(1, '#FF5A00');
+        ctx.fillStyle = radGrad;
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      requestAnimationFrame(renderTrail);
+    }
+
+    requestAnimationFrame(renderTrail);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initMouseTrail);
+  } else {
+    initMouseTrail();
+  }
 })();
