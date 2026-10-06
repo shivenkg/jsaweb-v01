@@ -349,3 +349,115 @@ document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach((btn) => {
     }
   });
 });
+
+/* ===================== "START A PROJECT" ONCLICK NAVIGATION ===================== */
+(function(){
+  function scrollToContactForm(){
+    const formEl = document.getElementById('contactForm') || document.getElementById('contact');
+    if(formEl){
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const firstInput = document.getElementById('fieldName') || formEl.querySelector('input:not([type="hidden"]), textarea');
+      if(firstInput){
+        setTimeout(() => firstInput.focus(), 350);
+      }
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('a, button');
+    if(!el) return;
+    const text = (el.textContent || '').trim().toLowerCase();
+    const isStartProject = text.includes('start a project') || el.classList.contains('navcta');
+    if(!isStartProject) return;
+
+    // Close mobile nav if open
+    const nav = document.querySelector('.navlinks');
+    if(nav && nav.classList.contains('mobile-open')){
+      nav.classList.remove('mobile-open');
+      nav.style.cssText = '';
+    }
+
+    const currentPath = window.location.pathname;
+    const isContactPage = currentPath.endsWith('contact.html') || currentPath.endsWith('/contact') || window.location.href.includes('contact.html');
+
+    if(isContactPage){
+      e.preventDefault();
+      scrollToContactForm();
+    } else {
+      // If href is missing, #, or invalid, ensure explicit landing on contact.html
+      const href = el.getAttribute('href');
+      if(!href || href === '#' || href === 'javascript:void(0)'){
+        e.preventDefault();
+        window.location.href = 'contact.html#contact';
+      }
+    }
+  });
+
+  // If landing on contact page with hash
+  if(window.location.hash === '#contact' || window.location.hash === '#contactForm'){
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(scrollToContactForm, 250);
+    });
+    if(document.readyState === 'complete' || document.readyState === 'interactive'){
+      setTimeout(scrollToContactForm, 250);
+    }
+  }
+})();
+
+/* ===================== HERO MOUSE MOTION & PARALLAX ===================== */
+(function(){
+  const hero = document.querySelector('.hero');
+  if(!hero) return;
+
+  const heroInner = document.getElementById('heroInner');
+  const blob1 = document.getElementById('hvBlob1');
+  const blob2 = document.getElementById('hvBlob2');
+
+  let targetTiltX = 0, targetTiltY = 0;
+  let currentTiltX = 0, currentTiltY = 0;
+  let rafId = null;
+
+  function onMouseMove(e){
+    const rect = hero.getBoundingClientRect();
+    if(e.clientY < rect.top || e.clientY > rect.bottom) return;
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Normalized relative coordinates from center: -1 to 1
+    const relX = ((x / rect.width) - 0.5) * 2;
+    const relY = ((y / rect.height) - 0.5) * 2;
+
+    targetTiltX = relX * 6.5; // Max 6.5 deg tilt
+    targetTiltY = -relY * 5.5;
+
+    // Update dynamic spotlight position CSS variables
+    hero.style.setProperty('--mouse-x', `${x}px`);
+    hero.style.setProperty('--mouse-y', `${y}px`);
+
+    if(blob1) blob1.style.transform = `translate(${relX * -35}px, ${relY * -25}px)`;
+    if(blob2) blob2.style.transform = `translate(${relX * 30}px, ${relY * 20}px)`;
+  }
+
+  function onMouseLeave(){
+    targetTiltX = 0;
+    targetTiltY = 0;
+    if(blob1) blob1.style.transform = '';
+    if(blob2) blob2.style.transform = '';
+  }
+
+  function updateParallax(){
+    currentTiltX += (targetTiltX - currentTiltX) * 0.08;
+    currentTiltY += (targetTiltY - currentTiltY) * 0.08;
+
+    if(heroInner){
+      heroInner.style.transform = `perspective(1000px) rotateY(${currentTiltX.toFixed(2)}deg) rotateX(${currentTiltY.toFixed(2)}deg)`;
+    }
+
+    rafId = requestAnimationFrame(updateParallax);
+  }
+
+  hero.addEventListener('mousemove', onMouseMove, {passive: true});
+  hero.addEventListener('mouseleave', onMouseLeave);
+  rafId = requestAnimationFrame(updateParallax);
+})();

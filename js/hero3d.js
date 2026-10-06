@@ -120,6 +120,9 @@
 
   // Current interpolated node positions (what we actually render)
   const nodePos = smoothPos.map(p=>p.clone());
+  // Interactive physics offset vector per node driven by mouse motion
+  const nodeOffset = [];
+  for(let i=0; i<NODE_COUNT; i++) nodeOffset.push(new THREE.Vector3(0,0,0));
 
   // ─── NODE POINTS (instanced small boxes for crisp look) ───
   const nodeGeo  = new THREE.SphereGeometry(0.10, 8, 8);
@@ -306,6 +309,35 @@
   sweepMesh.position.set(0, 6, -3);
   scene.add(sweepMesh);
 
+  /* ─── 3D INTERACTIVE CURSOR BEACON & LIGHT ─── */
+  const beaconGroup = new THREE.Group();
+  const beaconColorsByTheme = {
+    dark:  { core: 0xFF8A2E, ring: 0xFF4B00 },
+    light: { core: 0x00D4FF, ring: 0x2E9BFF }
+  };
+  const bColor = beaconColorsByTheme[currentTheme()];
+  const beaconCoreGeo = new THREE.SphereGeometry(0.18, 16, 16);
+  const beaconCoreMat = new THREE.MeshBasicMaterial({color: bColor.core, transparent:true, opacity:0.9});
+  const beaconCore = new THREE.Mesh(beaconCoreGeo, beaconCoreMat);
+  beaconGroup.add(beaconCore);
+
+  const beaconHaloGeo = new THREE.RingGeometry(0.35, 0.45, 32);
+  const beaconHaloMat = new THREE.MeshBasicMaterial({color: bColor.ring, transparent:true, opacity:0.65, side:THREE.DoubleSide});
+  const beaconHalo = new THREE.Mesh(beaconHaloGeo, beaconHaloMat);
+  beaconGroup.add(beaconHalo);
+
+  const beaconLight = new THREE.PointLight(bColor.core, 1.8, 8);
+  beaconGroup.add(beaconLight);
+  beaconGroup.position.set(0, 0, 0);
+  scene.add(beaconGroup);
+
+  function applyBeaconTheme(theme){
+    const c = beaconColorsByTheme[theme] || beaconColorsByTheme.dark;
+    beaconCoreMat.color.set(c.core);
+    beaconHaloMat.color.set(c.ring);
+    beaconLight.color.set(c.core);
+  }
+
   /* ═══════════════════════════════════════════════════
      ANIMATION STATE MACHINE
      ═══════════════════════════════════════════════════
@@ -325,29 +357,51 @@
   const clock = new THREE.Clock();
   let loopTime = 0; // time within current loop
   let scrollFactor = 0, rawScrollY = 0;
-  let mouseX = 0, mouseY = 0;
+  let targetMouseX = 0, targetMouseY = 0;
+  let curMouseX = 0, curMouseY = 0;
+  let mouseSpeed = 0;
+  let isMouseInside = false;
   let jitterT = 0;
 
   window.addEventListener('mousemove', e=>{
-    mouseX = (e.clientX/window.innerWidth  - 0.5)*2;
-    mouseY = (e.clientY/window.innerHeight - 0.5)*2;
-  });
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    const heroRect = hero.getBoundingClientRect();
+    isMouseInside = (e.clientY >= heroRect.top && e.clientY <= heroRect.bottom);
+  }, {passive:true});
+
   window.addEventListener('touchmove', e=>{
     if(!e.touches||!e.touches[0]) return;
-    mouseX = (e.touches[0].clientX/window.innerWidth  - 0.5)*2;
-    mouseY = (e.touches[0].clientY/window.innerHeight - 0.5)*2;
-  },{passive:true});
+    targetMouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+    const heroRect = hero.getBoundingClientRect();
+    isMouseInside = (e.touches[0].clientY >= heroRect.top && e.touches[0].clientY <= heroRect.bottom);
+  }, {passive:true});
+
+  window.addEventListener('mouseleave', ()=>{
+    targetMouseX = 0;
+    targetMouseY = 0;
+    isMouseInside = false;
+  });
+
   window.addEventListener('scroll', ()=>{
     scrollFactor = Math.min(window.scrollY/hero.clientHeight, 1);
     rawScrollY   = window.scrollY;
   });
 
-  /* ─── helpers to update geometry from current nodePos ─── */
+  /* ─── helpers to update geometry from current nodePos & mouse offsets ─── */
   const _dummy = new THREE.Object3D();
-  function updateNodeMeshes(){
+  function updateNodeMeshes(pulseFn){
     for(let i=0;i<NODE_COUNT;i++){
-      _dummy.position.copy(nodePos[i]);
-      _dummy.scale.setScalar(1);
+      _dummy.position.set(
+        nodePos[i].x + nodeOffset[i].x,
+        nodePos[i].y + nodeOffset[i].y,
+        nodePos[i].z + nodeOffset[i].z
+      );
+      const pushDist = Math.hypot(nodeOffset[i].x, nodeOffset[i].y);
+      const hoverScale = 1.0 + Math.min(pushDist * 0.45, 0.65);
+      const baseScale = pulseFn ? pulseFn(i) : 1.0;
+      _dummy.scale.setScalar(baseScale * hoverScale);
       _dummy.updateMatrix();
       nodeIM.setMatrixAt(i, _dummy.matrix);
     }
@@ -358,8 +412,9 @@
     for(let e=0;e<edgeList.length;e++){
       const [a,b] = edgeList[e];
       const pa = nodePos[a], pb = nodePos[b];
-      posArr[e*6+0]=pa.x; posArr[e*6+1]=pa.y; posArr[e*6+2]=pa.z;
-      posArr[e*6+3]=pb.x; posArr[e*6+4]=pb.y; posArr[e*6+5]=pb.z;
+      const oa = nodeOffset[a], ob = nodeOffset[b];
+      posArr[e*6+0]=pa.x + oa.x; posArr[e*6+1]=pa.y + oa.y; posArr[e*6+2]=pa.z + oa.z;
+      posArr[e*6+3]=pb.x + ob.x; posArr[e*6+4]=pb.y + ob.y; posArr[e*6+5]=pb.z + ob.z;
     }
   }
 
@@ -373,17 +428,21 @@
     }
   }
 
-  /* ─── flow particle update ─── */
+  /* ─── flow particle update (speeds up with mouse interaction) ─── */
   function updateFlow(){
     for(let i=0;i<FLOW_COUNT;i++){
       const fd = flowData[i];
-      fd.t += fd.speed;
+      const speedBoost = 1.0 + mouseSpeed * 2.5;
+      fd.t += fd.speed * speedBoost;
       if(fd.t>1){ fd.t-=1; fd.edgeIdx=Math.floor(Math.random()*EDGES.length); }
       const [a,b] = EDGES[fd.edgeIdx];
       const pa = nodePos[a], pb = nodePos[b];
-      flowPos[i*3]   = pa.x + (pb.x-pa.x)*fd.t;
-      flowPos[i*3+1] = pa.y + (pb.y-pa.y)*fd.t;
-      flowPos[i*3+2] = pa.z + (pb.z-pa.z)*fd.t;
+      const oa = nodeOffset[a], ob = nodeOffset[b];
+      const ax = pa.x + oa.x, ay = pa.y + oa.y, az = pa.z + oa.z;
+      const bx = pb.x + ob.x, by = pb.y + ob.y, bz = pb.z + ob.z;
+      flowPos[i*3]   = ax + (bx-ax)*fd.t;
+      flowPos[i*3+1] = ay + (by-ay)*fd.t;
+      flowPos[i*3+2] = az + (bz-az)*fd.t;
     }
     flowGeo.attributes.position.needsUpdate = true;
   }
@@ -397,6 +456,51 @@
     const globalT = clock.getElapsedTime();
 
     loopTime = (loopTime + dt) % PHASE_TOTAL;
+
+    // Smoothly damp mouse motion and compute kinetic speed
+    const deltaX = targetMouseX - curMouseX;
+    const deltaY = targetMouseY - curMouseY;
+    curMouseX += deltaX * 0.085;
+    curMouseY += deltaY * 0.085;
+    mouseSpeed = Math.min(Math.hypot(deltaX, deltaY) * 25, 3.5);
+
+    // Map 2D mouse coordinates (-1..1) to 3D world focal plane (z = 0)
+    const planeDist = camera.position.z;
+    const vFovRad = (camera.fov * Math.PI) / 180;
+    const viewH = 2 * Math.tan(vFovRad / 2) * planeDist;
+    const viewW = viewH * camera.aspect;
+    const targetWorldX = (curMouseX * viewW) * 0.46;
+    const targetWorldY = (-curMouseY * viewH) * 0.46;
+
+    // Update 3D interactive cursor beacon
+    beaconGroup.position.x += (targetWorldX - beaconGroup.position.x) * 0.16;
+    beaconGroup.position.y += (targetWorldY - beaconGroup.position.y) * 0.16;
+    beaconGroup.position.z = 0.5 + Math.sin(globalT * 3) * 0.15;
+    beaconHalo.rotation.z += 0.03 + mouseSpeed * 0.08;
+    beaconHalo.scale.setScalar(1 + 0.15 * Math.sin(globalT * 4.5));
+    beaconGroup.visible = isMouseInside;
+
+    // Interactive node physics: magnetic repulsion & elastic wave offset
+    for(let i=0; i<NODE_COUNT; i++){
+      const dx = (nodePos[i].x) - beaconGroup.position.x;
+      const dy = (nodePos[i].y) - beaconGroup.position.y;
+      const dist = Math.hypot(dx, dy);
+      const maxRadius = 3.8;
+
+      if(dist < maxRadius && isMouseInside){
+        const force = (1 - dist / maxRadius);
+        const pushStrength = force * 1.6;
+        const normX = dx / (dist || 1);
+        const normY = dy / (dist || 1);
+        nodeOffset[i].x += (normX * pushStrength - nodeOffset[i].x) * 0.24;
+        nodeOffset[i].y += (normY * pushStrength - nodeOffset[i].y) * 0.24;
+        nodeOffset[i].z += (force * 2.0 - nodeOffset[i].z) * 0.24;
+      } else {
+        nodeOffset[i].x *= 0.88;
+        nodeOffset[i].y *= 0.88;
+        nodeOffset[i].z *= 0.88;
+      }
+    }
 
     /* ── determine current phase ── */
     let phase = 0, phaseT = loopTime;
@@ -412,13 +516,13 @@
       smoothEdgeMat.opacity = 0.0;
       noiseEdgeMat.opacity  = 0.18 + 0.10*Math.sin(globalT*4);
       flowMat.opacity       = 0.0;
+      updateNodeMeshes();
 
     } else if(phase===1){
       // ORGANIZE: lerp from messy → smooth
       const lerpFac = easeInOut(phaseT);
       jitterT += 0.05;
       for(let i=0;i<NODE_COUNT;i++){
-        // messy position with decreasing jitter
         const jStr = (1-lerpFac)*1.0;
         const mx = messyPos[i].x + Math.sin(jitterT*1.7+i*0.9)*jitter[i].x*jStr*2;
         const my = messyPos[i].y + Math.cos(jitterT*1.3+i*1.1)*jitter[i].y*jStr*2;
@@ -432,25 +536,18 @@
       smoothEdgeMat.opacity = easeOut(phaseT) * 0.55;
       noiseEdgeMat.opacity  = (1-lerpFac) * 0.18;
       flowMat.opacity       = 0.0;
+      updateNodeMeshes();
 
     } else if(phase===2){
       // HOLD_SMOOTH: nodes settled, gentle breathing scale, data flow active
       for(let i=0;i<NODE_COUNT;i++) nodePos[i].copy(smoothPos[i]);
       smoothEdgeMat.opacity = 0.50 + 0.05*Math.sin(globalT*1.2);
       noiseEdgeMat.opacity  = 0.0;
-      // flow particles fade in then hold
       flowMat.opacity = Math.min(phaseT*4, 1)*0.75;
       updateFlow();
 
-      // gentle node scale pulse
-      for(let i=0;i<NODE_COUNT;i++){
-        const pulse = 1.0 + 0.15*Math.sin(globalT*2.2 + i*0.4);
-        _dummy.position.copy(nodePos[i]);
-        _dummy.scale.setScalar(pulse);
-        _dummy.updateMatrix();
-        nodeIM.setMatrixAt(i, _dummy.matrix);
-      }
-      nodeIM.instanceMatrix.needsUpdate = true;
+      // Node breathing pulse combined with mouse proximity scaling
+      updateNodeMeshes(i => 1.0 + 0.15*Math.sin(globalT*2.2 + i*0.4));
 
     } else if(phase===3){
       // DISSOLVE: lerp smooth → messy
@@ -463,46 +560,55 @@
         const mz = messyPos[i].z + Math.sin(jitterT*2.1+i*0.5)*jitter[i].z*jStr*2;
         nodePos[i].set(
           smoothPos[i].x + (mx - smoothPos[i].x)*lerpFac,
-          smoothPos[i].y + (my - smoothPos[i].y)*lerpFac,
-          smoothPos[i].z + (mz - smoothPos[i].z)*lerpFac
+          my + (smoothPos[i].y - my)*lerpFac,
+          mz + (smoothPos[i].z - mz)*lerpFac
         );
       }
       smoothEdgeMat.opacity = (1-easeOut(phaseT)) * 0.50;
       noiseEdgeMat.opacity  = easeOut(phaseT) * 0.18;
       flowMat.opacity       = Math.max(0, (1-phaseT*3)) * 0.75;
       if(flowMat.opacity>0) updateFlow();
+      updateNodeMeshes();
     }
 
-    /* ── 2. update node meshes (phases 0,1,3 — phase 2 updates inline above) ── */
-    if(phase!==2) updateNodeMeshes();
-
-    /* ── 3. update edge geometry ── */
+    /* ── 3. update edge geometry with interactive flex ── */
     updateEdgeGeo(edgePosArr, EDGES);
     smoothEdgeGeo.attributes.position.needsUpdate = true;
     updateEdgeGeo(noisePosArr, NOISE_EDGES);
     noiseEdgeGeo.attributes.position.needsUpdate = true;
 
-    /* ── 4. node colour: shift toward warmer in messy, cooler/settled in smooth ── */
+    /* ── 4. node colour: shift with theme & mouse excitation ── */
     const smoothness = phase===2 ? 1 : phase===1 ? easeInOut(phaseT) : phase===3 ? 1-easeIn(phaseT) : 0;
     const isDarkTheme = currentTheme() === 'dark';
     const baseColors = isDarkTheme ? NODE_COLORS_DARK : NODE_COLORS;
     const messyTarget = isDarkTheme ? PURPLE : new THREE.Color(0xB23368);
+    const highlightColor = isDarkTheme ? new THREE.Color(0xFF8A2E) : new THREE.Color(0x00D4FF);
+
     for(let i=0;i<NODE_COUNT;i++){
       const base = baseColors[i];
-      // in smooth: settle on the theme's brand palette; in messy: tint toward the transition colour
       const messy = base.clone().lerp(messyTarget, 0.4);
-      const col   = messy.lerp(base, smoothness);
+      let col = messy.lerp(base, smoothness);
+
+      // Mouse proximity excitation glow
+      const pushDist = Math.hypot(nodeOffset[i].x, nodeOffset[i].y);
+      if(pushDist > 0.05){
+        col = col.clone().lerp(highlightColor, Math.min(pushDist * 0.8, 0.9));
+      }
       col.toArray(nodeIM.instanceColor.array, i*3);
     }
     nodeIM.instanceColor.needsUpdate = true;
 
-    /* ── 5. camera: gentle drift + mouse parallax ── */
-    const driftX = Math.sin(globalT*0.065)*1.0 + mouseX*0.8;
-    const driftY = Math.cos(globalT*0.048)*0.45 + mouseY*(-0.5);
-    camera.position.x += (driftX - camera.position.x)*0.018;
-    camera.position.y += (driftY - camera.position.y)*0.018;
+    /* ── 5. camera: multi-axis dynamic mouse parallax & perspective tilt ── */
+    const targetCamX = curMouseX * 3.2 + Math.sin(globalT*0.065)*1.0;
+    const targetCamY = -curMouseY * 2.0 + Math.cos(globalT*0.048)*0.45;
+    camera.position.x += (targetCamX - camera.position.x) * 0.045;
+    camera.position.y += (targetCamY - camera.position.y) * 0.045;
     camera.position.z = 14 + rawScrollY*0.012;
-    camera.lookAt(0, 0, 0);
+
+    // 3D perspective pitch, yaw and roll tilt
+    camera.rotation.y = -camera.position.x * 0.018;
+    camera.rotation.x = camera.position.y * 0.016;
+    camera.rotation.z = -curMouseX * 0.008;
 
     /* ── 6. scroll fade ── */
     const fade = Math.max(0, 1 - scrollFactor*1.5);
@@ -512,22 +618,24 @@
     flowMat.opacity               *= fade;
     bgMat.opacity                  = 0.30*fade;
 
-    /* ── 7. holographic core: slow independent rotation + HUD rings + scan sweep ── */
-    coreMesh.rotation.y = globalT * 0.09;
-    coreMesh.rotation.x = globalT * 0.05;
+    /* ── 7. holographic core: interactive 3D orientation & kinetic HUD spin ── */
+    coreMesh.rotation.y = globalT * 0.09 + curMouseX * 0.35;
+    coreMesh.rotation.x = globalT * 0.05 - curMouseY * 0.25;
     glowMesh.rotation.y = -globalT * 0.05;
-    hudRings.forEach(r => { r.rotation.z += r.userData.speed * 0.01; });
-    coreGroup.position.x = mouseX * 0.6;
-    coreGroup.position.y = mouseY * -0.35;
+    hudRings.forEach(r => {
+      r.rotation.z += (r.userData.speed * 0.01) * (1 + mouseSpeed * 1.5);
+    });
+    coreGroup.position.x += (curMouseX * 2.2 - coreGroup.position.x) * 0.05;
+    coreGroup.position.y += (-curMouseY * 1.4 - coreGroup.position.y) * 0.05;
     coreMat.opacity  = 0.22 * fade;
     glowMat.uniforms && (glowMesh.material.opacity = fade);
     hudRings.forEach(r => { r.material.opacity = 0.28 * fade; });
 
-    // scan sweep: drifts from top to bottom, fading in/out at the ends of its travel
-    const sweepCycle = 6.5; // seconds per pass
+    // scan sweep: drifts from top to bottom
+    const sweepCycle = 6.5;
     const sweepPhase = (globalT % sweepCycle) / sweepCycle;
     sweepMesh.position.y = 7 - sweepPhase * 14;
-    const edgeFade = Math.sin(sweepPhase * Math.PI); // 0 at top/bottom, 1 mid-travel
+    const edgeFade = Math.sin(sweepPhase * Math.PI);
     sweepMat.opacity = 0.10 * edgeFade * fade;
 
     renderer.render(scene, camera);
@@ -545,8 +653,8 @@
   window.addEventListener('themechange', e=>{
     const theme = (e.detail&&e.detail.theme)||currentTheme();
     bgMat.color.set(bgColorByTheme[theme]);
-    // update node colours for theme change
     try{ applyNodeThemeColors(theme); }catch(err){/* graceful */}
     try{ applyCoreTheme(theme); }catch(err){/* graceful */}
+    try{ applyBeaconTheme(theme); }catch(err){/* graceful */}
   });
 })();
