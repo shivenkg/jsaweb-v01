@@ -412,30 +412,55 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
   window.__closeMobileMenu = () => setMobileMenu(false);
 })();
 
-/* ===================== "START A PROJECT" & "REQUEST A CALLBACK" ONCLICK NAVIGATION ===================== */
+/* ===================== "START A PROJECT", "GET IN TOUCH" & CONTACT FORM ONCLICK NAVIGATION ===================== */
 (function(){
   function scrollToContactForm(focusField){
-    const formEl = document.getElementById('contactForm') || document.getElementById('contact');
-    if(formEl){
-      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      const targetInput = (focusField === 'phone' ? document.getElementById('formPhone') : null)
-        || document.getElementById('formName')
-        || document.getElementById('fieldName')
-        || formEl.querySelector('input:not([type="hidden"]), textarea');
-      if(targetInput){
-        setTimeout(() => targetInput.focus(), 350);
-      }
+    const formEl = document.getElementById('contactForm') || document.getElementById('contact-form') || document.getElementById('contact');
+    if(!formEl) return;
+
+    const header = document.querySelector('header');
+    const headerH = header ? header.offsetHeight : 80;
+    const formRect = formEl.getBoundingClientRect();
+    const targetScrollY = Math.max(0, window.pageYOffset + formRect.top - headerH - 24);
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    });
+
+    // Provide visual feedback / pulse on the contact form
+    const formContainer = document.getElementById('contactForm') || formEl;
+    if(formContainer){
+      formContainer.classList.remove('form-highlight-pulse');
+      void formContainer.offsetWidth; // trigger reflow
+      formContainer.classList.add('form-highlight-pulse');
+    }
+
+    const targetInput = (focusField === 'phone' ? document.getElementById('formPhone') : null)
+      || document.getElementById('formName')
+      || document.getElementById('fieldName')
+      || (formContainer ? formContainer.querySelector('input:not([type="hidden"]), textarea') : null);
+    if(targetInput){
+      setTimeout(() => {
+        try {
+          targetInput.focus({ preventScroll: true });
+        } catch(err) {
+          targetInput.focus();
+        }
+      }, 400);
     }
   }
 
   document.addEventListener('click', (e) => {
-    const el = e.target.closest('a, button');
+    const el = e.target.closest('a, button, [data-get-in-touch], .ic-get-in-touch, .industry-card .ic-image');
     if(!el) return;
     const text = (el.textContent || '').trim().toLowerCase();
     const isStartProject = text.includes('start a project') || el.classList.contains('navcta');
     const isRequestCallback = text.includes('request a callback') || el.classList.contains('cb');
+    const isGetInTouch = text.includes('get in touch') || el.classList.contains('ic-get-in-touch') || el.hasAttribute('data-get-in-touch') || el.classList.contains('ic-image');
+    const isContactLink = (el.getAttribute('href') && el.getAttribute('href').includes('contact.html')) && (text.includes('contact') || isGetInTouch);
 
-    if(!isStartProject && !isRequestCallback) return;
+    if(!isStartProject && !isRequestCallback && !isGetInTouch && !isContactLink) return;
 
     // Close mobile nav if open
     if (typeof window.__closeMobileMenu === 'function') {
@@ -460,23 +485,43 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
       e.preventDefault();
       scrollToContactForm(isRequestCallback ? 'phone' : 'name');
     } else {
-      // Ensure explicit landing on contact us page
-      const href = el.getAttribute('href');
+      const href = el.getAttribute ? el.getAttribute('href') : '';
       if(!href || href === '#' || href === 'javascript:void(0)' || href.startsWith('tel:')){
         e.preventDefault();
-        window.location.href = isRequestCallback ? 'contact.html#callback' : 'contact.html#contact';
+        window.location.href = isRequestCallback ? 'contact.html#callback' : 'contact.html';
       }
+      // If element is already an anchor with href leading to contact.html, default native navigation works seamlessly
     }
   });
 
+  // Expose global helper for landing to contact form
+  window.scrollToContactForm = scrollToContactForm;
+  window.landingToContactForm = function(focusTarget = 'name'){
+    const currentPath = window.location.pathname;
+    const isContactPage = currentPath.endsWith('contact.html') || currentPath.endsWith('/contact') || window.location.href.includes('contact.html');
+    if(isContactPage){
+      scrollToContactForm(focusTarget);
+    } else {
+      window.location.href = focusTarget === 'phone' ? 'contact.html#callback' : 'contact.html#contact-form';
+    }
+  };
+
   // If landing on contact page with hash
-  if(window.location.hash === '#contact' || window.location.hash === '#contactForm' || window.location.hash === '#callback'){
-    const focusTarget = window.location.hash === '#callback' ? 'phone' : 'name';
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => scrollToContactForm(focusTarget), 250);
-    });
+  function checkAndScrollHash(){
+    const hash = window.location.hash;
+    if(hash === '#contact' || hash === '#contactForm' || hash === '#contact-form' || hash === '#callback'){
+      const focusTarget = hash === '#callback' ? 'phone' : 'name';
+      setTimeout(() => scrollToContactForm(focusTarget), 150);
+      setTimeout(() => scrollToContactForm(focusTarget), 450);
+    }
+  }
+
+  if(window.location.pathname.includes('contact.html') || window.location.href.includes('contact.html')){
+    window.addEventListener('DOMContentLoaded', checkAndScrollHash);
+    window.addEventListener('load', checkAndScrollHash);
+    window.addEventListener('hashchange', checkAndScrollHash);
     if(document.readyState === 'complete' || document.readyState === 'interactive'){
-      setTimeout(() => scrollToContactForm(focusTarget), 250);
+      checkAndScrollHash();
     }
   }
 })();
@@ -539,179 +584,651 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
   rafId = requestAnimationFrame(updateParallax);
 })();
 
-/* ===================== ORANGE MOUSE TRACKING POINT & TRAIL EFFECT ===================== */
+// Remove mouse trailing canvas if present
 (function(){
-  // Only activate on pointer-capable devices (not on pure touch mobile screens)
-  if(window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+  const oldCanvas = document.getElementById('mouseTrailCanvas');
+  if(oldCanvas) oldCanvas.remove();
+})();
 
-  function initMouseTrail(){
-    const canvas = document.createElement('canvas');
-    canvas.id = 'mouseTrailCanvas';
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
-    document.body.appendChild(canvas);
+/* ===================== SMOOTH SCROLLING FOR ALL INTERNAL ANCHOR LINKS ===================== */
+(function(){
+  function getHeaderOffset(){
+    const header = document.querySelector('header') || document.getElementById('siteHeader');
+    return header ? header.offsetHeight + 18 : 86;
+  }
 
-    const ctx = canvas.getContext('2d');
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function smoothScrollToTarget(targetEl, updateHash, hash){
+    if(!targetEl) return;
+    const headerOffset = getHeaderOffset();
+    const elementPosition = targetEl.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    function resizeCanvas(){
-      canvas.width = Math.round(window.innerWidth * dpr);
-      canvas.height = Math.round(window.innerHeight * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    window.scrollTo({
+      top: Math.max(0, offsetPosition),
+      behavior: 'smooth'
+    });
+
+    if(updateHash && hash && window.history.pushState){
+      window.history.pushState(null, '', hash);
     }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, {passive: true});
 
-    let mouseX = -100;
-    let mouseY = -100;
-    let targetX = -100;
-    let targetY = -100;
-    let isVisible = false;
-    let isHovered = false;
+    if(typeof window.__closeMobileMenu === 'function'){
+      window.__closeMobileMenu();
+    }
+  }
 
-    // Trail nodes history
-    const trail = [];
-    const MAX_TRAIL_LENGTH = 32;
+  document.addEventListener('click', function(e){
+    const link = e.target.closest('a');
+    if(!link) return;
 
-    window.addEventListener('mousemove', (e) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-      isVisible = true;
+    const href = link.getAttribute('href');
+    if(!href) return;
 
-      const target = e.target;
-      isHovered = !!(target && target.closest('a, button, input, textarea, select, label, .fcb-trigger, .theme-toggle, .burger, [role="button"], .nav-dropdown-item'));
-    }, {passive: true});
+    if(href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
 
-    window.addEventListener('mouseleave', () => {
-      isVisible = false;
-    });
+    let hash = '';
+    let isSamePage = false;
 
-    window.addEventListener('mouseenter', () => {
-      isVisible = true;
-    });
+    if(href.startsWith('#')){
+      hash = href;
+      isSamePage = true;
+    } else if(href.includes('#')){
+      try {
+        const linkUrl = new URL(link.href, window.location.href);
+        const currentUrl = new URL(window.location.href);
+        const linkPath = linkUrl.pathname.replace(/\/index\.html$/, '/');
+        const currPath = currentUrl.pathname.replace(/\/index\.html$/, '/');
+        if(linkPath === currPath){
+          hash = linkUrl.hash;
+          isSamePage = true;
+        }
+      } catch(err){}
+    }
 
-    let currentRadius = 5;
-
-    function renderTrail(){
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-      if(!isVisible && trail.length === 0){
-        requestAnimationFrame(renderTrail);
+    if(isSamePage && hash){
+      if(hash === '#' || hash === '#top'){
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if(window.history.pushState) window.history.pushState(null, '', '#top');
+        if(typeof window.__closeMobileMenu === 'function') window.__closeMobileMenu();
         return;
       }
 
-      // Smooth lag interpolation towards cursor
-      mouseX += (targetX - mouseX) * 0.48;
-      mouseY += (targetY - mouseY) * 0.48;
-
-      if(isVisible){
-        trail.push({ x: mouseX, y: mouseY });
+      const targetId = hash.substring(1);
+      const targetEl = document.getElementById(targetId) || document.querySelector(`[name="${targetId}"]`);
+      if(targetEl){
+        e.preventDefault();
+        smoothScrollToTarget(targetEl, true, hash);
       }
-
-      // Maintain max trail history
-      while(trail.length > MAX_TRAIL_LENGTH){
-        trail.shift();
-      }
-
-      // When cursor stops, decay trail from tail
-      if(!isVisible || (Math.abs(targetX - mouseX) < 0.2 && Math.abs(targetY - mouseY) < 0.2)){
-        if(trail.length > 0) trail.shift();
-      }
-
-      // Draw the fluid glowing orange trail
-      if(trail.length > 2){
-        ctx.save();
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-
-        // 1. Diffuse soft orange outer glow
-        for(let i = 1; i < trail.length; i++){
-          const p1 = trail[i - 1];
-          const p2 = trail[i];
-          const progress = i / trail.length; // 0 (tail) -> 1 (head)
-
-          ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.lineWidth = Math.max(1, 15 * progress);
-          ctx.strokeStyle = `rgba(255, 90, 0, ${(0.22 * progress).toFixed(3)})`;
-          ctx.stroke();
-        }
-
-        // 2. High-intensity neon orange core ribbon
-        for(let i = 1; i < trail.length; i++){
-          const p1 = trail[i - 1];
-          const p2 = trail[i];
-          const progress = i / trail.length;
-
-          ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.lineWidth = Math.max(0.8, 5.5 * progress);
-          ctx.strokeStyle = `rgba(255, 138, 46, ${(0.85 * progress).toFixed(3)})`;
-          ctx.stroke();
-        }
-
-        // 3. Ultra-bright luminous amber/white inner fiber
-        for(let i = 1; i < trail.length; i++){
-          const p1 = trail[i - 1];
-          const p2 = trail[i];
-          const progress = i / trail.length;
-
-          ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.lineWidth = Math.max(0.4, 2 * progress);
-          ctx.strokeStyle = `rgba(255, 235, 210, ${(0.75 * progress).toFixed(3)})`;
-          ctx.stroke();
-        }
-
-        ctx.restore();
-      }
-
-      // Draw the lead mouse tracking point
-      if(isVisible && mouseX > -50 && mouseY > -50){
-        const targetRadius = isHovered ? 8 : 4.5;
-        currentRadius += (targetRadius - currentRadius) * 0.22;
-
-        ctx.save();
-
-        // Outer orange aura bloom
-        ctx.beginPath();
-        ctx.arc(mouseX, mouseY, currentRadius * 2.6, 0, Math.PI * 2);
-        ctx.fillStyle = isHovered ? 'rgba(255, 110, 20, 0.35)' : 'rgba(255, 90, 0, 0.22)';
-        ctx.fill();
-
-        // Dynamic interactive hover ring
-        if(isHovered){
-          ctx.beginPath();
-          ctx.arc(mouseX, mouseY, currentRadius * 3.2, 0, Math.PI * 2);
-          ctx.strokeStyle = 'rgba(255, 138, 46, 0.7)';
-          ctx.lineWidth = 1.3;
-          ctx.stroke();
-        }
-
-        // Core orange glowing point
-        ctx.beginPath();
-        ctx.arc(mouseX, mouseY, currentRadius, 0, Math.PI * 2);
-        const radGrad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, currentRadius);
-        radGrad.addColorStop(0, '#FFFFFF');
-        radGrad.addColorStop(0.3, '#FFA64D');
-        radGrad.addColorStop(1, '#FF5A00');
-        ctx.fillStyle = radGrad;
-        ctx.fill();
-
-        ctx.restore();
-      }
-
-      requestAnimationFrame(renderTrail);
     }
+  });
 
-    requestAnimationFrame(renderTrail);
+  // Handle direct page load with hash
+  if(window.location.hash && window.location.hash !== '#top'){
+    const targetId = window.location.hash.substring(1);
+    if(targetId !== 'contact' && targetId !== 'contactForm' && targetId !== 'callback' && targetId !== 'contact-form'){
+      const onReady = () => {
+        setTimeout(() => {
+          const targetEl = document.getElementById(targetId);
+          if(targetEl) smoothScrollToTarget(targetEl, false);
+        }, 150);
+      };
+      if(document.readyState === 'complete' || document.readyState === 'interactive'){
+        onReady();
+      } else {
+        window.addEventListener('DOMContentLoaded', onReady);
+      }
+    }
+  }
+})();
+
+/* ===================== SELECTED COMPONENT: ONCLICK LAND TO CONTACT US FORM ===================== */
+(function(){
+  function setupSelectedComponentContactLanding(){
+    const targetSelectors = [
+      'section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1)',
+      '#process > .wrap > .section-head'
+    ];
+    targetSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        if(el.dataset.contactBound) return;
+        el.dataset.contactBound = 'true';
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('title', 'Click to land to Contact Us form');
+        el.style.cursor = 'pointer';
+
+        function navigateToContact(e){
+          // If clicking on an internal anchor inside it, don't hijack
+          if(e.target.closest('a') && !e.target.closest('a[href*="contact"]')) return;
+          e.preventDefault();
+          if(typeof window.landingToContactForm === 'function'){
+            window.landingToContactForm();
+          } else {
+            window.location.href = 'contact.html#contact-form';
+          }
+        }
+
+        el.addEventListener('click', navigateToContact);
+        el.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){
+            navigateToContact(e);
+          }
+        });
+      });
+    });
   }
 
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initMouseTrail);
+    document.addEventListener('DOMContentLoaded', setupSelectedComponentContactLanding);
   } else {
-    initMouseTrail();
+    setupSelectedComponentContactLanding();
   }
 })();
+
+/* ===================== GLOBAL SITE SEARCH FUNCTIONALITY ===================== */
+(function(){
+  const SEARCH_ITEMS = [
+    {
+      title: "Contact Us Form",
+      category: "action",
+      badge: "Action",
+      desc: "Talk to our engineering team, request quotation, or book an architecture audit",
+      url: "contact.html#contact-form",
+      keywords: "contact form get in touch talk speak email phone query quotation request callback message inquiry"
+    },
+    {
+      title: "Start a Project",
+      category: "action",
+      badge: "Action",
+      desc: "Initiate discovery, architecture audit, or new software build with our engineers",
+      url: "contact.html",
+      keywords: "start project hire team build launch engage work"
+    },
+    {
+      title: "Request a Callback",
+      category: "action",
+      badge: "Action",
+      desc: "Direct phone callback from a lead engineer within 2 business hours",
+      url: "contact.html#callback",
+      keywords: "callback phone call speak immediate ring number"
+    },
+    {
+      title: "Alpha-Gymify (Fitness & Gym ERP)",
+      category: "product",
+      badge: "Product",
+      desc: "Biometric access control, recurring billing, trainer scheduling & member portal",
+      url: "product.html#alphagymify",
+      keywords: "alphagymify gymify gym fitness workout trainer membership turnstile biometric billing attendance"
+    },
+    {
+      title: "AlphaXenia (Visitor Management System)",
+      category: "product",
+      badge: "Product",
+      desc: "Enterprise check-in, QR gate passes, vehicle parking & biometric verification",
+      url: "product.html#alphaxenia",
+      keywords: "alphaxenia visitor management vms gate pass access control badges qr security"
+    },
+    {
+      title: "AlphaDocq (Document Management System)",
+      category: "product",
+      badge: "Product",
+      desc: "Intelligent document repository with OCR indexing, AES-256 encryption & audit logs",
+      url: "product.html#alphadocq",
+      keywords: "alphadocq dms document management ocr pdf files compliance rbac audit archive"
+    },
+    {
+      title: "AlphaERP (Lightweight SME ERP)",
+      category: "product",
+      badge: "Product",
+      desc: "Inventory control, multi-entity accounting, GST invoicing & automated PO tracking",
+      url: "product.html#alphaerp",
+      keywords: "alphaerp erp enterprise planning inventory gst invoicing orders finance accounting"
+    },
+    {
+      title: "Web & Mobile Application Development",
+      category: "service",
+      badge: "Service",
+      desc: "Custom React, Next.js, Node.js microservices & native/cross-platform mobile apps",
+      url: "services.html#web-application-development",
+      keywords: "web app mobile development react nextjs node flutter react native api frontend backend"
+    },
+    {
+      title: "Cloud & DevOps Engineering",
+      category: "service",
+      badge: "Service",
+      desc: "Multi-cloud architecture (AWS, GCP, Azure), Kubernetes, Terraform & automated CI/CD",
+      url: "services.html#cloud-and-devops-engineering",
+      keywords: "cloud devops aws gcp azure kubernetes docker terraform cicd infrastructure"
+    },
+    {
+      title: "AI & Machine Learning Solutions",
+      category: "service",
+      badge: "Service",
+      desc: "Enterprise LLMs, document understanding, computer vision & automated analytics",
+      url: "services.html#ai-and-machine-learning",
+      keywords: "ai ml artificial intelligence machine learning llm computer vision neural nlp automation"
+    },
+    {
+      title: "Wired & Wireless Enterprise Networks",
+      category: "service",
+      badge: "Service",
+      desc: "SD-WAN, enterprise Wi-Fi 6E, core routing, firewall hardening & campus switching",
+      url: "services.html#wired-and-wireless-networks",
+      keywords: "network wifi wired wireless switches routers firewall lan wan sd-wan cisco aruba"
+    },
+    {
+      title: "Data Centre Setup & Migration",
+      category: "service",
+      badge: "Service",
+      desc: "Tier III design, precision cooling, rack architecture, power redundancy & server provisioning",
+      url: "services.html#data-centre-setup",
+      keywords: "datacenter data centre server racks precision cooling ups power tier 3 migration"
+    },
+    {
+      title: "Cybersecurity, IT Audit & VAPT",
+      category: "service",
+      badge: "Service",
+      desc: "Penetration testing, vulnerability assessments, ISO 27001, SOC 2 compliance hardening",
+      url: "services.html#it-audit-cyber-security-vapt",
+      keywords: "cybersecurity security vapt audit penetration testing compliance iso27001 soc2 hardening"
+    },
+    {
+      title: "Security Surveillance & Smart CCTV",
+      category: "service",
+      badge: "Service",
+      desc: "AI video analytics, license plate recognition, facial detection & IP cameras",
+      url: "services.html#security-surveillance-cctv",
+      keywords: "cctv surveillance security cameras video analytics facial recognition nvr anpr"
+    },
+    {
+      title: "Facility Management Services (FMS)",
+      category: "service",
+      badge: "Service",
+      desc: "Dedicated L1/L2/L3 on-premise engineers, 24/7 SLA incident resolution & vendor management",
+      url: "services.html#facility-management-services",
+      keywords: "fms facility management services engineers support sla 24/7 maintenance onsite"
+    },
+    {
+      title: "Unified Network Monitoring (DCIM)",
+      category: "service",
+      badge: "Service",
+      desc: "Real-time telemetry, SNMP traps, environmental sensors & automated alert escalation",
+      url: "services.html#unified-network-monitoring",
+      keywords: "dcim monitoring network telemetry snmp sensors alerts dashboard uptime"
+    },
+    {
+      title: "Banking & Fintech Solutions",
+      category: "industry",
+      badge: "Industry",
+      desc: "PCI-DSS compliance, core banking APIs, sub-millisecond fraud detection & ledgers",
+      url: "industries.html#banking-and-fintech",
+      keywords: "banking fintech payments finance transactions pci fraud core banking"
+    },
+    {
+      title: "Healthcare & Life Sciences",
+      category: "industry",
+      badge: "Industry",
+      desc: "HIPAA compliance, EHR integration, medical IoT telemetry & telemedicine platforms",
+      url: "industries.html#healthcare-and-life-sciences",
+      keywords: "healthcare hospital medical ehr hipaa telemedicine pharma clinic"
+    },
+    {
+      title: "Manufacturing & Industry 4.0",
+      category: "industry",
+      badge: "Industry",
+      desc: "SCADA automation, shopfloor IoT, predictive maintenance & digital twins",
+      url: "industries.html#manufacturing",
+      keywords: "manufacturing industry 4.0 scada iot factory shopfloor predictive maintenance"
+    },
+    {
+      title: "Retail & E-Commerce",
+      category: "industry",
+      badge: "Industry",
+      desc: "High-concurrency checkout engines, headless commerce & omni-channel inventory",
+      url: "industries.html#retail-and-e-commerce",
+      keywords: "retail ecommerce shop cart checkout inventory pos store omni-channel"
+    },
+    {
+      title: "Logistics & Supply Chain",
+      category: "industry",
+      badge: "Industry",
+      desc: "Real-time fleet tracking, automated warehouse dispatch & cold-chain telemetry",
+      url: "industries.html#logistics-and-supply-chain",
+      keywords: "logistics supply chain fleet tracking warehouse dispatch cold chain shipping"
+    },
+    {
+      title: "Telecom & Carrier OSS/BSS",
+      category: "industry",
+      badge: "Industry",
+      desc: "OSS/BSS integration, fiber rollout management, 5G edge compute & network observability",
+      url: "industries.html#telecom",
+      keywords: "telecom carrier oss bss 5g fiber network cellular isp"
+    },
+    {
+      title: "How We Work: 5-Stage Build Process",
+      category: "process",
+      badge: "Process",
+      desc: "Discover &rarr; Design &rarr; Build &rarr; Assure &rarr; Deploy & Scale",
+      url: "process.html",
+      keywords: "process how we work stages methodology agile sprint discover design build assure deploy"
+    },
+    {
+      title: "About JS AlphaSoft",
+      category: "about",
+      badge: "Company",
+      desc: "Engineering leadership, 12+ years experience, 240+ enterprise deployments & certifications",
+      url: "about.html",
+      keywords: "about company team leadership history founders culture mission ethos"
+    }
+  ];
+
+  let modalBackdrop = null;
+  let searchInput = null;
+  let resultsList = null;
+  let clearBtn = null;
+  let activeFilter = 'all';
+  let selectedIndex = 0;
+  let currentResults = [];
+
+  function createSearchModal(){
+    if(document.getElementById('searchBackdrop')) {
+      modalBackdrop = document.getElementById('searchBackdrop');
+      searchInput = document.getElementById('globalSearchInput');
+      resultsList = document.getElementById('searchResultsList');
+      clearBtn = document.getElementById('searchClearBtn');
+      return;
+    }
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'search-modal-backdrop';
+    backdrop.id = 'searchBackdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.style.display = 'none';
+    backdrop.innerHTML = `
+      <div class="search-modal-box" role="dialog" aria-modal="true" aria-label="Global Site Search">
+        <div class="search-modal-header">
+          <svg class="search-modal-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" id="globalSearchInput" placeholder="Search products, services, process, industries, or contact..." autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Clear search" style="display:none;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Close search">
+            <span class="esc-badge">ESC</span>
+          </button>
+        </div>
+        <div class="search-filters" id="searchFilters">
+          <button type="button" class="search-filter-tag active" data-filter="all">All</button>
+          <button type="button" class="search-filter-tag" data-filter="product">Products</button>
+          <button type="button" class="search-filter-tag" data-filter="service">Services</button>
+          <button type="button" class="search-filter-tag" data-filter="industry">Industries</button>
+          <button type="button" class="search-filter-tag" data-filter="process">Process</button>
+          <button type="button" class="search-filter-tag" data-filter="action">Actions</button>
+        </div>
+        <div class="search-results" id="searchResultsList" role="listbox"></div>
+        <div class="search-modal-footer">
+          <div class="search-shortcuts">
+            <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Navigate</span>
+            <span><kbd>&crarr;</kbd> Select</span>
+            <span><kbd>ESC</kbd> Close</span>
+          </div>
+          <a href="contact.html#contact-form" class="search-contact-shortcut" id="searchContactShortcut">
+            <span>Need direct help?</span>
+            <strong>Contact Us Form &rarr;</strong>
+          </a>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(backdrop);
+    modalBackdrop = backdrop;
+    searchInput = document.getElementById('globalSearchInput');
+    resultsList = document.getElementById('searchResultsList');
+    clearBtn = document.getElementById('searchClearBtn');
+
+    // Filter clicks
+    const filterContainer = document.getElementById('searchFilters');
+    filterContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.search-filter-tag');
+      if(!btn) return;
+      filterContainer.querySelectorAll('.search-filter-tag').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter || 'all';
+      renderResults(searchInput.value.trim());
+    });
+
+    // Close button
+    document.getElementById('searchCloseBtn').addEventListener('click', closeSearch);
+
+    // Backdrop click
+    modalBackdrop.addEventListener('click', (e) => {
+      if(e.target === modalBackdrop) closeSearch();
+    });
+
+    // Clear button
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.style.display = 'none';
+      searchInput.focus();
+      renderResults('');
+    });
+
+    // Input events
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim();
+      clearBtn.style.display = query ? 'flex' : 'none';
+      renderResults(query);
+    });
+
+    // Keyboard navigation
+    searchInput.addEventListener('keydown', handleKeyNavigation);
+  }
+
+  function openSearch(){
+    createSearchModal();
+    modalBackdrop.style.display = 'flex';
+    requestAnimationFrame(() => {
+      modalBackdrop.classList.add('is-open');
+      modalBackdrop.setAttribute('aria-hidden', 'false');
+      searchInput.focus();
+      renderResults(searchInput.value.trim());
+    });
+  }
+
+  function closeSearch(){
+    if(!modalBackdrop) return;
+    modalBackdrop.classList.remove('is-open');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      modalBackdrop.style.display = 'none';
+    }, 220);
+  }
+
+  function getCategoryIcon(cat){
+    if(cat === 'action'){
+      return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+    }
+    if(cat === 'product'){
+      return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`;
+    }
+    if(cat === 'service'){
+      return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`;
+    }
+    if(cat === 'industry'){
+      return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="18" x2="15" y2="18"/></svg>`;
+    }
+    if(cat === 'process'){
+      return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`;
+    }
+    return `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
+  }
+
+  function highlightMatches(text, query){
+    if(!query) return text;
+    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<mark style="background:rgba(46,155,255,0.25);color:inherit;padding:0 2px;border-radius:2px;">$1</mark>');
+  }
+
+  function renderResults(query){
+    let filtered = SEARCH_ITEMS;
+
+    if(activeFilter !== 'all'){
+      filtered = filtered.filter(item => item.category === activeFilter);
+    }
+
+    if(query){
+      const q = query.toLowerCase();
+      filtered = filtered.filter(item => {
+        return item.title.toLowerCase().includes(q) ||
+               item.desc.toLowerCase().includes(q) ||
+               item.keywords.toLowerCase().includes(q);
+      });
+    }
+
+    currentResults = filtered;
+    selectedIndex = 0;
+
+    if(filtered.length === 0){
+      resultsList.innerHTML = `
+        <div class="search-empty">
+          <div class="search-empty-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <div class="search-empty-title">No matching results for "${escapeHtml(query)}"</div>
+          <div class="search-empty-desc">Have a specific question or requirement? Our engineers are ready to assist.</div>
+          <a href="contact.html#contact-form" class="search-empty-cta" onclick="window.landingToContactForm ? window.landingToContactForm() : null">
+            Contact Us Form &rarr;
+          </a>
+        </div>
+      `;
+      return;
+    }
+
+    resultsList.innerHTML = filtered.map((item, idx) => `
+      <a href="${item.url}" class="search-item ${idx === 0 ? 'selected' : ''}" data-index="${idx}" role="option" aria-selected="${idx === 0}">
+        <div class="search-item-left">
+          <div class="search-item-icon ${item.category}">
+            ${getCategoryIcon(item.category)}
+          </div>
+          <div class="search-item-content">
+            <div class="search-item-title">
+              <span>${highlightMatches(item.title, query)}</span>
+            </div>
+            <div class="search-item-desc">${highlightMatches(item.desc, query)}</div>
+          </div>
+        </div>
+        <span class="search-item-badge">${item.badge}</span>
+        <span class="search-item-arrow">&rarr;</span>
+      </a>
+    `).join('');
+
+    resultsList.querySelectorAll('.search-item').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const href = el.getAttribute('href');
+        closeSearch();
+        if(href.includes('contact.html#contact-form') || href.includes('contact.html#contactForm') || href.includes('contact.html#callback')){
+          if(window.location.pathname.endsWith('contact.html') || window.location.href.includes('contact.html')){
+            e.preventDefault();
+            const focus = href.includes('callback') ? 'phone' : 'name';
+            if(window.landingToContactForm) window.landingToContactForm(focus);
+          }
+        }
+      });
+    });
+  }
+
+  function escapeHtml(str){
+    return str.replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag));
+  }
+
+  function handleKeyNavigation(e){
+    if(e.key === 'Escape'){
+      e.preventDefault();
+      closeSearch();
+      return;
+    }
+
+    const items = resultsList.querySelectorAll('.search-item');
+    if(!items.length) return;
+
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      selectedIndex = (selectedIndex + 1) % items.length;
+      updateSelected(items);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+      updateSelected(items);
+    } else if(e.key === 'Enter'){
+      e.preventDefault();
+      if(items[selectedIndex]){
+        items[selectedIndex].click();
+      }
+    }
+  }
+
+  function updateSelected(items){
+    items.forEach((item, idx) => {
+      const isSel = idx === selectedIndex;
+      item.classList.toggle('selected', isSel);
+      item.setAttribute('aria-selected', isSel ? 'true' : 'false');
+      if(isSel){
+        item.scrollIntoView({ block: 'nearest' });
+      }
+    });
+  }
+
+  // Global Keyboard shortcuts: Ctrl+K, Cmd+K, or "/"
+  document.addEventListener('keydown', (e) => {
+    if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){
+      e.preventDefault();
+      if(modalBackdrop && modalBackdrop.classList.contains('is-open')){
+        closeSearch();
+      } else {
+        openSearch();
+      }
+    } else if(e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)){
+      e.preventDefault();
+      openSearch();
+    } else if(e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('is-open')){
+      closeSearch();
+    }
+  });
+
+  // Attach search trigger button event handlers
+  function bindSearchButtons(){
+    document.querySelectorAll('.site-search-btn, #searchBtn').forEach(btn => {
+      if(btn.dataset.searchBound) return;
+      btn.dataset.searchBound = 'true';
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSearch();
+      });
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', () => {
+      createSearchModal();
+      bindSearchButtons();
+    });
+  } else {
+    createSearchModal();
+    bindSearchButtons();
+  }
+
+  // Expose global open helper
+  window.openGlobalSiteSearch = openSearch;
+  window.closeGlobalSiteSearch = closeSearch;
+})();
+
+

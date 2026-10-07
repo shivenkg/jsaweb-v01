@@ -322,6 +322,14 @@
       </div>
       <div style="display:flex;align-items:center;gap:14px;">
         <a href="contact.html" class="navcta">Start a Project</a>
+        <button class="site-search-btn" id="searchBtn" type="button" aria-label="Search website" title="Search website (Ctrl+K or /)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="search-btn-label">Search</span>
+          <span class="search-kbd-badge">⌘K</span>
+        </button>
         <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Switch to ivory white theme">
             <span class="tt-track"></span>
             <span class="tt-knob">
@@ -349,102 +357,162 @@
     <div class="industry-grid reveal">
 
       <div class="industry-card" id="banking-and-fintech">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80" alt="Digital banking technology" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80" alt="Digital banking technology" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Banking &amp; FinTech</h3>
           <p>Core banking modernisation, payment platforms and compliance-grade systems built to regulatory standard.</p>
           <div class="ic-tags"><span>RBI compliance</span><span>Payments</span><span>Core banking</span><span>Fraud detection</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="healthcare-and-life-sciences">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1706777280252-5de52771cf13?auto=format&fit=crop&w=900&q=80" alt="Healthcare technology" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1706777280252-5de52771cf13?auto=format&fit=crop&w=900&q=80" alt="Healthcare technology" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Healthcare &amp; Life Sciences</h3>
           <p>Patient portals, EHR integrations and data pipelines built with HIPAA-grade handling of sensitive data.</p>
           <div class="ic-tags"><span>HIPAA</span><span>EHR/EMR</span><span>Telehealth</span><span>Clinical data</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="manufacturing">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1700727448686-b314cb5f9948?auto=format&fit=crop&w=900&q=80" alt="Manufacturing floor" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1700727448686-b314cb5f9948?auto=format&fit=crop&w=900&q=80" alt="Manufacturing floor" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Manufacturing</h3>
           <p>Shop-floor systems, IoT data pipelines and ERP integrations that connect the plant floor to the top floor.</p>
           <div class="ic-tags"><span>IoT</span><span>ERP</span><span>Predictive maintenance</span><span>Supply visibility</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="retail-and-e-commerce">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?auto=format&fit=crop&w=900&q=80" alt="Retail store interior" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?auto=format&fit=crop&w=900&q=80" alt="Retail store interior" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Retail &amp; E-commerce</h3>
           <p>Storefronts, inventory systems and personalisation engines built to hold up on peak sale days.</p>
           <div class="ic-tags"><span>Headless commerce</span><span>Inventory</span><span>Personalisation</span><span>Omnichannel</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="logistics-and-supply-chain">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1684695749267-233af13276d0?auto=format&fit=crop&w=900&q=80" alt="Logistics warehouse" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1684695749267-233af13276d0?auto=format&fit=crop&w=900&q=80" alt="Logistics warehouse" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Logistics &amp; Supply Chain</h3>
           <p>Fleet tracking, route optimisation and warehouse management systems built for real-time visibility.</p>
           <div class="ic-tags"><span>Fleet tracking</span><span>Route optimisation</span><span>WMS</span><span>Real-time telemetry</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="education-and-edtech">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1758270705290-62b6294dd044?auto=format&fit=crop&w=900&q=80" alt="Students using laptop" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1758270705290-62b6294dd044?auto=format&fit=crop&w=900&q=80" alt="Students using laptop" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Education &amp; EdTech</h3>
           <p>LMS platforms, assessment engines and student information systems built for scale at term-start traffic.</p>
           <div class="ic-tags"><span>LMS</span><span>Assessments</span><span>SIS</span><span>Content delivery</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="real-estate-and-proptech">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1778961419928-2968ddd57c05?auto=format&fit=crop&w=900&q=80" alt="Modern office building" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1778961419928-2968ddd57c05?auto=format&fit=crop&w=900&q=80" alt="Modern office building" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Real Estate &amp; PropTech</h3>
           <p>Listing platforms, CRM tooling and document workflows that shorten the deal cycle.</p>
           <div class="ic-tags"><span>Listings</span><span>CRM</span><span>Document workflow</span><span>Virtual tours</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="government-and-public-sector">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1667849921481-9e13c239ee3d?auto=format&fit=crop&w=900&q=80" alt="Government building" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1667849921481-9e13c239ee3d?auto=format&fit=crop&w=900&q=80" alt="Government building" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Government &amp; Public Sector</h3>
           <p>Citizen services portals and case-management systems built to public-sector security standard.</p>
           <div class="ic-tags"><span>e-Governance</span><span>Case management</span><span>Accessibility</span><span>Data security</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="media-and-entertainment">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=900&q=80" alt="Studio recording microphone" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=900&q=80" alt="Studio recording microphone" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Media &amp; Entertainment</h3>
           <p>Streaming platforms, content management systems and rights-management tooling.</p>
           <div class="ic-tags"><span>Streaming</span><span>CMS</span><span>Rights management</span><span>Analytics</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="industry-card" id="telecom">
-        <div class="ic-image"><img src="https://images.unsplash.com/photo-1602823284936-463177448097?auto=format&fit=crop&w=900&q=80" alt="Telecom network tower" loading="lazy"></div>
+        <div class="ic-image" data-get-in-touch="true" title="Click to get in touch on our contact form"><img src="https://images.unsplash.com/photo-1602823284936-463177448097?auto=format&fit=crop&w=900&q=80" alt="Telecom network tower" loading="lazy"></div>
         <div class="ic-body">
           <div class="ic-eyebrow mono">Industry</div>
           <h3>Telecom</h3>
           <p>OSS/BSS systems, network monitoring dashboards and customer self-service portals.</p>
           <div class="ic-tags"><span>OSS/BSS</span><span>Network monitoring</span><span>Self-service portals</span><span>Billing</span></div>
+          <div class="ic-footer-action">
+            <a href="contact.html#contact-form" class="ic-get-in-touch" data-get-in-touch="true">
+              <span>Get in touch</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -455,7 +523,7 @@
 <div class="cta-band reveal">
   <h2>Don't see your industry?</h2>
   <p>We've likely still built something adjacent. Tell us about your business and we'll be straight about fit.</p>
-  <a href="contact.html" class="btn-ghost">Get in touch</a>
+  <a href="contact.html" class="btn-ghost" id="industriesCtaBtn" onclick="window.location.href='contact.html';" style="position:relative;z-index:20;cursor:pointer;pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;" aria-label="Get in touch on contact us page">Get in touch</a>
 </div>
 
 <div class="next-page-strip">

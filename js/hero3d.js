@@ -309,33 +309,14 @@
   sweepMesh.position.set(0, 6, -3);
   scene.add(sweepMesh);
 
-  /* ─── 3D INTERACTIVE CURSOR BEACON & LIGHT ─── */
+  /* ─── 3D INTERACTIVE CURSOR TRACKER (visual circle removed) ─── */
   const beaconGroup = new THREE.Group();
-  const beaconColorsByTheme = {
-    dark:  { core: 0xFF8A2E, ring: 0xFF4B00 },
-    light: { core: 0x00D4FF, ring: 0x2E9BFF }
-  };
-  const bColor = beaconColorsByTheme[currentTheme()];
-  const beaconCoreGeo = new THREE.SphereGeometry(0.18, 16, 16);
-  const beaconCoreMat = new THREE.MeshBasicMaterial({color: bColor.core, transparent:true, opacity:0.9});
-  const beaconCore = new THREE.Mesh(beaconCoreGeo, beaconCoreMat);
-  beaconGroup.add(beaconCore);
-
-  const beaconHaloGeo = new THREE.RingGeometry(0.35, 0.45, 32);
-  const beaconHaloMat = new THREE.MeshBasicMaterial({color: bColor.ring, transparent:true, opacity:0.65, side:THREE.DoubleSide});
-  const beaconHalo = new THREE.Mesh(beaconHaloGeo, beaconHaloMat);
-  beaconGroup.add(beaconHalo);
-
-  const beaconLight = new THREE.PointLight(bColor.core, 1.8, 8);
-  beaconGroup.add(beaconLight);
   beaconGroup.position.set(0, 0, 0);
+  beaconGroup.visible = false;
   scene.add(beaconGroup);
 
   function applyBeaconTheme(theme){
-    const c = beaconColorsByTheme[theme] || beaconColorsByTheme.dark;
-    beaconCoreMat.color.set(c.core);
-    beaconHaloMat.color.set(c.ring);
-    beaconLight.color.set(c.core);
+    // Visual beacon circle removed
   }
 
   /* ═══════════════════════════════════════════════════
@@ -472,13 +453,11 @@
     const targetWorldX = (curMouseX * viewW) * 0.46;
     const targetWorldY = (-curMouseY * viewH) * 0.46;
 
-    // Update 3D interactive cursor beacon
+    // Update 3D interactive cursor tracker (visual circle removed)
     beaconGroup.position.x += (targetWorldX - beaconGroup.position.x) * 0.16;
     beaconGroup.position.y += (targetWorldY - beaconGroup.position.y) * 0.16;
     beaconGroup.position.z = 0.5 + Math.sin(globalT * 3) * 0.15;
-    beaconHalo.rotation.z += 0.03 + mouseSpeed * 0.08;
-    beaconHalo.scale.setScalar(1 + 0.15 * Math.sin(globalT * 4.5));
-    beaconGroup.visible = isMouseInside;
+    beaconGroup.visible = false;
 
     // Interactive node physics: magnetic repulsion & elastic wave offset
     for(let i=0; i<NODE_COUNT; i++){
