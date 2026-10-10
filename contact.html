@@ -375,6 +375,22 @@
       </div>
       <div id="contact-form" style="position:relative;top:-90px;visibility:hidden;pointer-events:none;"></div>
       <form class="reveal" id="contactForm" novalidate>
+        <!-- Inquiry Type Dropdown List -->
+        <div style="margin-bottom:20px;">
+          <label for="contactPageIntentSelect" style="display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text-white);">Inquiry Type</label>
+          <div class="cd-select-box">
+            <select class="cd-intent-select" id="contactPageIntentSelect" name="inquiry_type">
+              <option value="Get in Touch" selected>💬 Get in Touch</option>
+              <option value="Discovery Call">🔍 Discovery Call</option>
+              <option value="Product Demo">🖥️ Product Demo</option>
+              <option value="Talk to Engineer">⚡ Talk to Engineer</option>
+            </select>
+            <span class="cd-select-arrow" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            </span>
+          </div>
+        </div>
+
         <div class="form-banner-error" id="formBannerError" role="alert">
           <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
           <span id="formBannerText">Please correct the highlighted fields below before submitting.</span>
@@ -408,29 +424,56 @@
             <label for="formCompany">Company</label>
             <input type="text" name="company" id="formCompany" placeholder="Company name" autocomplete="organization">
           </div>
+          <!-- Area of Interest Dropdown List -->
           <div class="field full" id="field-service">
-            <label for="formService">Service needed</label>
-            <select name="service" id="formService">
-              <option value="">— Select a service —</option>
-              <optgroup label="Software &amp; Digital Engineering">
-                <option value="Web &amp; Mobile App Development">Web &amp; Mobile App Development</option>
-                <option value="Cloud &amp; DevOps Engineering">Cloud &amp; DevOps Engineering</option>
-                <option value="AI &amp; Intelligent Automation">AI &amp; Intelligent Automation</option>
-              </optgroup>
-              <optgroup label="IT Infrastructure &amp; Networking">
-                <option value="Enterprise Networking &amp; Wireless">Enterprise Networking &amp; Wireless Infrastructure</option>
-                <option value="Data Centre Build &amp; Structured Cabling">Data Centre Build &amp; Structured Cabling</option>
-                <option value="Cybersecurity, Network Defense &amp; VAPT">Cybersecurity, Network Defense &amp; VAPT</option>
-                <option value="Smart Surveillance &amp; Workplace AV">Smart Surveillance (CCTV) &amp; Workplace AV</option>
-                <option value="Managed IT, AMC &amp; Facility Operations">Managed IT, AMC &amp; Facility Operations</option>
-                <option value="Unified Network &amp; DCIM Monitoring">Unified Network &amp; Data Center Monitoring (DCIM)</option>
-              </optgroup>
-              <option value="Something else">Something else / General Consultation</option>
-            </select>
+            <label for="formService">Area of Interest <span class="req" style="color:var(--orange);">*</span></label>
+            <div class="cd-select-box">
+              <select name="service" id="formService" class="cd-intent-select">
+                <option value="">— Select an Area of Interest —</option>
+                <optgroup label="Software &amp; Digital Engineering">
+                  <option value="Web &amp; Mobile App Development">📱 Web &amp; Mobile App Development</option>
+                  <option value="Cloud &amp; DevOps Engineering">☁️ Cloud &amp; DevOps Engineering</option>
+                  <option value="AI &amp; Intelligent Automation">🤖 AI &amp; Intelligent Automation</option>
+                  <option value="Product Walkthrough (AlphaXenia / AlphaDocq / AlphaERP)">🖥️ Product Walkthrough (AlphaXenia / AlphaDocq)</option>
+                </optgroup>
+                <optgroup label="IT Infrastructure &amp; Security">
+                  <option value="Cybersecurity, Network Defense &amp; VAPT">🛡️ Cybersecurity, Network Defense &amp; VAPT</option>
+                  <option value="Data Centre Build &amp; Structured Cabling">🏢 Data Centre Build &amp; Structured Cabling</option>
+                  <option value="Enterprise Networking &amp; Wireless">🌐 Enterprise Networking &amp; Wireless Infrastructure</option>
+                  <option value="Smart Surveillance &amp; Workplace AV">📹 Smart Surveillance (CCTV) &amp; Workplace AV</option>
+                  <option value="Managed IT, AMC &amp; Facility Operations">⚙️ Managed IT, AMC &amp; Facility Operations</option>
+                  <option value="Unified Network &amp; DCIM Monitoring">📊 Unified Network &amp; Data Center Monitoring (DCIM)</option>
+                </optgroup>
+                <option value="Discovery Call &amp; Architecture Scoping">🔍 Discovery Call &amp; Architecture Scoping</option>
+                <option value="Something else / General Consultation">💬 Something else / General Consultation</option>
+              </select>
+              <span class="cd-select-arrow" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </span>
+            </div>
+          </div>
+          <!-- Target Timeline Dropdown List -->
+          <div class="field full" id="field-timeline" style="margin-top:4px;">
+            <label for="contactPageTimelineSelect" style="margin-bottom:8px;display:block;">Target Timeline</label>
+            <div class="cd-select-box">
+              <select name="timeline" id="contactPageTimelineSelect" class="cd-intent-select">
+                <option value="Immediate / Fast Track (< 1 month)">⚡ Immediate / Fast Track (&lt; 1 month)</option>
+                <option value="Next Quarter (1–3 months)" selected>📅 Next Quarter (1–3 months)</option>
+                <option value="Strategic Roadmap (3–6 months)">🗺️ Strategic Roadmap (3–6 months)</option>
+                <option value="Evaluating Vendors / Exploratory">🔍 Evaluating Vendors / Exploratory</option>
+              </select>
+              <span class="cd-select-arrow" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              </span>
+            </div>
           </div>
           <div class="field full" id="field-message">
             <label for="formMessage">Your requirement *</label>
             <textarea name="message" id="formMessage" required placeholder="What are you trying to build or fix?"></textarea>
+            <div class="cd-textarea-meta">
+              <span class="cd-char-counter" id="contactPageCharCounter">0 / 1000 chars</span>
+              <span class="cd-tip">💡 Minimum 10 characters</span>
+            </div>
             <div class="field-error" id="error-message" role="alert">
               <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 7 7A7 7 0 0 0 8 1zm0 10.5a.75.75 0 1 1 .75-.75.75.75 0 0 1-.75.75zM8.75 4.5v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 1.5 0z"/></svg>
               <span class="error-text"></span>
@@ -441,8 +484,14 @@
         <input type="hidden" name="access_key" value="99ad4431-f9db-4492-aa28-8a629a9ff7bc">
         <input type="hidden" name="subject" value="New enquiry — JS AlphaSoft website">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <button class="submit-btn" type="submit" id="submitBtn">Send message &rarr;</button>
-        <p class="form-note" id="formMsg">We reply within one business day. No spam, no auto-dialled sales calls.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px;">
+          <button class="submit-btn" type="submit" id="submitBtn" style="margin-top:0;">Send message &rarr;</button>
+          <a href="https://wa.me/919582018242?text=Hello%20JS%20AlphaSoft%20team,%20I'd%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="cd-whatsapp-direct-btn" style="padding:12px 20px;font-size:14px;">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.888 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Prefer WhatsApp? Chat now</span>
+          </a>
+        </div>
+        <p class="form-note" id="formMsg">We reply within 2 business hours. Direct engineer conversation &mdash; no sales bots or automated call centers.</p>
       </form>
       <script>
       (function(){
@@ -615,6 +664,44 @@
 
         // ===================== INTERACTIVE EVENT LISTENERS =====================
 
+        function updateCpProgress(){
+          // No-op after Live Scoping Readiness tab removal
+        }
+
+        var cpCharCounter = document.getElementById('contactPageCharCounter');
+
+        // Inquiry Type Dropdown sync with Area of Interest
+        var contactIntentSelect = document.getElementById('contactPageIntentSelect');
+        var serviceSelect = document.getElementById('formService');
+        if(contactIntentSelect && serviceSelect){
+          contactIntentSelect.addEventListener('change', function(){
+            var val = contactIntentSelect.value;
+            if(val === 'Discovery Call'){
+              serviceSelect.value = 'Discovery Call & Architecture Scoping';
+            } else if(val === 'Product Demo'){
+              serviceSelect.value = 'Product Walkthrough (AlphaXenia / AlphaDocq / AlphaERP)';
+            }
+          });
+        }
+
+        // Prompt Chips click handler
+        var promptChips = document.querySelectorAll('.cp-prompt-chip');
+        promptChips.forEach(function(chip){
+          chip.addEventListener('click', function(){
+            var text = chip.getAttribute('data-prompt');
+            if(messageInput){
+              var cur = messageInput.value.trim();
+              if(!cur){
+                messageInput.value = text;
+              } else {
+                messageInput.value = cur + '\n\n' + text;
+              }
+              messageInput.dispatchEvent(new Event('input'));
+              messageInput.focus();
+            }
+          });
+        });
+
         // Auto-prefix phone input with leading '+' if user starts typing digits
         if(phoneInput){
           phoneInput.addEventListener('input', function(){
@@ -627,31 +714,45 @@
             if(phoneInput.classList.contains('is-invalid') || phoneInput.value.length > 8){
               validatePhone(true);
             }
+            updateCpProgress();
           });
           phoneInput.addEventListener('blur', function(){
             validatePhone(true);
+            updateCpProgress();
           });
         }
 
         // Real-time blur validation
         if(nameInput){
-          nameInput.addEventListener('blur', function(){ validateName(true); });
+          nameInput.addEventListener('blur', function(){ validateName(true); updateCpProgress(); });
           nameInput.addEventListener('input', function(){
             if(nameInput.classList.contains('is-invalid')) validateName(true);
+            updateCpProgress();
           });
         }
 
         if(emailInput){
-          emailInput.addEventListener('blur', function(){ validateEmail(true); });
+          emailInput.addEventListener('blur', function(){ validateEmail(true); updateCpProgress(); });
           emailInput.addEventListener('input', function(){
             if(emailInput.classList.contains('is-invalid')) validateEmail(true);
+            updateCpProgress();
           });
         }
 
         if(messageInput){
-          messageInput.addEventListener('blur', function(){ validateMessage(true); });
+          messageInput.addEventListener('blur', function(){ validateMessage(true); updateCpProgress(); });
           messageInput.addEventListener('input', function(){
+            var len = messageInput.value.length;
+            if(cpCharCounter){
+              cpCharCounter.textContent = len + ' / 1000 chars';
+              if(len >= 10){
+                cpCharCounter.classList.add('valid');
+              } else {
+                cpCharCounter.classList.remove('valid');
+              }
+            }
             if(messageInput.classList.contains('is-invalid')) validateMessage(true);
+            updateCpProgress();
           });
         }
 

@@ -354,72 +354,778 @@
 
 <section class="section-pad">
   <div class="wrap">
-    <div class="process-flow reveal">
-      <div class="pf-node">
-        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-disc-proc-flow-1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#6B2FD6"/></linearGradient></defs>
-      <rect x="12" y="18" width="56" height="40" rx="5" fill="url(#g-disc-proc-flow-1)" opacity="0.92"/>
-      <rect x="19" y="27" width="9" height="22" rx="1.5" fill="#ffffff" opacity="0.28"/>
-      <rect x="33" y="35" width="9" height="14" rx="1.5" fill="#ffffff" opacity="0.4"/>
-      <rect x="47" y="31" width="9" height="18" rx="1.5" fill="#ffffff" opacity="0.32"/>
-      <circle cx="73" cy="64" r="15" fill="none" stroke="#FF8A2E" stroke-width="4.5"/>
-      <line x1="83" y1="74" x2="93" y2="84" stroke="#FF8A2E" stroke-width="4.5" stroke-linecap="round"/>
-      <circle cx="73" cy="64" r="15" fill="#0C1740" opacity="0.15"/>
-    </svg></div>
-        <div class="pf-num mono">Stage 01</div>
-        <div class="pf-label">Discover</div>
+    <div class="interactive-process-roadmap reveal" id="processRoadmap">
+      <!-- Top Horizontal Roadmap Track -->
+      <div class="roadmap-track-wrapper">
+        <div class="roadmap-line-bg"></div>
+        <div class="roadmap-line-progress" style="width: 0%;"></div>
+        
+        <div class="roadmap-track" role="tablist" aria-label="5-Stage Engineering Roadmap">
+          <!-- Stage 01 Node -->
+          <button type="button" class="roadmap-node active" role="tab" id="tab-stage-1" aria-selected="true" aria-controls="panel-stage-1" data-stage="1" tabindex="0">
+            <div class="roadmap-node-circle">
+              <svg viewBox="0 0 100 100"><defs><linearGradient id="g-disc-proc-flow-1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#6B2FD6"/></linearGradient></defs>
+                <rect x="12" y="18" width="56" height="40" rx="5" fill="url(#g-disc-proc-flow-1)" opacity="0.92"/>
+                <rect x="19" y="27" width="9" height="22" rx="1.5" fill="#ffffff" opacity="0.28"/>
+                <rect x="33" y="35" width="9" height="14" rx="1.5" fill="#ffffff" opacity="0.4"/>
+                <rect x="47" y="31" width="9" height="18" rx="1.5" fill="#ffffff" opacity="0.32"/>
+                <circle cx="73" cy="64" r="15" fill="none" stroke="#FF8A2E" stroke-width="4.5"/>
+                <line x1="83" y1="74" x2="93" y2="84" stroke="#FF8A2E" stroke-width="4.5" stroke-linecap="round"/>
+                <circle cx="73" cy="64" r="15" fill="#0C1740" opacity="0.15"/>
+              </svg>
+              <span class="roadmap-node-num">01</span>
+            </div>
+            <div class="roadmap-node-meta">
+              <span class="roadmap-node-stage mono">Stage 01</span>
+              <span class="roadmap-node-title">Discover</span>
+              <span class="roadmap-node-time">Weeks 1–2</span>
+            </div>
+          </button>
+
+          <!-- Stage 02 Node -->
+          <button type="button" class="roadmap-node" role="tab" id="tab-stage-2" aria-selected="false" aria-controls="panel-stage-2" data-stage="2" tabindex="-1">
+            <div class="roadmap-node-circle">
+              <svg viewBox="0 0 100 100"><defs><linearGradient id="g-des-proc-flow-2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B2FD6"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+                <rect x="12" y="12" width="58" height="64" rx="7" fill="url(#g-des-proc-flow-2)" opacity="0.9"/>
+                <rect x="20" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+                <rect x="43" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
+                <rect x="20" y="43" width="42" height="11" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.6"/>
+                <circle cx="27" cy="66" r="4.5" fill="#2E9BFF"/>
+                <circle cx="41" cy="66" r="4.5" fill="#B23368"/>
+                <circle cx="55" cy="66" r="4.5" fill="#FF8A2E"/>
+                <path d="M62 6 L90 34 L76 48 L48 20 Z" fill="#FF8A2E"/>
+                <rect x="83" y="4" width="9" height="16" rx="2" fill="#FFD9A8" transform="rotate(45 87.5 12)"/>
+              </svg>
+              <span class="roadmap-node-num">02</span>
+            </div>
+            <div class="roadmap-node-meta">
+              <span class="roadmap-node-stage mono">Stage 02</span>
+              <span class="roadmap-node-title">Design</span>
+              <span class="roadmap-node-time">Weeks 3–5</span>
+            </div>
+          </button>
+
+          <!-- Stage 03 Node -->
+          <button type="button" class="roadmap-node" role="tab" id="tab-stage-3" aria-selected="false" aria-controls="panel-stage-3" data-stage="3" tabindex="-1">
+            <div class="roadmap-node-circle">
+              <svg viewBox="0 0 100 100"><defs><linearGradient id="g-dev-proc-flow-3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1D8C"/><stop offset="1" stop-color="#FF4B00"/></linearGradient></defs>
+                <rect x="8" y="18" width="80" height="56" rx="7" fill="#0C1740" stroke="url(#g-dev-home-flow-3)" stroke-width="2.2"/>
+                <circle cx="19" cy="28" r="2.2" fill="#FF5F57"/><circle cx="27" cy="28" r="2.2" fill="#FEBC2E"/><circle cx="35" cy="28" r="2.2" fill="#28C840"/>
+                <text x="48" y="58" font-family="'JetBrains Mono',monospace" font-size="28" text-anchor="middle" fill="url(#g-dev-proc-flow-3)" font-weight="700">&lt;/&gt;</text>
+                <circle cx="78" cy="68" r="10" fill="none" stroke="#FF8A2E" stroke-width="3.2"/>
+                <circle cx="78" cy="68" r="2.6" fill="#FF8A2E"/>
+              </svg>
+              <span class="roadmap-node-num">03</span>
+            </div>
+            <div class="roadmap-node-meta">
+              <span class="roadmap-node-stage mono">Stage 03</span>
+              <span class="roadmap-node-title">Develop</span>
+              <span class="roadmap-node-time">Weeks 6–12</span>
+            </div>
+          </button>
+
+          <!-- Stage 04 Node -->
+          <button type="button" class="roadmap-node" role="tab" id="tab-stage-4" aria-selected="false" aria-controls="panel-stage-4" data-stage="4" tabindex="-1">
+            <div class="roadmap-node-circle">
+              <svg viewBox="0 0 100 100"><defs><linearGradient id="g-dep-proc-flow-4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF4B00"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
+                <ellipse cx="50" cy="82" rx="32" ry="8" fill="#0C1740"/>
+                <path d="M50 10 C61 23 63 41 58 56 L42 56 C37 41 39 23 50 10 Z" fill="url(#g-dep-proc-flow-4)"/>
+                <circle cx="50" cy="33" r="5.5" fill="#0C1740"/>
+                <path d="M42 52 L30 66 L42 61 Z" fill="#6B2FD6"/>
+                <path d="M58 52 L70 66 L58 61 Z" fill="#6B2FD6"/>
+                <path d="M44 58 L50 78 L56 58 Z" fill="#FFB454"/>
+                <circle cx="20" cy="30" r="1.8" fill="#fff" opacity="0.6"/>
+                <circle cx="80" cy="22" r="1.8" fill="#fff" opacity="0.6"/>
+                <circle cx="74" cy="48" r="1.8" fill="#fff" opacity="0.6"/>
+              </svg>
+              <span class="roadmap-node-num">04</span>
+            </div>
+            <div class="roadmap-node-meta">
+              <span class="roadmap-node-stage mono">Stage 04</span>
+              <span class="roadmap-node-title">Deploy</span>
+              <span class="roadmap-node-time">Weeks 13–14</span>
+            </div>
+          </button>
+
+          <!-- Stage 05 Node -->
+          <button type="button" class="roadmap-node" role="tab" id="tab-stage-5" aria-selected="false" aria-controls="panel-stage-5" data-stage="5" tabindex="-1">
+            <div class="roadmap-node-circle">
+              <svg viewBox="0 0 100 100"><defs><linearGradient id="g-sup-proc-flow-5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#FF8A2E"/></linearGradient></defs>
+                <path d="M50 8 L84 21 V46 C84 67 69 82 50 92 C31 82 16 67 16 46 V21 Z" fill="url(#g-sup-proc-flow-5)" opacity="0.92"/>
+                <path d="M37 50 a13 13 0 0 1 26 0" fill="none" stroke="#fff" stroke-width="3.4" opacity="0.9"/>
+                <rect x="33" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+                <rect x="59" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
+                <circle cx="50" cy="30" r="15" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.35"/>
+                <circle cx="50" cy="30" r="21" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.18"/>
+              </svg>
+              <span class="roadmap-node-num">05</span>
+            </div>
+            <div class="roadmap-node-meta">
+              <span class="roadmap-node-stage mono">Stage 05</span>
+              <span class="roadmap-node-title">Support</span>
+              <span class="roadmap-node-time">Continuous</span>
+            </div>
+          </button>
+        </div>
       </div>
-      <div class="pf-node">
-        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-des-proc-flow-2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B2FD6"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
-      <rect x="12" y="12" width="58" height="64" rx="7" fill="url(#g-des-proc-flow-2)" opacity="0.9"/>
-      <rect x="20" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
-      <rect x="43" y="23" width="19" height="13" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.75"/>
-      <rect x="20" y="43" width="42" height="11" rx="2" fill="none" stroke="#fff" stroke-width="1.8" stroke-dasharray="2.4 2.4" opacity="0.6"/>
-      <circle cx="27" cy="66" r="4.5" fill="#2E9BFF"/>
-      <circle cx="41" cy="66" r="4.5" fill="#B23368"/>
-      <circle cx="55" cy="66" r="4.5" fill="#FF8A2E"/>
-      <path d="M62 6 L90 34 L76 48 L48 20 Z" fill="#FF8A2E"/>
-      <rect x="83" y="4" width="9" height="16" rx="2" fill="#FFD9A8" transform="rotate(45 87.5 12)"/>
-    </svg></div>
-        <div class="pf-num mono">Stage 02</div>
-        <div class="pf-label">Design</div>
+
+      <!-- Roadmap Stepper Controls Bar -->
+      <div class="roadmap-controls">
+        <div class="roadmap-step-indicator mono">
+          <span class="rsi-current">Stage 01</span> of <span>05</span> · <span class="rsi-name">Discover</span>
+        </div>
+        <div class="roadmap-nav-btns">
+          <button type="button" class="roadmap-nav-btn prev" aria-label="Previous Stage" disabled>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+            <span>Previous</span>
+          </button>
+          <button type="button" class="roadmap-nav-btn next" aria-label="Next Stage">
+            <span>Next</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="pf-node">
-        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dev-proc-flow-3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1D8C"/><stop offset="1" stop-color="#FF4B00"/></linearGradient></defs>
-      <rect x="8" y="18" width="80" height="56" rx="7" fill="#0C1740" stroke="url(#g-dev-proc-flow-3)" stroke-width="2.2"/>
-      <circle cx="19" cy="28" r="2.2" fill="#FF5F57"/><circle cx="27" cy="28" r="2.2" fill="#FEBC2E"/><circle cx="35" cy="28" r="2.2" fill="#28C840"/>
-      <text x="48" y="58" font-family="'JetBrains Mono',monospace" font-size="28" text-anchor="middle" fill="url(#g-dev-proc-flow-3)" font-weight="700">&lt;/&gt;</text>
-      <circle cx="78" cy="68" r="10" fill="none" stroke="#FF8A2E" stroke-width="3.2"/>
-      <circle cx="78" cy="68" r="2.6" fill="#FF8A2E"/>
-    </svg></div>
-        <div class="pf-num mono">Stage 03</div>
-        <div class="pf-label">Develop</div>
-      </div>
-      <div class="pf-node">
-        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-dep-proc-flow-4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF4B00"/><stop offset="1" stop-color="#2E9BFF"/></linearGradient></defs>
-      <ellipse cx="50" cy="82" rx="32" ry="8" fill="#0C1740"/>
-      <path d="M50 10 C61 23 63 41 58 56 L42 56 C37 41 39 23 50 10 Z" fill="url(#g-dep-proc-flow-4)"/>
-      <circle cx="50" cy="33" r="5.5" fill="#0C1740"/>
-      <path d="M42 52 L30 66 L42 61 Z" fill="#6B2FD6"/>
-      <path d="M58 52 L70 66 L58 61 Z" fill="#6B2FD6"/>
-      <path d="M44 58 L50 78 L56 58 Z" fill="#FFB454"/>
-      <circle cx="20" cy="30" r="1.8" fill="#fff" opacity="0.6"/>
-      <circle cx="80" cy="22" r="1.8" fill="#fff" opacity="0.6"/>
-      <circle cx="74" cy="48" r="1.8" fill="#fff" opacity="0.6"/>
-    </svg></div>
-        <div class="pf-num mono">Stage 04</div>
-        <div class="pf-label">Deploy</div>
-      </div>
-      <div class="pf-node">
-        <div class="pf-circle"><svg viewBox="0 0 100 100"><defs><linearGradient id="g-sup-proc-flow-5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E9BFF"/><stop offset="1" stop-color="#FF8A2E"/></linearGradient></defs>
-      <path d="M50 8 L84 21 V46 C84 67 69 82 50 92 C31 82 16 67 16 46 V21 Z" fill="url(#g-sup-proc-flow-5)" opacity="0.92"/>
-      <path d="M37 50 a13 13 0 0 1 26 0" fill="none" stroke="#fff" stroke-width="3.4" opacity="0.9"/>
-      <rect x="33" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
-      <rect x="59" y="50" width="8" height="16" rx="3.5" fill="#fff" opacity="0.9"/>
-      <circle cx="50" cy="30" r="15" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.35"/>
-      <circle cx="50" cy="30" r="21" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.18"/>
-    </svg></div>
-        <div class="pf-num mono">Stage 05</div>
-        <div class="pf-label">Support</div>
+
+      <!-- Milestone Detail Panels Container -->
+      <div class="roadmap-panels-container">
+        <!-- ================= STAGE 01 PANEL ================= -->
+        <div class="roadmap-stage-panel active" id="panel-stage-1" role="tabpanel" aria-labelledby="tab-stage-1" data-stage="1">
+          <div class="stage-panel-header">
+            <div class="sph-left">
+              <div class="sph-kicker mono"><span class="sph-dot"></span>STAGE 01 · TIMELINE: WEEKS 1–2</div>
+              <h3 class="sph-title">Discover &amp; Architecture Audit</h3>
+              <p class="sph-desc">We map the business problem, bounded domain contexts, and technical constraints before touching a design tool &mdash; ending with an enforceable engineering spec, not a slide deck.</p>
+            </div>
+            <div class="sph-right">
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Primary Milestone</span>
+                <strong class="smi-val">Approved System Spec &amp; RFC</strong>
+              </div>
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Engineering Lead</span>
+                <strong class="smi-val">Principal Architect &amp; Tech Lead</strong>
+              </div>
+              <button type="button" class="mc-toggle-all-btn mono" aria-label="Toggle all milestone technical details">
+                <span>Expand all specs</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-milestones-grid">
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M1.1</span>
+                <span class="mc-tag">Audit &amp; Baseline</span>
+              </div>
+              <h4 class="mc-title">Legacy Systems &amp; Codebase Audit</h4>
+              <p class="mc-desc">Comprehensive assessment of existing repos, database schema bottlenecks, API payload structures, throughput constraints, and technical debt hotspots.</p>
+              <div class="mc-deliverable mono">Artifact: Tech Debt Register · Performance Profiling Baseline</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Profile p95/p99 endpoint latency baselines under peak synthetic load</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Catalogue third-party SaaS dependencies &amp; auth token lifecycles</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Audit relational indexing bloat, locks &amp; connection pool headroom</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M1.2</span>
+                <span class="mc-tag">Domain Modeling</span>
+              </div>
+              <h4 class="mc-title">Domain Boundary &amp; Event Storming</h4>
+              <p class="mc-desc">Collaborative event storming workshops to define core domain aggregates, entity-relationship models, read/write boundaries, and event schemas.</p>
+              <div class="mc-deliverable mono">Artifact: Bounded Context Map · Domain Entity Relationship Model</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Classify DDD aggregate root boundaries &amp; transactional invariant rules</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Author immutable domain event definitions &amp; async message schema registry</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Model CQRS read/write access paths with optimistic concurrency checks</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M1.3</span>
+                <span class="mc-tag">Infrastructure Spike</span>
+              </div>
+              <h4 class="mc-title">Non-Functional Targets &amp; Cloud Spike</h4>
+              <p class="mc-desc">Benchmarking latency requirements, TPS throughput goals, HA redundancy models, and cloud provider selection (AWS/GCP/Azure) with estimated run-rate costs.</p>
+              <div class="mc-deliverable mono">Artifact: Cloud Topology Spike · Run-Rate Budget Model</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Verify multi-AZ failover &amp; RTO (&lt;30m) / RPO (&lt;5m) disaster recovery bounds</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Calibrate sustained throughput targets (5,000+ RPS) under traffic surge spike</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Produce transparent monthly cloud compute &amp; egress unit cost forecast</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M1.4</span>
+                <span class="mc-tag">Sprint Charter</span>
+              </div>
+              <h4 class="mc-title">Engineering PRD &amp; Sprint Charter</h4>
+              <p class="mc-desc">Codifying technical requirements, velocity baselines, team composition, service-level objectives (SLOs), and the definitive Definition of Done (DoD).</p>
+              <div class="mc-deliverable mono">Artifact: Architecture RFC · Sprint 1 Backlog Ready</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Sign off Architectural Decision Records (ADRs) with stakeholder teams</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Lock enforceable Service Level Objectives (SLOs) &amp; quarterly error budgets</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Commit sprint 1 estimation poker, ticket DoD criteria &amp; acceptance tests</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel-footer">
+            <div class="spf-col">
+              <span class="spf-label mono">Core Tooling &amp; Protocols:</span>
+              <div class="spf-tags">
+                <span>OpenAPI v3</span>
+                <span>PostgreSQL DDL</span>
+                <span>Miro Event Storming</span>
+                <span>OpenTelemetry</span>
+                <span>AWS/GCP Architecture</span>
+              </div>
+            </div>
+            <div class="spf-col">
+              <span class="spf-label mono">Stage Definition of Done:</span>
+              <div class="spf-checks">
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Target SLOs, latency &amp; throughput modeled</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Cloud topology &amp; infrastructure budget locked</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Architecture RFC signed off by client stakeholders</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= STAGE 02 PANEL ================= -->
+        <div class="roadmap-stage-panel" id="panel-stage-2" role="tabpanel" aria-labelledby="tab-stage-2" data-stage="2">
+          <div class="stage-panel-header">
+            <div class="sph-left">
+              <div class="sph-kicker mono"><span class="sph-dot"></span>STAGE 02 · TIMELINE: WEEKS 3–5</div>
+              <h3 class="sph-title">Design &amp; Systems Architecture</h3>
+              <p class="sph-desc">Architecture and interface design run in parallel, establishing strict API contracts, database migration blueprints, security threat models, and tokenized UI components.</p>
+            </div>
+            <div class="sph-right">
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Primary Milestone</span>
+                <strong class="smi-val">Contract-First Prototype &amp; Schema</strong>
+              </div>
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Engineering Lead</span>
+                <strong class="smi-val">Staff Systems Architect &amp; Product Designer</strong>
+              </div>
+              <button type="button" class="mc-toggle-all-btn mono" aria-label="Toggle all milestone technical details">
+                <span>Expand all specs</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-milestones-grid">
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M2.1</span>
+                <span class="mc-tag">Contract Design</span>
+              </div>
+              <h4 class="mc-title">API Contract &amp; Schema Hardening</h4>
+              <p class="mc-desc">Authoring typed OpenAPI v3 &amp; gRPC protobuf schemas, async message bus topologies (Kafka/RabbitMQ), and idempotency key specifications.</p>
+              <div class="mc-deliverable mono">Artifact: OpenAPI Spec Repo · Mock API Sandbox</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Publish OpenAPI 3.1 &amp; Protobuf specs with automated TypeScript type generation</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Deploy mock API sandbox container for seamless frontend/backend parallel tracks</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Specify UUIDv7 idempotency keys &amp; RFC 7807 problem details payloads</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M2.2</span>
+                <span class="mc-tag">Data Architecture</span>
+              </div>
+              <h4 class="mc-title">Persistence &amp; Zero-Downtime Migration</h4>
+              <p class="mc-desc">Relational schema DDL design, indexing strategies, partition models, database migration seeds, and fallback rollback scripts.</p>
+              <div class="mc-deliverable mono">Artifact: Drizzle/Prisma Schema Models · Migration Test Suite</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Validate expand-and-contract column migrations with backwards compatibility</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Benchmark B-tree and GIN composite indexes on 10M record seed sets</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automate forward/reverse migration rollbacks in CI sandbox test suites</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M2.3</span>
+                <span class="mc-tag">Security Modeling</span>
+              </div>
+              <h4 class="mc-title">STRIDE Threat Model &amp; Auth Matrix</h4>
+              <p class="mc-desc">Threat vector modeling, OAuth 2.0 / OIDC session management, Role-Based Access Control (RBAC) matrix, and encryption key rotation plans.</p>
+              <div class="mc-deliverable mono">Artifact: STRIDE Security Audit · RBAC Permission Ruleset</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Model attack surfaces across Spoofing, Tampering, Repudiation, Info Disclosure</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Configure OAuth 2.0 PKCE authentication with JWT rotating asymmetric keys</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Design granular RBAC policy middleware with zero-trust token claims</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M2.4</span>
+                <span class="mc-tag">Design System</span>
+              </div>
+              <h4 class="mc-title">Tokenized Design System &amp; State Charts</h4>
+              <p class="mc-desc">WCAG AA accessible tokenized component library, interactive prototypes, and explicit state charts for loading, error, empty, and offline modes.</p>
+              <div class="mc-deliverable mono">Artifact: Figma Component System · Interactive Flow Prototype</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Build tokenized design tokens (color, spacing, typography, z-index hierarchy)</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Map explicit state machines for offline, loading, error, and optimistic updates</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Verify 100% component accessibility adherence (WCAG 2.1 AA keyboard &amp; screen reader)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel-footer">
+            <div class="spf-col">
+              <span class="spf-label mono">Core Tooling &amp; Protocols:</span>
+              <div class="spf-tags">
+                <span>Figma Tokens</span>
+                <span>TypeScript Schemas</span>
+                <span>Swagger / Postman</span>
+                <span>Prisma / Drizzle DDL</span>
+                <span>OAuth 2.0 / OIDC</span>
+              </div>
+            </div>
+            <div class="spf-col">
+              <span class="spf-label mono">Stage Definition of Done:</span>
+              <div class="spf-checks">
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> All API contracts mocked and validated</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Database schemas pass zero-downtime test</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Clickable prototypes verified by product team</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= STAGE 03 PANEL ================= -->
+        <div class="roadmap-stage-panel" id="panel-stage-3" role="tabpanel" aria-labelledby="tab-stage-3" data-stage="3">
+          <div class="stage-panel-header">
+            <div class="sph-left">
+              <div class="sph-kicker mono"><span class="sph-dot"></span>STAGE 03 · TIMELINE: WEEKS 6–12</div>
+              <h3 class="sph-title">Develop &amp; Continuous Integration</h3>
+              <p class="sph-desc">Two-week iterative sprints delivering production-grade, containerized software backed by automated quality gates, staging environments, and working releases from sprint one.</p>
+            </div>
+            <div class="sph-right">
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Primary Milestone</span>
+                <strong class="smi-val">Release Candidate (RC) Staging Deploy</strong>
+              </div>
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Engineering Lead</span>
+                <strong class="smi-val">Lead Full-Stack Engineers &amp; QA Lead</strong>
+              </div>
+              <button type="button" class="mc-toggle-all-btn mono" aria-label="Toggle all milestone technical details">
+                <span>Expand all specs</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-milestones-grid">
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M3.1</span>
+                <span class="mc-tag">Domain Engine</span>
+              </div>
+              <h4 class="mc-title">Hexagonal Domain Engine &amp; Services</h4>
+              <p class="mc-desc">Implementation of domain logic isolated from external adapters, containerized local dev environment with Docker Compose, and typed business services.</p>
+              <div class="mc-deliverable mono">Artifact: Core Domain Microservices · Container Compose Stacks</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Implement clean hexagonal architecture separating ports from external adapters</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Ensure transactional outbox pattern guarantees at-least-once message delivery</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Containerize unified Docker Compose stack with instant seed bootstrapping</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M3.2</span>
+                <span class="mc-tag">Automated CI</span>
+              </div>
+              <h4 class="mc-title">Continuous Integration &amp; Quality Gates</h4>
+              <p class="mc-desc">Multi-stage CI pipelines executing linters, strict TypeScript checks, SAST vulnerability scans, and ephemeral branch preview deployments.</p>
+              <div class="mc-deliverable mono">Artifact: GitHub Actions CI · SonarQube Quality Gates Pass</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Enforce strict TypeScript compiler rules (noImplicitAny, strictNullChecks) in CI</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Run automated SAST vulnerability scanners (Trivy / Snyk) on each pull request</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Deploy isolated ephemeral branch previews with end-to-end smoke verifications</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M3.3</span>
+                <span class="mc-tag">Performance</span>
+              </div>
+              <h4 class="mc-title">High-Performance Caching &amp; Async I/O</h4>
+              <p class="mc-desc">Query tuning, connection pooling with PgBouncer, Redis distributed caching, optimistic UI updates, and SSE/WebSocket real-time push streams.</p>
+              <div class="mc-deliverable mono">Artifact: Sub-50ms API Latency Benchmarks · Cache Invalidation Plan</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Deploy Redis distributed caching with deterministic key hashing &amp; invalidation</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Tune database connection pooling with PgBouncer transaction mode</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Implement bi-directional SSE / WebSocket channels with heartbeat reconnect</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M3.4</span>
+                <span class="mc-tag">Test Automation</span>
+              </div>
+              <h4 class="mc-title">Test Pyramid: Unit, Integration &amp; E2E</h4>
+              <p class="mc-desc">Automated test pyramid with Vitest/Jest unit tests (&gt;85% coverage), contract integration tests, and Playwright end-to-end regression suites.</p>
+              <div class="mc-deliverable mono">Artifact: Playwright E2E Suites · Code Coverage Badge &gt; 85%</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Achieve &gt;85% branch coverage on domain entities and service layers</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Execute Testcontainers integration tests against live ephemeral Postgres</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Run Playwright cross-browser regression test runs on all critical conversion funnels</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel-footer">
+            <div class="spf-col">
+              <span class="spf-label mono">Core Tooling &amp; Protocols:</span>
+              <div class="spf-tags">
+                <span>TypeScript</span>
+                <span>React / Next.js</span>
+                <span>Docker / Compose</span>
+                <span>GitHub Actions CI</span>
+                <span>Redis</span>
+                <span>Playwright E2E</span>
+              </div>
+            </div>
+            <div class="spf-col">
+              <span class="spf-label mono">Stage Definition of Done:</span>
+              <div class="spf-checks">
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> 100% of sprint user stories passed QA acceptance</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automated E2E test suites green across staging</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Zero high or critical SAST vulnerabilities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= STAGE 04 PANEL ================= -->
+        <div class="roadmap-stage-panel" id="panel-stage-4" role="tabpanel" aria-labelledby="tab-stage-4" data-stage="4">
+          <div class="stage-panel-header">
+            <div class="sph-left">
+              <div class="sph-kicker mono"><span class="sph-dot"></span>STAGE 04 · TIMELINE: WEEKS 13–14</div>
+              <h3 class="sph-title">Deploy &amp; Hardened Production Release</h3>
+              <p class="sph-desc">Automated, zero-downtime releases with built-in rollback &mdash; load testing under production traffic, third-party VAPT penetration testing, and zero-downtime cutover.</p>
+            </div>
+            <div class="sph-right">
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Primary Milestone</span>
+                <strong class="smi-val">Zero-Downtime Production Cutover</strong>
+              </div>
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Engineering Lead</span>
+                <strong class="smi-val">DevOps / Cloud Architect &amp; InfoSec Lead</strong>
+              </div>
+              <button type="button" class="mc-toggle-all-btn mono" aria-label="Toggle all milestone technical details">
+                <span>Expand all specs</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-milestones-grid">
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M4.1</span>
+                <span class="mc-tag">Infrastructure as Code</span>
+              </div>
+              <h4 class="mc-title">IaC Provisioning &amp; Cluster Hardening</h4>
+              <p class="mc-desc">Declarative multi-region cloud provisioning via Terraform/Helm, Kubernetes pod autoscaling (HPA), VPC peering, TLS certificates, and WAF rules.</p>
+              <div class="mc-deliverable mono">Artifact: Terraform State Blueprints · Helm Deployment Charts</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Provision immutable infrastructure with multi-region Terraform modules</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72a.75.75 0 011.06 0z"/></svg> Configure Kubernetes HPA with CPU/memory &amp; custom queue depth metrics</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Apply Cloudflare WAF rate limiting rules &amp; automated TLS certificate renewals</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M4.2</span>
+                <span class="mc-tag">Zero-Downtime Cutover</span>
+              </div>
+              <h4 class="mc-title">Blue/Green &amp; Canary Release Pipelines</h4>
+              <p class="mc-desc">Automated canary analysis, blue/green routing switchover via Envoy/Ingress, database migration checkpoints, and instant rollback triggers.</p>
+              <div class="mc-deliverable mono">Artifact: Blue/Green Deployment Runbook · Automated Rollback Script</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Canary routing: 5% incremental traffic rollout verified against error budgets</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automatic rollback execution if HTTP 5xx error rate exceeds 0.05% threshold</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Drain existing client websockets gracefully with zero dropped requests</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M4.3</span>
+                <span class="mc-tag">Observability</span>
+              </div>
+              <h4 class="mc-title">Distributed APM &amp; Alert Telemetry</h4>
+              <p class="mc-desc">Distributed tracing with OpenTelemetry, Prometheus metrics collection, Grafana production dashboards, and PagerDuty tier-1 alert escalations.</p>
+              <div class="mc-deliverable mono">Artifact: Grafana Production Dashboard · Alert Routing Rules</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Propagate W3C trace context across all frontend clicks and backend spans</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Live Prometheus dashboards for the 4 Golden Signals (Latency, Traffic, Errors, Saturation)</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Setup PagerDuty tier-1 on-call rotation with actionable runbook URLs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M4.4</span>
+                <span class="mc-tag">Security VAPT</span>
+              </div>
+              <h4 class="mc-title">VAPT Audit &amp; Compliance Sign-Off</h4>
+              <p class="mc-desc">Independent penetration testing, OWASP Top 10 remediation, dependency CVE clearance, disaster recovery drills, and SOC2/ISO readiness review.</p>
+              <div class="mc-deliverable mono">Artifact: VAPT Remediation Sign-Off · DR Recovery Runbook</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Remediate 100% of findings from certified third-party VAPT penetration tests</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Verify SOC2 / ISO-27001 audit trail immutability and secrets vault encryption</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Conduct simulated disaster recovery drill restoring live snapshot in &lt;15 mins</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel-footer">
+            <div class="spf-col">
+              <span class="spf-label mono">Core Tooling &amp; Protocols:</span>
+              <div class="spf-tags">
+                <span>Terraform</span>
+                <span>Kubernetes</span>
+                <span>Prometheus</span>
+                <span>Grafana</span>
+                <span>OpenTelemetry</span>
+                <span>AWS / GCP</span>
+                <span>PagerDuty</span>
+              </div>
+            </div>
+            <div class="spf-col">
+              <span class="spf-label mono">Stage Definition of Done:</span>
+              <div class="spf-checks">
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Zero-downtime cutover rehearsal executed</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> VAPT certification &amp; OWASP Top 10 passed</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automated telemetry &amp; on-call alerts live</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= STAGE 05 PANEL ================= -->
+        <div class="roadmap-stage-panel" id="panel-stage-5" role="tabpanel" aria-labelledby="tab-stage-5" data-stage="5">
+          <div class="stage-panel-header">
+            <div class="sph-left">
+              <div class="sph-kicker mono"><span class="sph-dot"></span>STAGE 05 · TIMELINE: ONGOING SLA</div>
+              <h3 class="sph-title">Support &amp; Continuous SRE Evolution</h3>
+              <p class="sph-desc">Monitoring, 24/7 on-call response, and a proactive maintenance cadence that catches performance regressions and security vulnerabilities before users do.</p>
+            </div>
+            <div class="sph-right">
+              <div class="sph-metric-item">
+                <span class="smi-label mono">SLA Commitment</span>
+                <strong class="smi-val">99.95% Uptime · &lt;15m MTTR</strong>
+              </div>
+              <div class="sph-metric-item">
+                <span class="smi-label mono">Engineering Lead</span>
+                <strong class="smi-val">Site Reliability Engineering (SRE) Lead</strong>
+              </div>
+              <button type="button" class="mc-toggle-all-btn mono" aria-label="Toggle all milestone technical details">
+                <span>Expand all specs</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-milestones-grid">
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M5.1</span>
+                <span class="mc-tag">24/7 Operations</span>
+              </div>
+              <h4 class="mc-title">Round-the-Clock Telemetry &amp; Response</h4>
+              <p class="mc-desc">24/7/365 synthetic uptime pings, real-user monitoring (RUM), sub-15 minute critical incident response, and automated self-healing pod restarts.</p>
+              <div class="mc-deliverable mono">Artifact: Live SLO Dashboard · PagerDuty Rotation Matrix</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Maintain 99.95% availability verified by multi-region synthetic uptime checks</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Sub-15 minute Mean Time to Acknowledge (MTTA) on high-severity incident triggers</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Enforce automated self-healing restart policies with circuit breaker protections</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M5.2</span>
+                <span class="mc-tag">Query Optimization</span>
+              </div>
+              <h4 class="mc-title">Continuous Query &amp; Cache Profiling</h4>
+              <p class="mc-desc">Bi-weekly slow-query log auditing, database index maintenance, memory leak profiling, and Redis cache hit ratio optimizations.</p>
+              <div class="mc-deliverable mono">Artifact: Database Performance Reports · P99 Latency Audit</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Audit pg_stat_statements bi-weekly to optimize queries exceeding 100ms threshold</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Maintain &gt;98.5% Redis cache hit ratio with active key eviction telemetry</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Continuous frontend asset bundle budgeting to prevent payload bloat regressions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M5.3</span>
+                <span class="mc-tag">Patch Cadence</span>
+              </div>
+              <h4 class="mc-title">Automated Security &amp; Kernel Hardening</h4>
+              <p class="mc-desc">Zero-day CVE patch cycles, base OS container updates, automated Dependabot pull requests, and quarterly secret key rotation.</p>
+              <div class="mc-deliverable mono">Artifact: Security Patch Log · Zero-Day CVE Clearance</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automated security PR merges for dependency vulnerabilities within 24 hours</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Scheduled container base OS rebuilds against current Alpine/Debian patches</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Quarterly cryptographic key, service principal &amp; OAuth secret rotation</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="milestone-card">
+              <div class="mc-header">
+                <span class="mc-code mono">M5.4</span>
+                <span class="mc-tag">Roadmap Evolution</span>
+              </div>
+              <h4 class="mc-title">Capacity Headroom &amp; Architecture Scaling</h4>
+              <p class="mc-desc">Quarterly capacity forecasts, architectural scaling spikes, tech debt reduction sprints, and continuous cloud cost optimization.</p>
+              <div class="mc-deliverable mono">Artifact: Quarterly Architecture Review · FinOps Savings Report</div>
+              <div class="mc-meta-expand">
+                <span class="mc-expand-label mono">Technical Milestones &amp; DoD <svg class="mc-expand-chevron" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1 0-.708z"/></svg></span>
+              </div>
+              <div class="mc-expanded-content">
+                <ul class="mc-spec-list">
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Model quarterly compute/storage headroom forecasts ahead of user traffic growth</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Execute FinOps optimization sprints identifying and pruning orphaned cloud resources</li>
+                  <li><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Deliver architectural health reviews aligning engineering debt with roadmap features</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-panel-footer">
+            <div class="spf-col">
+              <span class="spf-label mono">Core Tooling &amp; Protocols:</span>
+              <div class="spf-tags">
+                <span>Datadog APM</span>
+                <span>Prometheus / Loki</span>
+                <span>Dependabot</span>
+                <span>Linux Hardening</span>
+                <span>PagerDuty</span>
+                <span>Chaos Engineering</span>
+              </div>
+            </div>
+            <div class="spf-col">
+              <span class="spf-label mono">Stage Definition of Done:</span>
+              <div class="spf-checks">
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> 99.95%+ uptime SLA consistently achieved</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Automated security vulnerability scans clean</span>
+                <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg> Monthly performance reviews delivered to stakeholders</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="process-list reveal">
